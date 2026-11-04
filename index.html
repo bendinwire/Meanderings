@@ -63,7 +63,12 @@
   .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
   footer { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg);
     border-top: 1px solid var(--line); padding: 6px 6px calc(8px + env(safe-area-inset-bottom)); }
-  #msg { min-height: 20px; text-align: center; font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  #msg { position: fixed; left: 50%; top: 38%; transform: translateX(-50%); z-index: 10;
+    max-width: calc(100vw - 32px); text-align: center; font-size: 20px; font-weight: 700;
+    padding: 14px 26px; border-radius: 14px; background: var(--fg); color: var(--bg);
+    box-shadow: 0 8px 30px rgba(0,0,0,.35); pointer-events: none; animation: toast .18s ease-out; }
+  #msg:empty { display: none; }
+  @keyframes toast { from { opacity: 0; transform: translateX(-50%) scale(.9); } }
   #kb { max-width: 520px; margin: 0 auto; }
   .krow { display: flex; justify-content: center; gap: 5px; margin-bottom: 5px; }
   .key { flex: 1; max-width: 44px; height: 46px; border: 0; border-radius: 6px; background: var(--key);
