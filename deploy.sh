@@ -8,7 +8,7 @@ HOST="${HOST:-dock}"   # ssh alias for dockeruser@thelatebar.com, the box that r
 cd "$(dirname "$0")"
 
 echo "▶ Uploading…"
-rsync -az --delete --exclude '.git' --exclude 'validate.js' --exclude 'README.md' --exclude 'deploy.sh' \
+rsync -az --delete --exclude '.git' --exclude 'validate.js' --exclude 'README.md' --exclude 'deploy.sh' --exclude 'content' \
   ./ "$HOST:/tmp/meanderings-web/"
 
 echo "▶ Installing into the nginx html volume…"

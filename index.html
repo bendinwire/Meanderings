@@ -32,8 +32,16 @@
   button { font: inherit; color: inherit; cursor: pointer; }
   .btn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
   main { padding: 0 16px 280px; }
-  #board { margin: 0 auto; }
-  .entry { margin-bottom: 14px; }
+  #board { margin: 0 auto; position: relative; }
+  #meander { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 0; overflow: visible; }
+  #meander path { fill: none; stroke: var(--line); stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
+  #meander path.flow { stroke: var(--link); opacity: 1; filter: drop-shadow(0 0 6px var(--link));
+    animation: flow 2.4s ease-in-out both; }
+  #meander path.done { stroke: var(--link); opacity: .85; filter: drop-shadow(0 0 4px var(--link)); }
+  @keyframes flow { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+  .entry { margin-bottom: 14px; position: relative; z-index: 1; }
+  .clue span { background: var(--bg); padding: 0 8px; position: relative; }
+  .clue.pending { opacity: .6; }
   .tiles { display: flex; gap: var(--gap); width: max-content; }
   .tile { width: var(--cell); height: var(--cell); display: grid; place-items: center;
     border: 2px solid var(--line); background: var(--box); border-radius: 6px;
@@ -49,7 +57,9 @@
   .hintwrap { text-align: center; margin-top: 8px; }
   .hintwrap .btn { padding: 5px 16px; font-size: 14px; }
   .entry.active .clue { color: var(--fg); font-size: 16px; }
-  #puzzle { margin-top: 8px; font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .nav { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  #puzzle { font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; min-width: 120px; }
+  .btn:disabled { opacity: .35; cursor: default; }
   .tabs { display: inline-flex; margin: 8px 0 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
   .seg { background: none; border: 0; padding: 6px 16px; font-size: 14px; border-right: 1px solid var(--line); }
   .seg:last-child { border-right: 0; }
@@ -73,8 +83,8 @@
   .summary .big { font-size: 34px; font-weight: 800; margin: 4px 0; }
   .shake .tile:not(.link):not(.good):not(.auto) { animation: shake .35s; }
   /* the letter dance: a staggered wave of hops, tiles flipping green */
-  .dance .tile { background: var(--good); border-color: var(--good); color: #fff;
-    animation: hop .65s ease-in-out both; animation-delay: calc(var(--i) * 70ms); }
+  .dance .tile:not(.link) { background: var(--good); border-color: var(--good); color: #fff; }
+  .dance .tile { animation: hop .65s ease-in-out both; animation-delay: calc(var(--r, 0) * 200ms + var(--i) * 70ms); }
   @keyframes hop {
     0%   { transform: translateY(0) rotate(0); }
     25%  { transform: translateY(-16px) rotate(-8deg) scale(1.12); }
@@ -84,6 +94,34 @@
   }
   @media (prefers-reduced-motion: reduce) { .dance .tile { animation: none; } }
   @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  .strip { display: flex; gap: var(--gap); justify-content: center; margin-top: 10px; min-height: var(--cell); flex-wrap: wrap; }
+  .tile.empty { border-style: dashed; opacity: .55; }
+  .blindtag { text-align: center; font-size: 11px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; }
+  .combo { color: var(--link); font-weight: 700; }
+  #bonus { max-width: 420px; margin: 0 auto 12px; padding: 10px 14px; border: 1px solid var(--line);
+    border-radius: 8px; font-size: 13px; }
+  #bonus[hidden] { display: none; }
+  .bonus-title { color: var(--muted); }
+  #bonusClue { margin: 6px 0; font-size: 15px; font-style: italic; }
+  #bonusLetters { display: flex; gap: 4px; justify-content: center; margin: 6px 0; }
+  #bonusLetters span { width: 28px; height: 28px; display: grid; place-items: center; border: 2px solid var(--line);
+    border-radius: 5px; font-weight: 700; background: var(--box); }
+  #bonusLetters span.got { background: var(--link); border-color: var(--link); color: #222; }
+  #bonusForm { display: flex; gap: 8px; justify-content: center; }
+  #bonusInput { font: inherit; text-transform: uppercase; width: 9ch; letter-spacing: .15em; text-align: center;
+    background: var(--box); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; }
+  #bonusNote { margin-top: 6px; color: var(--muted); min-height: 16px; }
+  .chk { display: block; margin-top: 6px; }
+  dialog { background: var(--bg); color: var(--fg); border: 2px solid var(--line); border-radius: 12px;
+    max-width: min(440px, calc(100vw - 32px)); padding: 16px 20px; }
+  dialog::backdrop { background: rgba(0,0,0,.55); }
+  dialog h2 { margin: 0 0 8px; }
+  dialog form { text-align: center; margin-top: 10px; }
+  .stat-top { display: flex; gap: 12px; justify-content: center; margin-bottom: 12px; }
+  .stat-top div { text-align: center; min-width: 80px; } .stat-top b { display: block; font-size: 28px; }
+  .stat-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .stat-tbl th, .stat-tbl td { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--line); }
+  .stat-tbl th:first-child, .stat-tbl td:first-child { text-align: left; }
   .summary { text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
   .summary h2 { margin: 0 0 6px; }
   .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
@@ -111,18 +149,36 @@
   <img class="logo" src="assets/icon-header.png" alt="" width="56" height="56">
   <h1>Meanderings</h1>
   <p class="sub">Guess each word from its clue. The next word shares letters with the one above — they're filled in and lined up for you.</p>
-  <div id="puzzle"></div>
   <div class="tabs">
     <button class="seg" data-d="easy">Easy</button>
     <button class="seg" data-d="medium">Medium</button>
     <button class="seg" data-d="hard">Hard</button>
   </div>
+  <div class="nav">
+    <button class="btn" id="prevBtn" aria-label="Previous puzzle" title="Previous puzzle">‹</button>
+    <span id="puzzle"></span>
+    <button class="btn" id="nextBtn" aria-label="Next puzzle" title="Next puzzle">›</button>
+    <button class="btn" id="todayBtn">Today</button>
+    <button class="btn" id="randomBtn" aria-label="Random chain" title="A random chain">🎲</button>
+  </div>
   <div class="bar">
     <span id="progress"></span>
     <span id="stats"></span>
+    <button class="btn" id="bonusBtn" aria-label="Bonus puzzle" title="Bonus puzzle">🎁</button>
+    <button class="btn" id="statsBtn" aria-label="Stats" title="Stats">📊</button>
     <button class="btn" id="settingsBtn" aria-label="Settings" title="Settings">⚙</button>
   </div>
   <div id="timer"></div>
+  <div id="bonus" hidden>
+    <div class="bonus-title">🎁 Bonus: the <b>first gold letter</b> of each row, top to bottom, spells a word</div>
+    <div id="bonusClue"></div>
+    <div id="bonusLetters"></div>
+    <form id="bonusForm" autocomplete="off">
+      <input id="bonusInput" maxlength="8" placeholder="8 letters" autocapitalize="characters" spellcheck="false">
+      <button class="btn" type="submit">Guess</button>
+    </form>
+    <div id="bonusNote"></div>
+  </div>
   <div id="settings" hidden>
     <label>Auto-reveal a letter every
       <select id="autoSecs">
@@ -133,15 +189,23 @@
         <option value="60">60 seconds</option>
       </select>
     </label>
+    <label class="chk"><input type="checkbox" id="soundOn"> Sound</label>
+    <label class="chk"><input type="checkbox" id="hapticsOn"> Haptics</label>
     <p id="scoreNote"></p>
   </div>
 </header>
 <main><div id="board"></div></main>
+<dialog id="statsDlg">
+  <h2>Stats</h2>
+  <div id="statsBody"></div>
+  <form method="dialog"><button class="btn">Close</button></form>
+</dialog>
 <footer>
   <div id="msg"></div>
   <div id="kb"></div>
 </footer>
 <script src="words.js"></script>
+<script src="fx.js"></script>
 <script src="game.js"></script>
 </body>
 </html>
