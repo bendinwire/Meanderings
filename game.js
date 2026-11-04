@@ -119,7 +119,8 @@
     p.textContent = `${st.wrong} misses · ${st.hints} hints · ${st.auto} auto-reveals`;
     const copy = el("button", "btn"); copy.textContent = "Copy result";
     copy.onclick = async () => {
-      const text = `Meanderings — ${st.score}/${MAX_SCORE} (${st.wrong} misses, ${reveals()} reveals)`;
+      const url = location.origin + location.pathname;
+      const text = `Meanderings — ${rows.length} words, ${st.wrong} misses, ${reveals()} reveals, ${st.score}/${MAX_SCORE}\nTry it: ${url}`;
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
     const again = el("button", "btn"); again.textContent = "Play again";
