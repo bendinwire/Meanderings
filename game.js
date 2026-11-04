@@ -52,6 +52,7 @@
   if (!DIFFS[prefs.diff]) prefs.diff = "easy";
   let diff = prefs.diff, rows = [], span = 1, MAX_SCORE = 0, st = fresh();
   let guess = [], locked = [], shake = false, dance = false, busy = false;
+  let sel = -1; // box the player tapped to receive the next hint
   let lastProgress = Date.now();
   const cfg = () => DIFFS[diff];
 
@@ -76,6 +77,7 @@
 
   function startRow() {
     lastProgress = Date.now();
+    sel = -1;
     if (done()) { guess = []; locked = []; return; }
     const r = rows[st.cur];
     guess = Array(r.word.length).fill("");
@@ -130,6 +132,11 @@
           else if (locked[j] === "auto") t.classList.add("auto");
           else if (locked[j]) t.classList.add("good");
           else if (j === nextEmpty) t.classList.add("cursor");
+          if (!locked[j] && !busy) {
+            t.classList.add("tap");
+            if (j === sel) t.classList.add("pick");
+            t.onclick = () => { sel = sel === j ? -1 : j; render(); };
+          }
         } else {
           t.textContent = r.word[j];
           t.classList.add("solved");
@@ -145,9 +152,14 @@
       if (active && !busy) {
         const hw = el("div", "hintwrap");
         const hb = el("button", "btn");
-        hb.textContent = "Hint";
+        hb.textContent = sel >= 0 ? "Reveal this letter" : "Hint";
         hb.onclick = () => { reveal("hint"); hb.blur(); };
         hw.append(hb);
+        if (sel < 0) {
+          const tip = el("div", "hinttip");
+          tip.textContent = "Tap a box first to choose which letter to reveal";
+          hw.append(tip);
+        }
         entry.append(hw);
       }
       board.append(entry);
@@ -236,8 +248,9 @@
   // Reveal one unlocked letter. kind: "hint" (button) or "auto" (timer). Both cost points.
   function reveal(kind) {
     if (blocked()) return;
-    const j = locked.findIndex(l => !l);
+    const j = kind === "hint" && sel >= 0 && !locked[sel] ? sel : locked.findIndex(l => !l);
     if (j < 0) return;
+    sel = -1;
     guess[j] = rows[st.cur].word[j];
     locked[j] = kind === "auto" ? "auto" : "good";
     if (kind === "auto") st.auto++; else st.hints++;
@@ -259,10 +272,10 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) lastProgress = Date.now(); });
 
   // ---- settings & difficulty ----
-  const sel = $("autoSecs");
-  sel.value = String(prefs.autoSecs);
-  sel.addEventListener("change", () => {
-    prefs.autoSecs = Number(sel.value); lastProgress = Date.now(); save(); tick(); sel.blur();
+  const autoSel = $("autoSecs");
+  autoSel.value = String(prefs.autoSecs);
+  autoSel.addEventListener("change", () => {
+    prefs.autoSecs = Number(autoSel.value); lastProgress = Date.now(); save(); tick(); autoSel.blur();
   });
   $("settingsBtn").addEventListener("click", e => {
     const p = $("settings"); p.hidden = !p.hidden; e.currentTarget.blur();
