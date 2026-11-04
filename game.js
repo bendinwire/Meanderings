@@ -389,7 +389,7 @@
     const extras = extrasLine();
     const lines = gridRows().map(g =>
       "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + " " + rowMark(g));
-    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n🟩 solved · 🟨 shared · 🟥 hint · ❌ miss · ✅ clean word\n${url()}`;
+    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n${url()}`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
