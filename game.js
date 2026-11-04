@@ -57,6 +57,8 @@
   const cfg = () => DIFFS[diff];
 
   function save() {
+    // Persist the word in progress too, so a reload resumes mid-word (typed + revealed letters).
+    st.row = done() ? null : { cur: st.cur, guess, locked };
     try { localStorage.setItem(storeKey(diff), JSON.stringify(st)); localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {}
   }
   const done = () => st.cur >= rows.length;
@@ -72,10 +74,10 @@
       `Each word is worth 100 points. On ${cfg().label}, a miss costs ${cfg().miss} and every revealed letter ` +
       `(hint or auto) costs ${cfg().reveal}. A solved word always scores at least ${WORD_FLOOR}.` +
       (cfg().keep ? "" : " Misses don't tell you which letters were right.");
-    startRow(); size(); render(); updateTabs();
+    startRow(true); size(); render(); updateTabs();
   }
 
-  function startRow() {
+  function startRow(restore) {
     lastProgress = Date.now();
     sel = -1;
     if (done()) { guess = []; locked = []; return; }
@@ -85,6 +87,10 @@
     for (let k = 0; k < r.linkLen; k++) {
       guess[r.linkIdx + k] = r.word[r.linkIdx + k];
       locked[r.linkIdx + k] = "link";
+    }
+    const sv = st.row;
+    if (restore && sv && sv.cur === st.cur && sv.guess?.length === r.word.length && sv.locked?.length === r.word.length) {
+      guess = sv.guess.slice(); locked = sv.locked.slice();
     }
   }
 
@@ -184,7 +190,7 @@
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
     const again = el("button", "btn"); again.textContent = "Play again";
-    again.onclick = () => { st = fresh(); save(); startRow(); flash(""); render(); updateTabs(); window.scrollTo(0, 0); };
+    again.onclick = () => { st = fresh(); startRow(); save(); flash(""); render(); updateTabs(); window.scrollTo(0, 0); };
     s.append(h, big, p, copy, again);
     return s;
   }
@@ -203,14 +209,14 @@
     const j = guess.findIndex(c => !c);
     if (j < 0) return;
     guess[j] = ch.toUpperCase();
-    render();
+    save(); render();
   }
   function back() {
     if (blocked()) return;
     for (let j = guess.length - 1; j >= 0; j--) {
       if (guess[j] && !locked[j]) { guess[j] = ""; break; }
     }
-    render();
+    save(); render();
   }
   function submit() {
     if (blocked()) return;
@@ -241,14 +247,17 @@
     setTimeout(() => {
       if (d !== diff) return; // switched difficulty mid-dance; state was already saved below
       st.cur++; st.wMiss = 0; st.wRev = 0;
-      save(); startRow(); busy = false; flash(""); render(); updateTabs();
+      startRow(); save(); busy = false; flash(""); render(); updateTabs();
     }, wait);
   }
 
   // Reveal one unlocked letter. kind: "hint" (button) or "auto" (timer). Both cost points.
   function reveal(kind) {
     if (blocked()) return;
-    const j = kind === "hint" && sel >= 0 && !locked[sel] ? sel : locked.findIndex(l => !l);
+    const w = rows[st.cur].word;
+    // Tapped box wins; otherwise the first open box not already holding the right letter.
+    let j = kind === "hint" && sel >= 0 && !locked[sel] ? sel : locked.findIndex((l, k) => !l && guess[k] !== w[k]);
+    if (j < 0) j = locked.findIndex(l => !l);
     if (j < 0) return;
     sel = -1;
     guess[j] = rows[st.cur].word[j];
@@ -316,6 +325,15 @@
     else if (e.key === "Enter") { e.preventDefault(); submit(); }
   });
   window.addEventListener("resize", size);
+
+  // Drop saves older than 30 days so localStorage doesn't grow forever.
+  try {
+    const cut = new Date(EPOCH + (today.day - 30) * 864e5).toISOString().slice(0, 10);
+    Object.keys(localStorage).forEach(k => {
+      const m = /^meanderings-v2:(\d{4}-\d{2}-\d{2}):/.exec(k);
+      if (m && m[1] < cut) localStorage.removeItem(k);
+    });
+  } catch (e) {}
 
   setup();
 })();
