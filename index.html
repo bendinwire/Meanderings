@@ -113,13 +113,11 @@
   #bonus[hidden] { display: none; }
   .bonus-title { color: var(--muted); }
   #bonusClue { margin: 6px 0; font-size: 15px; font-style: italic; }
-  #bonusLetters { display: flex; gap: 4px; justify-content: center; margin: 6px 0; }
-  #bonusLetters span { width: 28px; height: 28px; display: grid; place-items: center; border: 2px solid var(--line);
-    border-radius: 5px; font-weight: 700; background: var(--box); }
-  #bonusLetters span.got { background: var(--link); border-color: var(--link); color: #222; }
-  #bonusForm { display: flex; gap: 8px; justify-content: center; }
-  #bonusInput { font: inherit; text-transform: uppercase; width: 9ch; letter-spacing: .15em; text-align: center;
-    background: var(--box); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; }
+  #bonusLetters { display: flex; gap: 4px; justify-content: center; margin: 8px 0; }
+  .rtile { width: 34px; height: 34px; font-size: 17px; cursor: pointer; }
+  #bonus.focus { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
+  #bonusRow { text-align: center; }
+  #bonusRow .btn { padding: 5px 18px; }
   #bonusNote { margin-top: 6px; color: var(--muted); min-height: 16px; }
   .chk { display: block; margin-top: 6px; }
   dialog { background: var(--bg); color: var(--fg); border: 2px solid var(--line); border-radius: 12px;
@@ -183,10 +181,7 @@
     <div class="bonus-title">🎁 Bonus: the <b>first gold letter</b> of each row, top to bottom, spells a word</div>
     <div id="bonusClue"></div>
     <div id="bonusLetters"></div>
-    <form id="bonusForm" autocomplete="off">
-      <input id="bonusInput" maxlength="8" placeholder="8 letters" autocapitalize="characters" spellcheck="false">
-      <button class="btn" type="submit">Guess</button>
-    </form>
+    <div id="bonusRow"><button class="btn" id="bonusGuess">Guess</button></div>
     <div id="bonusNote"></div>
   </div>
   <div id="settings" hidden>

@@ -71,6 +71,9 @@
   let chain = null, rows = [], span = 1, MAX_SCORE = 0, st = fresh();
   let guess = [], locked = [], typed = "", bPrefix = 0, sel = -1;
   let plainShown = false; // this word's plain clue has been bought (Hard v2)
+  // River word input: its slots are tile wells driven by the same keyboard as the word. Tap the river to give it
+  // the keyboard, tap the board (or press Esc) to give it back to the word.
+  let riverFocus = false, riverTyped = Array(8).fill("");
   let shake = false, dance = false, busy = false, finale = false, celebrate = false;
   let rowStart = Date.now(), lastProgress = Date.now(), clueEl = null, runToken = 0, lastRandom = -1;
   const cfg = () => DIFFS[diff];
@@ -100,7 +103,7 @@
   }
 
   function setup() {
-    runToken++; busy = false; finale = false; celebrate = false; sel = -1;
+    runToken++; busy = false; finale = false; celebrate = false; sel = -1; riverFocus = false; riverTyped.fill("");
     const pool = POOLS[diff];
     const saved = load(storeKey(diff));
     const defaults = fresh();
@@ -474,6 +477,7 @@
   // ---- input ----
   const blocked = () => done() || busy;
   function type(ch) {
+    if (riverFocus) { riverType(ch); return; }
     if (blocked()) return;
     if (blindNow()) {
       if (typed.length >= 14) return;
@@ -486,6 +490,7 @@
     FX.tick(); save(); render();
   }
   function back() {
+    if (riverFocus) { riverBack(); return; }
     if (blocked()) return;
     if (blindNow()) {
       if (typed.length > bPrefix) typed = typed.slice(0, -1);
@@ -497,6 +502,7 @@
     FX.back(); save(); render();
   }
   function submit() {
+    if (riverFocus) { submitRiver(); return; }
     if (blocked()) return;
     const r = rows[st.cur];
     const blind = blindNow();
@@ -631,32 +637,57 @@
       : "🎁 Bonus: the <b>first gold letter</b> of each row, top to bottom, spells a word";
     $("bonusClue").textContent = chain.bonus.clue;
     const wrap = $("bonusLetters"); wrap.innerHTML = "";
+    let cursor = -1;
+    for (let k = n; k < BONUS_LETTERS && cursor < 0; k++) if (!riverTyped[k]) cursor = k;
     for (let k = 0; k < BONUS_LETTERS; k++) {
-      const s = el("span", k < n || st.bonus.done ? "got" : "");
-      s.textContent = st.bonus.done ? answer[k] : k < n ? rows[k + 1].link[0] : "_";
-      wrap.append(s);
+      const t = el("div", "tile rtile");
+      if (st.bonus.done) { t.classList.add("good"); t.textContent = answer[k]; }
+      else if (k < n) { t.classList.add("link"); t.textContent = rows[k + 1].link[0]; }
+      else { t.textContent = riverTyped[k]; if (riverFocus && k === cursor) t.classList.add("cursor"); }
+      wrap.append(t);
     }
+    $("bonus").classList.toggle("focus", riverFocus && !st.bonus.done);
+    $("bonusGuess").disabled = st.bonus.done;
+    $("bonusGuess").textContent = n >= BONUS_LETTERS && !st.bonus.done ? "Claim" : "Guess";
     $("bonusBtn").textContent = st.bonus.done ? "🎁✓" : "🎁";
     $("bonusNote").textContent = st.bonus.done
       ? `Solved! +${st.bonus.pts}`
-      : `Worth ${bonusWorth()} now. Fewer letters shown = more points; each wrong guess costs ${BONUS_MISS}.`;
-    $("bonusInput").disabled = st.bonus.done;
+      : (riverFocus ? "Typing in the river — tap the board or press Esc to go back to the word. " : "Tap the river to type in it. ") +
+        `Worth ${bonusWorth()} now; each wrong guess costs ${BONUS_MISS}.`;
   }
-  $("bonusBtn").addEventListener("click", e => { $("bonus").hidden = !$("bonus").hidden; e.currentTarget.blur(); });
-  $("bonusForm").addEventListener("submit", e => {
-    e.preventDefault();
+  function riverType(ch) {
     if (st.bonus.done || busy) return;
-    const input = $("bonusInput"), g = input.value.trim().toUpperCase();
-    if (!g) return;
-    if (g === chain.bonus.answer) {
+    for (let k = lettersShown(); k < BONUS_LETTERS; k++) {
+      if (!riverTyped[k]) { riverTyped[k] = ch.toUpperCase(); FX.tick(); renderBonus(); return; }
+    }
+  }
+  function riverBack() {
+    if (st.bonus.done || busy) return;
+    for (let k = BONUS_LETTERS - 1; k >= lettersShown(); k--) {
+      if (riverTyped[k]) { riverTyped[k] = ""; FX.back(); renderBonus(); return; }
+    }
+  }
+  function submitRiver() {
+    if (st.bonus.done || busy) return;
+    const n = lettersShown();
+    const guess = Array.from({ length: BONUS_LETTERS }, (_, k) => (k < n ? rows[k + 1].link[0] : riverTyped[k]));
+    if (guess.some(c => !c)) { flash("Fill all 8 letters first"); return; }
+    if (guess.join("") === chain.bonus.answer) {
       const pts = bonusWorth();
       st.bonus.done = true; st.bonus.pts = pts; st.score += pts;
+      riverFocus = false; riverTyped.fill("");
       FX.bonus(); FX.confetti(70); flash(newRules() ? `🌊 River word! +${pts}` : `🎁 Bonus! +${pts}`);
-      input.value = ""; save(); render();
+      save(); render();
     } else {
-      st.bonus.miss++; FX.miss(); flash("Not the bonus word"); input.select(); save(); renderBonus();
+      st.bonus.miss++; riverTyped.fill("");
+      FX.miss(); flash("Not the river word"); save(); renderBonus();
     }
-  });
+  }
+  $("bonusBtn").addEventListener("click", e => { $("bonus").hidden = !$("bonus").hidden; e.currentTarget.blur(); });
+  $("bonusGuess").addEventListener("click", e => { riverFocus = true; submitRiver(); e.currentTarget.blur(); });
+  // Tap anywhere in the river panel to type into it; tap the board to hand the keyboard back to the word.
+  $("bonus").addEventListener("click", () => { if (!st.bonus.done && !riverFocus) { riverFocus = true; renderBonus(); } });
+  board.addEventListener("click", () => { if (riverFocus) { riverFocus = false; renderBonus(); } });
 
   // ---- stats & streaks ----
   const loadStats = () => ({ done: {}, best: {}, played: {}, total: {}, perfect: {}, runs: [], seen: [], bestCombo: 0, maxStreak: 0, ...(load(STATS) || {}) });
@@ -765,6 +796,7 @@
     if (["SELECT", "INPUT", "TEXTAREA"].includes(e.target.tagName) || $("statsDlg").open) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (/^[a-zA-Z]$/.test(e.key)) type(e.key);
+    else if (e.key === "Escape" && riverFocus) { riverFocus = false; renderBonus(); }
     else if (e.key === "Backspace") back();
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); moveSel(e.key === "ArrowLeft" ? -1 : 1); }
     else if (e.key === "?" || e.key === "/") { e.preventDefault(); if (hintsOn()) reveal("hint"); else showPlain(); }
