@@ -1,6 +1,8 @@
 (() => {
   "use strict";
-  const STORE = "meanderings-v1";
+  const STORE = "meanderings-v1", PREFS = "meanderings-prefs";
+  const WORD_POINTS = 100, MISS_COST = 10, REVEAL_COST = 15;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---- layout: align each word's linked letters under the previous word's ----
   function layout(chain) {
@@ -18,24 +20,31 @@
     return { rows, span };
   }
   const { rows, span } = layout(CHAIN);
+  const MAX_SCORE = rows.length * WORD_POINTS;
 
   const $ = id => document.getElementById(id);
   const board = $("board"), msgEl = $("msg"), kb = $("kb");
   const el = (tag, cls) => { const e = document.createElement(tag); if (cls) e.className = cls; return e; };
 
   // ---- state ----
-  const fresh = () => ({ cur: 0, guesses: 0, wrong: 0, hints: 0 });
-  let st = load() || fresh();
-  let guess = [], locked = [], shake = false;
+  // wMiss / wRev are the misses and revealed letters on the current word (they set its points).
+  const fresh = () => ({ cur: 0, guesses: 0, wrong: 0, hints: 0, auto: 0, score: 0, wMiss: 0, wRev: 0 });
+  let st = { ...fresh(), ...(load(STORE) || {}) };
+  let prefs = { autoSecs: 0, ...(load(PREFS) || {}) };
+  let guess = [], locked = [], shake = false, dance = false, busy = false;
+  let lastProgress = Date.now();
 
-  function load() {
-    try { const s = JSON.parse(localStorage.getItem(STORE)); return s && s.cur >= 0 ? s : null; }
-    catch (e) { return null; }
+  function load(key) {
+    try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; }
   }
-  function save() { try { localStorage.setItem(STORE, JSON.stringify(st)); } catch (e) {} }
+  function save() {
+    try { localStorage.setItem(STORE, JSON.stringify(st)); localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {}
+  }
   const done = () => st.cur >= rows.length;
+  const reveals = () => st.hints + st.auto;
 
   function startRow() {
+    lastProgress = Date.now();
     if (done()) { guess = []; locked = []; return; }
     const r = rows[st.cur];
     guess = Array(r.word.length).fill("");
@@ -73,9 +82,11 @@
       const nextEmpty = active ? guess.findIndex(c => !c) : -1;
       for (let j = 0; j < r.word.length; j++) {
         const t = el("div", "tile");
+        t.style.setProperty("--i", j);
         if (active) {
           t.textContent = guess[j] || "";
           if (locked[j] === "link") t.classList.add("link");
+          else if (locked[j] === "auto") t.classList.add("auto");
           else if (locked[j]) t.classList.add("good");
           else if (j === nextEmpty) t.classList.add("cursor");
         } else {
@@ -86,6 +97,7 @@
         tiles.append(t);
       }
       if (active && shake) { entry.classList.add("shake"); shake = false; }
+      if (active && dance) { entry.classList.add("dance"); dance = false; }
       const clue = el("div", "clue");
       clue.textContent = r.clue;
       entry.append(tiles, clue);
@@ -94,7 +106,7 @@
     }
     if (done()) board.append(summary());
     $("progress").textContent = done() ? "Complete" : `Word ${st.cur + 1} of ${rows.length}`;
-    $("stats").textContent = `${st.wrong} miss${st.wrong === 1 ? "" : "es"} · ${st.hints} hint${st.hints === 1 ? "" : "s"}`;
+    $("stats").textContent = `Score ${st.score} · ${st.wrong} miss${st.wrong === 1 ? "" : "es"} · ${reveals()} reveal${reveals() === 1 ? "" : "s"}`;
     $("hint").disabled = done();
     (activeEntry || board.lastElementChild)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
@@ -102,16 +114,17 @@
   function summary() {
     const s = el("div", "summary");
     const h = el("h2"); h.textContent = "Chain complete!";
+    const big = el("div", "big"); big.textContent = `${st.score} / ${MAX_SCORE}`;
     const p = el("div");
-    p.textContent = `${rows.length} words · ${st.wrong} misses · ${st.hints} hints`;
+    p.textContent = `${st.wrong} misses · ${st.hints} hints · ${st.auto} auto-reveals`;
     const copy = el("button", "btn"); copy.textContent = "Copy result";
     copy.onclick = async () => {
-      const text = `Meanderings — ${rows.length} words, ${st.wrong} misses, ${st.hints} hints`;
+      const text = `Meanderings — ${st.score}/${MAX_SCORE} (${st.wrong} misses, ${reveals()} reveals)`;
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
     const again = el("button", "btn"); again.textContent = "Play again";
     again.onclick = () => { st = fresh(); save(); startRow(); flash(""); render(); window.scrollTo(0, 0); };
-    s.append(h, p, copy, again);
+    s.append(h, big, p, copy, again);
     return s;
   }
 
@@ -123,29 +136,28 @@
   }
 
   // ---- input ----
+  const locked_ = () => done() || busy;
   function type(ch) {
-    if (done()) return;
+    if (locked_()) return;
     const j = guess.findIndex(c => !c);
     if (j < 0) return;
     guess[j] = ch.toUpperCase();
     render();
   }
   function back() {
-    if (done()) return;
+    if (locked_()) return;
     for (let j = guess.length - 1; j >= 0; j--) {
       if (guess[j] && !locked[j]) { guess[j] = ""; break; }
     }
     render();
   }
   function submit() {
-    if (done()) return;
+    if (locked_()) return;
     const r = rows[st.cur];
     if (guess.some(c => !c)) { flash("Fill every box first"); return; }
     st.guesses++;
-    if (guess.join("") === r.word) {
-      st.cur++; save(); startRow(); flash(""); render(); return;
-    }
-    st.wrong++;
+    if (guess.join("") === r.word) { solved(r); return; }
+    st.wrong++; st.wMiss++;
     let kept = 0;
     for (let j = 0; j < guess.length; j++) {
       if (locked[j]) continue;
@@ -154,13 +166,55 @@
     flash(kept ? `${kept} letter${kept > 1 ? "s" : ""} in the right spot — kept` : "No letters in the right spot");
     shake = true; save(); render();
   }
-  function hint() {
-    if (done()) return;
-    const r = rows[st.cur];
+
+  // Correct line: award points, do the letter dance, then move to the next word.
+  function solved(r) {
+    const points = Math.max(0, WORD_POINTS - MISS_COST * st.wMiss - REVEAL_COST * st.wRev);
+    st.score += points;
+    flash(`+${points}`);
+    busy = true; dance = true;
+    render();
+    const wait = reduceMotion ? 250 : 650 + r.word.length * 70 + 150;
+    setTimeout(() => {
+      st.cur++; st.wMiss = 0; st.wRev = 0;
+      save(); startRow(); busy = false; flash(""); render();
+    }, wait);
+  }
+
+  // Reveal one unlocked letter. kind: "hint" (button) or "auto" (timer). Both cost points.
+  function reveal(kind) {
+    if (locked_()) return;
     const j = locked.findIndex(l => !l);
     if (j < 0) return;
-    guess[j] = r.word[j]; locked[j] = "good"; st.hints++; save(); render();
+    guess[j] = rows[st.cur].word[j];
+    locked[j] = kind === "auto" ? "auto" : "good";
+    if (kind === "auto") st.auto++; else st.hints++;
+    st.wRev++;
+    lastProgress = Date.now();
+    save(); render();
   }
+
+  // ---- auto-reveal timer ----
+  function tick() {
+    const t = $("timer");
+    const secs = prefs.autoSecs;
+    if (!secs || done() || busy || !locked.some(l => !l)) { t.textContent = ""; return; }
+    const left = secs - (Date.now() - lastProgress) / 1000;
+    if (left <= 0) { reveal("auto"); flash("Auto-revealed a letter"); return; }
+    t.textContent = `Next letter in ${Math.ceil(left)}s`;
+  }
+  setInterval(tick, 250);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) lastProgress = Date.now(); });
+
+  // ---- settings ----
+  const sel = $("autoSecs");
+  sel.value = String(prefs.autoSecs);
+  sel.addEventListener("change", () => {
+    prefs.autoSecs = Number(sel.value); lastProgress = Date.now(); save(); tick(); sel.blur();
+  });
+  $("settingsBtn").addEventListener("click", e => {
+    const p = $("settings"); p.hidden = !p.hidden; e.currentTarget.blur();
+  });
 
   // ---- wiring ----
   const KEYS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
@@ -182,8 +236,9 @@
     if (k === "enter") submit(); else if (k === "back") back(); else type(k);
     b.blur();
   });
-  $("hint").addEventListener("click", e => { hint(); e.currentTarget.blur(); });
+  $("hint").addEventListener("click", e => { reveal("hint"); e.currentTarget.blur(); });
   document.addEventListener("keydown", e => {
+    if (e.target.tagName === "SELECT") return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (/^[a-zA-Z]$/.test(e.key)) type(e.key);
     else if (e.key === "Backspace") back();

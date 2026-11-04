@@ -7,7 +7,7 @@
 <style>
   :root {
     --bg: #faf7f2; --fg: #222; --box: #fff; --line: #cfc8bb; --muted: #7a7468;
-    --accent: #c8553d; --link: #e8b93c; --good: #4c9a5f; --key: #e4ded2;
+    --accent: #c8553d; --link: #e8b93c; --good: #4c9a5f; --key: #e4ded2; --auto: #d9822b;
     --cell: 44px; --gap: 6px;
   }
   @media (prefers-color-scheme: dark) {
@@ -36,7 +36,27 @@
   .tile.good { background: var(--good); border-color: var(--good); color: #fff; }
   .clue { text-align: center; color: var(--muted); font-style: italic; font-size: 14px; margin-top: 5px; }
   .entry.active .clue { color: var(--fg); font-size: 16px; }
-  .shake .tile:not(.link):not(.good) { animation: shake .35s; }
+  .tile.auto { background: var(--auto); border-color: var(--auto); color: #fff; }
+  #timer { text-align: center; font-size: 12px; color: var(--auto); min-height: 16px; margin: -8px 0 6px; }
+  #settings { max-width: 380px; margin: 0 auto 12px; padding: 10px 14px; border: 1px solid var(--line);
+    border-radius: 8px; font-size: 13px; }
+  #settings[hidden] { display: none; }
+  #settings p { margin: 6px 0 0; color: var(--muted); }
+  #settings select { font: inherit; color: inherit; background: var(--box); border: 1px solid var(--line);
+    border-radius: 6px; padding: 2px 6px; margin-left: 4px; }
+  .summary .big { font-size: 34px; font-weight: 800; margin: 4px 0; }
+  .shake .tile:not(.link):not(.good):not(.auto) { animation: shake .35s; }
+  /* the letter dance: a staggered wave of hops, tiles flipping green */
+  .dance .tile { background: var(--good); border-color: var(--good); color: #fff;
+    animation: hop .65s ease-in-out both; animation-delay: calc(var(--i) * 70ms); }
+  @keyframes hop {
+    0%   { transform: translateY(0) rotate(0); }
+    25%  { transform: translateY(-16px) rotate(-8deg) scale(1.12); }
+    50%  { transform: translateY(0) rotate(5deg); }
+    70%  { transform: translateY(-6px) rotate(-3deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .dance .tile { animation: none; } }
   @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
   .summary { text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
   .summary h2 { margin: 0 0 6px; }
@@ -60,6 +80,20 @@
     <span id="progress"></span>
     <span id="stats"></span>
     <button class="btn" id="hint">Hint</button>
+    <button class="btn" id="settingsBtn" aria-label="Settings" title="Settings">⚙</button>
+  </div>
+  <div id="timer"></div>
+  <div id="settings" hidden>
+    <label>Auto-reveal a letter every
+      <select id="autoSecs">
+        <option value="0">Off</option>
+        <option value="15">15 seconds</option>
+        <option value="30">30 seconds</option>
+        <option value="45">45 seconds</option>
+        <option value="60">60 seconds</option>
+      </select>
+    </label>
+    <p>Each word is worth 100 points. A miss costs 10; every revealed letter (hint or auto) costs 15.</p>
   </div>
 </header>
 <main><div id="board"></div></main>
