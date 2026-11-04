@@ -372,8 +372,8 @@
     });
   }
   const missText = n => (n > 4 ? `❌×${n}` : "❌".repeat(n));
-  // Result of each word, readable down the right edge: ✅ clean, 🟥 used a hint, ❌ per miss.
-  const rowMark = g => (g.miss ? missText(g.miss) : g.hinted ? "🟥" : "✅");
+  // End-of-row mark: only misses (one ❌ each). Hints already show as red squares inside the row.
+  const rowMark = g => (g.miss ? missText(g.miss) : "");
   const titleText = () => (view.kind === "random" ? "Meanderings (random)" : `Meanderings #${view.day + 1}`);
   const url = () => location.origin + location.pathname;
   const pct = () => Math.round((st.score / MAX_SCORE) * 100);
@@ -388,7 +388,7 @@
     const head = `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)`;
     const extras = extrasLine();
     const lines = gridRows().map(g =>
-      g.cells.map(c => EMOJI[c]).join("") + " " + rowMark(g));   // left-aligned: indenting with spaces never lines up across apps
+      g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + rowMark(g) : ""));   // left-aligned: indenting with spaces never lines up across apps
     return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n${url()}`;
   }
   function gridEl() {
@@ -399,7 +399,7 @@
       line.append(...Array.from({ length: g.pad }, () => el("span", "sb k")));
       g.cells.forEach(c => line.append(el("span", "sb " + c)));
       line.append(...Array.from({ length: g.padR }, () => el("span", "sb k")));
-      const x = el("span", "sx"); x.textContent = rowMark(g); line.append(x);
+      if (g.miss) { const x = el("span", "sx"); x.textContent = rowMark(g); line.append(x); }
       wrap.append(line);
     });
     return wrap;
@@ -414,7 +414,7 @@
     p.textContent = `${cfg().label} · ${pl(st.wrong, "miss", "misses")} · ${pl(st.hints, "hint", "hints")} · ` +
       `${pl(st.auto, "auto-reveal", "auto-reveals")} · best combo ${st.bestCombo}`;
     const legend = el("div", "legend");
-    legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss · ✅ clean word";
+    legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss";
     const doCopy = async text => {
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
