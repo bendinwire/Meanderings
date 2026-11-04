@@ -249,11 +249,12 @@
         const hw = el("div", "hintwrap");
         const hb = el("button", "btn");
         hb.textContent = !blind && sel >= 0 ? "Reveal this letter" : "Hint";
+        const kbd = el("span", "kbd"); kbd.textContent = "?"; hb.append(kbd);   // keyboard shortcut (hidden on touch)
         hb.onclick = () => { reveal("hint"); hb.blur(); };
         hw.append(hb);
         if (blind || sel < 0) {
           const tip = el("div", "hinttip");
-          tip.textContent = blind ? "Reveals the next letter of the word" : "Tap a box first to choose which letter to reveal";
+          tip.textContent = blind ? "Reveals the next letter of the word" : "Tap a box (or use ← →) to choose which letter to reveal";
           hw.append(tip);
         }
         entry.append(hw);
@@ -488,6 +489,18 @@
     }, wait);
   }
 
+  // Keyboard selection: ← → move the selected box among the open ones; Hint then reveals that box.
+  function moveSel(dir) {
+    if (blocked() || blindNow()) return;
+    const open = locked.map((l, j) => (l ? -1 : j)).filter(j => j >= 0);
+    if (!open.length) return;
+    let i = open.indexOf(sel);
+    if (i < 0) i = Math.max(0, open.indexOf(guess.findIndex(c => !c)));   // first press: start at the cursor
+    else i = Math.min(open.length - 1, Math.max(0, i + dir));
+    sel = open[i];
+    render();
+  }
+
   // Reveal one letter. kind: "hint" (button) or "auto" (timer). Both cost points and break the combo.
   const canReveal = () => (blindNow() ? bPrefix < rows[st.cur].word.length : locked.some(l => !l));
   function reveal(kind) {
@@ -672,6 +685,8 @@
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (/^[a-zA-Z]$/.test(e.key)) type(e.key);
     else if (e.key === "Backspace") back();
+    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); moveSel(e.key === "ArrowLeft" ? -1 : 1); }
+    else if (e.key === "?" || e.key === "/") { e.preventDefault(); reveal("hint"); }
     else if (e.key === "Enter") { e.preventDefault(); submit(); }
   });
   window.addEventListener("resize", () => { size(); drawMeander(); });
