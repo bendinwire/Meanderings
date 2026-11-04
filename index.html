@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Meanderings</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="Meanderings">
+<meta property="og:description" content="A daily word chain. Guess each word; the next one shares letters with it.">
+<meta property="og:image" content="https://thelatebar.com/meanderings/assets/meanderings-icon.png">
+<meta name="twitter:card" content="summary">
 <style>
   :root {
     --bg: #faf7f2; --fg: #222; --box: #fff; --line: #cfc8bb; --muted: #7a7468;
@@ -17,6 +24,7 @@
   html, body { margin: 0; background: var(--bg); color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   header { text-align: center; padding: 14px 16px 4px; }
+  .logo { display: block; width: 56px; height: 56px; margin: 0 auto 6px; }
   h1 { margin: 0; font-size: 26px; letter-spacing: .08em; text-transform: uppercase; }
   .sub { margin: 4px auto 0; color: var(--muted); font-size: 13px; max-width: 460px; }
   .bar { display: flex; justify-content: center; gap: 14px; align-items: center;
@@ -100,6 +108,7 @@
 </head>
 <body>
 <header>
+  <img class="logo" src="assets/icon-header.png" alt="" width="56" height="56">
   <h1>Meanderings</h1>
   <p class="sub">Guess each word from its clue. The next word shares letters with the one above — they're filled in and lined up for you.</p>
   <div id="puzzle"></div>
