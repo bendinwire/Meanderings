@@ -36,6 +36,11 @@
   .tile.good { background: var(--good); border-color: var(--good); color: #fff; }
   .clue { text-align: center; color: var(--muted); font-style: italic; font-size: 14px; margin-top: 5px; }
   .entry.active .clue { color: var(--fg); font-size: 16px; }
+  #puzzle { margin-top: 8px; font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .tabs { display: inline-flex; margin: 8px 0 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg { background: none; border: 0; padding: 6px 16px; font-size: 14px; border-right: 1px solid var(--line); }
+  .seg:last-child { border-right: 0; }
+  .seg.on { background: var(--fg); color: var(--bg); font-weight: 700; }
   .tile.auto { background: var(--auto); border-color: var(--auto); color: #fff; }
   #timer { text-align: center; font-size: 12px; color: var(--auto); min-height: 16px; margin: -8px 0 6px; }
   #settings { max-width: 380px; margin: 0 auto 12px; padding: 10px 14px; border: 1px solid var(--line);
@@ -81,6 +86,12 @@
 <header>
   <h1>Meanderings</h1>
   <p class="sub">Guess each word from its clue. The next word shares letters with the one above — they're filled in and lined up for you.</p>
+  <div id="puzzle"></div>
+  <div class="tabs">
+    <button class="seg" data-d="easy">Easy</button>
+    <button class="seg" data-d="medium">Medium</button>
+    <button class="seg" data-d="hard">Hard</button>
+  </div>
   <div class="bar">
     <span id="progress"></span>
     <span id="stats"></span>
@@ -98,7 +109,7 @@
         <option value="60">60 seconds</option>
       </select>
     </label>
-    <p>Each word is worth 100 points. A miss costs 10; every revealed letter (hint or auto) costs 15.</p>
+    <p id="scoreNote"></p>
   </div>
 </header>
 <main><div id="board"></div></main>

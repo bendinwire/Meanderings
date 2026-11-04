@@ -1,8 +1,28 @@
 (() => {
   "use strict";
-  const STORE = "meanderings-v1", PREFS = "meanderings-prefs";
-  const WORD_POINTS = 100, MISS_COST = 10, REVEAL_COST = 15;
+  const PREFS = "meanderings-prefs";
+  const WORD_POINTS = 100;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Difficulty rules. `keep`: a miss leaves the correctly placed letters (green) in place.
+  const DIFFS = {
+    easy:   { label: "Easy",   keep: true,  miss: 10, reveal: 15 },
+    medium: { label: "Medium", keep: true,  miss: 15, reveal: 20 },
+    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 25 },
+  };
+
+  // ---- today's puzzle: the chain for each difficulty rotates daily (?date=YYYY-MM-DD to preview) ----
+  const EPOCH = Date.UTC(2026, 10, 4); // puzzle #1
+  const today = (() => {
+    const q = new URLSearchParams(location.search).get("date");
+    let y, m, d;
+    if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) { [y, m, d] = q.split("-").map(Number); m--; }
+    else { const n = new Date(); y = n.getFullYear(); m = n.getMonth(); d = n.getDate(); }
+    const day = Math.round((Date.UTC(y, m, d) - EPOCH) / 864e5);
+    return { day, date: `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}` };
+  })();
+  const chainFor = k => { const p = POOLS[k]; return p[((today.day % p.length) + p.length) % p.length]; };
+  const storeKey = k => `meanderings-v2:${today.date}:${k}`;
 
   // ---- layout: align each word's linked letters under the previous word's ----
   function layout(chain) {
@@ -19,8 +39,6 @@
     const span = Math.max(...rows.map(r => r.off + r.word.length));
     return { rows, span };
   }
-  const { rows, span } = layout(CHAIN);
-  const MAX_SCORE = rows.length * WORD_POINTS;
 
   const $ = id => document.getElementById(id);
   const board = $("board"), msgEl = $("msg"), kb = $("kb");
@@ -29,19 +47,32 @@
   // ---- state ----
   // wMiss / wRev are the misses and revealed letters on the current word (they set its points).
   const fresh = () => ({ cur: 0, guesses: 0, wrong: 0, hints: 0, auto: 0, score: 0, wMiss: 0, wRev: 0 });
-  let st = { ...fresh(), ...(load(STORE) || {}) };
-  let prefs = { autoSecs: 0, ...(load(PREFS) || {}) };
+  const load = key => { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } };
+  let prefs = { autoSecs: 0, diff: "easy", ...(load(PREFS) || {}) };
+  if (!DIFFS[prefs.diff]) prefs.diff = "easy";
+  let diff = prefs.diff, rows = [], span = 1, MAX_SCORE = 0, st = fresh();
   let guess = [], locked = [], shake = false, dance = false, busy = false;
   let lastProgress = Date.now();
+  const cfg = () => DIFFS[diff];
 
-  function load(key) {
-    try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; }
-  }
   function save() {
-    try { localStorage.setItem(STORE, JSON.stringify(st)); localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {}
+    try { localStorage.setItem(storeKey(diff), JSON.stringify(st)); localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {}
   }
   const done = () => st.cur >= rows.length;
   const reveals = () => st.hints + st.auto;
+
+  function setup() {
+    ({ rows, span } = layout(chainFor(diff)));
+    MAX_SCORE = rows.length * WORD_POINTS;
+    st = { ...fresh(), ...(load(storeKey(diff)) || {}) };
+    busy = false;
+    $("puzzle").textContent = `Puzzle #${today.day + 1} · ${cfg().label}`;
+    $("scoreNote").textContent =
+      `Each word is worth 100 points. On ${cfg().label}, a miss costs ${cfg().miss} and every revealed letter ` +
+      `(hint or auto) costs ${cfg().reveal}.` +
+      (cfg().keep ? "" : " Misses don't tell you which letters were right.");
+    startRow(); size(); render(); updateTabs();
+  }
 
   function startRow() {
     lastProgress = Date.now();
@@ -53,6 +84,16 @@
       guess[r.linkIdx + k] = r.word[r.linkIdx + k];
       locked[r.linkIdx + k] = "link";
     }
+  }
+
+  function updateTabs() {
+    document.querySelectorAll(".seg").forEach(b => {
+      const k = b.dataset.d;
+      const s = k === diff ? st : load(storeKey(k));
+      const fin = s && s.cur >= chainFor(k).length;
+      b.textContent = DIFFS[k].label + (fin ? " ✓" : "");
+      b.classList.toggle("on", k === diff);
+    });
   }
 
   // ---- sizing: shrink tiles so the full width of the chain fits ----
@@ -116,15 +157,15 @@
     const h = el("h2"); h.textContent = "Chain complete!";
     const big = el("div", "big"); big.textContent = `${st.score} / ${MAX_SCORE}`;
     const p = el("div");
-    p.textContent = `${st.wrong} misses · ${st.hints} hints · ${st.auto} auto-reveals`;
+    p.textContent = `${cfg().label} · ${st.wrong} misses · ${st.hints} hints · ${st.auto} auto-reveals`;
     const copy = el("button", "btn"); copy.textContent = "Copy result";
     copy.onclick = async () => {
       const url = location.origin + location.pathname;
-      const text = `Meanderings — ${rows.length} words, ${st.wrong} misses, ${reveals()} reveals, ${st.score}/${MAX_SCORE}\nTry it: ${url}`;
+      const text = `Meanderings #${today.day + 1} (${cfg().label}) — ${rows.length} words, ${st.wrong} misses, ${reveals()} reveals, ${st.score}/${MAX_SCORE}\nTry it: ${url}`;
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
     const again = el("button", "btn"); again.textContent = "Play again";
-    again.onclick = () => { st = fresh(); save(); startRow(); flash(""); render(); window.scrollTo(0, 0); };
+    again.onclick = () => { st = fresh(); save(); startRow(); flash(""); render(); updateTabs(); window.scrollTo(0, 0); };
     s.append(h, big, p, copy, again);
     return s;
   }
@@ -137,23 +178,23 @@
   }
 
   // ---- input ----
-  const locked_ = () => done() || busy;
+  const blocked = () => done() || busy;
   function type(ch) {
-    if (locked_()) return;
+    if (blocked()) return;
     const j = guess.findIndex(c => !c);
     if (j < 0) return;
     guess[j] = ch.toUpperCase();
     render();
   }
   function back() {
-    if (locked_()) return;
+    if (blocked()) return;
     for (let j = guess.length - 1; j >= 0; j--) {
       if (guess[j] && !locked[j]) { guess[j] = ""; break; }
     }
     render();
   }
   function submit() {
-    if (locked_()) return;
+    if (blocked()) return;
     const r = rows[st.cur];
     if (guess.some(c => !c)) { flash("Fill every box first"); return; }
     st.guesses++;
@@ -162,29 +203,32 @@
     let kept = 0;
     for (let j = 0; j < guess.length; j++) {
       if (locked[j]) continue;
-      if (guess[j] === r.word[j]) { locked[j] = "good"; kept++; } else guess[j] = "";
+      if (cfg().keep && guess[j] === r.word[j]) { locked[j] = "good"; kept++; } else guess[j] = "";
     }
-    flash(kept ? `${kept} letter${kept > 1 ? "s" : ""} in the right spot — kept` : "No letters in the right spot");
+    if (!cfg().keep) flash("Not quite — try again");
+    else flash(kept ? `${kept} letter${kept > 1 ? "s" : ""} in the right spot — kept` : "No letters in the right spot");
     shake = true; save(); render();
   }
 
   // Correct line: award points, do the letter dance, then move to the next word.
   function solved(r) {
-    const points = Math.max(0, WORD_POINTS - MISS_COST * st.wMiss - REVEAL_COST * st.wRev);
+    const points = Math.max(0, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
     st.score += points;
     flash(`+${points}`);
     busy = true; dance = true;
     render();
     const wait = reduceMotion ? 250 : 650 + r.word.length * 70 + 150;
+    const d = diff;
     setTimeout(() => {
+      if (d !== diff) return; // switched difficulty mid-dance; state was already saved below
       st.cur++; st.wMiss = 0; st.wRev = 0;
-      save(); startRow(); busy = false; flash(""); render();
+      save(); startRow(); busy = false; flash(""); render(); updateTabs();
     }, wait);
   }
 
   // Reveal one unlocked letter. kind: "hint" (button) or "auto" (timer). Both cost points.
   function reveal(kind) {
-    if (locked_()) return;
+    if (blocked()) return;
     const j = locked.findIndex(l => !l);
     if (j < 0) return;
     guess[j] = rows[st.cur].word[j];
@@ -207,7 +251,7 @@
   setInterval(tick, 250);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) lastProgress = Date.now(); });
 
-  // ---- settings ----
+  // ---- settings & difficulty ----
   const sel = $("autoSecs");
   sel.value = String(prefs.autoSecs);
   sel.addEventListener("change", () => {
@@ -216,6 +260,13 @@
   $("settingsBtn").addEventListener("click", e => {
     const p = $("settings"); p.hidden = !p.hidden; e.currentTarget.blur();
   });
+  document.querySelectorAll(".seg").forEach(b => b.addEventListener("click", () => {
+    b.blur();
+    if (busy || b.dataset.d === diff) return;
+    save();
+    diff = prefs.diff = b.dataset.d;
+    flash(""); save(); setup(); window.scrollTo(0, 0);
+  }));
 
   // ---- wiring ----
   const KEYS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
@@ -247,5 +298,5 @@
   });
   window.addEventListener("resize", size);
 
-  size(); startRow(); render();
+  setup();
 })();
