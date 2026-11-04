@@ -31,7 +31,7 @@
     border: 2px solid var(--line); background: var(--box); border-radius: 6px;
     font-weight: 700; font-size: calc(var(--cell) * .5); text-transform: uppercase; }
   .tile.cursor { border-color: var(--accent); }
-  .tile.solved { border-color: var(--fg); }
+  .tile.solved { background: var(--good); border-color: var(--good); color: #fff; } /* .tile.link (below) keeps shared letters gold */
   .tile.link { background: var(--link); border-color: var(--link); color: #222; }
   .tile.good { background: var(--good); border-color: var(--good); color: #fff; }
   .clue { text-align: center; color: var(--muted); font-style: italic; font-size: 14px; margin-top: 5px; }
