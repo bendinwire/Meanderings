@@ -5,13 +5,14 @@
   const BONUS_LETTERS = 8, BONUS_PER = 25, BONUS_MISS = 15, BONUS_MIN = 25;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Difficulty rules. `keep`: a miss leaves correctly placed letters (green). `blind`: the box count is
-  // hidden (you type the whole word). `delay`: seconds before the clue appears. Link length (3/2/1 letters)
+  // Difficulty rules. `keep`: a miss leaves correctly placed letters (green). `delay`: seconds before the clue
+  // appears (not on word 1). `blind` (hide the box count, type the whole word) is implemented but off: with the
+  // length hidden, one gold letter plus a clue fits almost any word, which isn't solvable. Link length (3/2/1 letters)
   // is part of the puzzle data in words.js.
   const DIFFS = {
     easy:   { label: "Easy",   keep: true,  miss: 8,  reveal: 10, blind: false, delay: 0 },
     medium: { label: "Medium", keep: true,  miss: 10, reveal: 12, blind: false, delay: 0 },
-    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: true,  delay: 8 },
+    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: false, delay: 8 },
   };
   // Given letters: the first word of a chain starts with some letters filled in (easy 2, medium 1, hard 0).
   // Starts with puzzle #2 (Nov 5, 2026) so today's already-played puzzle is unchanged; random chains always use it.
@@ -71,7 +72,8 @@
   const isDaily = () => view.kind === "puzzle" && view.day === today.day;
   const done = () => st.cur >= rows.length;
   const reveals = () => st.hints + st.auto;
-  const blindNow = () => cfg().blind && !done() && !busy;
+  // Blind starts at word 2: the first word has no shared letter to go on, so it shows its boxes and clue up front.
+  const blindNow = () => cfg().blind && !done() && !busy && st.cur > 0;
   const givenOn = () => view.kind === "random" || view.day >= GIVEN_FROM_DAY;
   const givenIdx = w => (GIVEN[diff] >= 2 ? [0, w.length - 1] : GIVEN[diff] === 1 ? [0] : []);
 
@@ -105,7 +107,7 @@
       `every revealed letter (hint or auto) costs ${cfg().reveal}; a solved word is always worth at least ${WORD_FLOOR}. ` +
       `Clean words (no miss, no reveal) build a combo: ×1.25, ×1.5 … up to ×3. Any slip resets it.` +
       (cfg().keep ? "" : " Misses don't tell you which letters were right.") +
-      (cfg().blind ? " Hard is blind: no letter count, and the clue arrives after a few seconds." : "") +
+      (cfg().delay ? " Each clue after the first appears a few seconds into the word." : "") +
       (GIVEN[diff] && givenOn() ? ` The first word starts with ${GIVEN[diff]} letter${GIVEN[diff] > 1 ? "s" : ""} filled in (blue).` : "");
     startRow(true); size(); render(); updateTabs();
     if (view.kind === "random") save();
@@ -171,7 +173,7 @@
   }
 
   // ---- render ----
-  const clueLeft = () => (cfg().delay ? cfg().delay - (Date.now() - rowStart) / 1000 : 0);
+  const clueLeft = () => (cfg().delay && st.cur > 0 ? cfg().delay - (Date.now() - rowStart) / 1000 : 0);
 
   function render() {
     board.innerHTML = "";
