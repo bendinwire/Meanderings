@@ -368,19 +368,28 @@
         const link = j >= r.linkIdx && j < r.linkIdx + r.linkLen;
         cells.push(link ? "y" : lg.given && lg.given[j] ? "b" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
       }
-      return { pad: r.off, padR: span - r.off - r.word.length, cells, miss: lg.miss || 0 };
+      return { pad: r.off, padR: span - r.off - r.word.length, cells, miss: lg.miss || 0, hinted: (lg.rev || []).some(x => x) };
     });
   }
   const missText = n => (n > 4 ? `❌×${n}` : "❌".repeat(n));
+  // Result of each word, readable down the right edge: ✅ clean, 🟥 used a hint, ❌ per miss.
+  const rowMark = g => (g.miss ? missText(g.miss) : g.hinted ? "🟥" : "✅");
   const titleText = () => (view.kind === "random" ? "Meanderings (random)" : `Meanderings #${view.day + 1}`);
+  const url = () => location.origin + location.pathname;
+  const pct = () => Math.round((st.score / MAX_SCORE) * 100);
+  function extrasLine() {
+    const x = [];
+    if (st.bonus.done) x.push(`🎁 +${st.bonus.pts}`);
+    if (st.bestCombo >= 3) x.push(`🔥 ${st.bestCombo} clean in a row`);
+    return x.join(" · ");
+  }
+  // Full version with the chain's meander shape, a key and the same header.
   function gridText() {
-    const head = `${titleText()} · ${cfg().label} · ${fmt(st.score)}/${fmt(MAX_SCORE)}`;
-    const extras = [];
-    if (st.bonus.done) extras.push(`🎁 +${st.bonus.pts}`);
-    if (st.bestCombo >= 3) extras.push(`🔥 ${st.bestCombo} clean in a row`);
+    const head = `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)`;
+    const extras = extrasLine();
     const lines = gridRows().map(g =>
-      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + (g.miss ? " " + missText(g.miss) : ""));
-    return `${head}${extras.length ? "\n" + extras.join(" · ") : ""}\n\n${lines.join("\n")}\n\n${location.origin + location.pathname}`;
+      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + " " + rowMark(g));
+    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n🟩 solved · 🟨 shared · 🟥 hint · ❌ miss · ✅ clean word\n${url()}`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
@@ -390,7 +399,7 @@
       line.append(...Array.from({ length: g.pad }, () => el("span", "sb k")));
       g.cells.forEach(c => line.append(el("span", "sb " + c)));
       line.append(...Array.from({ length: g.padR }, () => el("span", "sb k")));
-      if (g.miss) { const x = el("span", "sx"); x.textContent = missText(g.miss); line.append(x); }
+      const x = el("span", "sx"); x.textContent = rowMark(g); line.append(x);
       wrap.append(line);
     });
     return wrap;
@@ -405,12 +414,12 @@
     p.textContent = `${cfg().label} · ${pl(st.wrong, "miss", "misses")} · ${pl(st.hints, "hint", "hints")} · ` +
       `${pl(st.auto, "auto-reveal", "auto-reveals")} · best combo ${st.bestCombo}`;
     const legend = el("div", "legend");
-    legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss";
-    const copy = el("button", "btn"); copy.textContent = "Copy result";
-    copy.onclick = async () => {
-      const text = gridText();
+    legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss · ✅ clean word";
+    const doCopy = async text => {
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
+    const copy = el("button", "btn"); copy.textContent = "Copy result";
+    copy.onclick = () => doCopy(gridText());
     const again = el("button", "btn");
     again.textContent = view.kind === "random" ? "New random" : "Play again";
     again.onclick = () => {
