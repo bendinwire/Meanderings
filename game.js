@@ -375,7 +375,6 @@
   // End-of-row mark: only misses (one ❌ each). Hints already show as red squares inside the row.
   const rowMark = g => (g.miss ? missText(g.miss) : "");
   const titleText = () => (view.kind === "random" ? "Meanderings (random)" : `Meanderings #${view.day + 1}`);
-  const url = () => location.origin + location.pathname;
   const pct = () => Math.round((st.score / MAX_SCORE) * 100);
   function extrasLine() {
     const x = [];
@@ -389,7 +388,7 @@
     const extras = extrasLine();
     const lines = gridRows().map(g =>
       g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + rowMark(g) : ""));   // left-aligned: indenting with spaces never lines up across apps
-    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n${url()}`;
+    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
@@ -415,11 +414,15 @@
       `${pl(st.auto, "auto-reveal", "auto-reveals")} · best combo ${st.bestCombo}`;
     const legend = el("div", "legend");
     legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss";
-    const doCopy = async text => {
-      try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
+    // Phones get the native share sheet; everywhere else the text is copied to the clipboard.
+    const doShare = async text => {
+      if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ text }); return; } catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      try { await navigator.clipboard.writeText(text); flash("Copied to clipboard"); } catch (e) { flash(text); }
     };
-    const copy = el("button", "btn"); copy.textContent = "Copy result";
-    copy.onclick = () => doCopy(gridText());
+    const copy = el("button", "btn"); copy.textContent = "Share";
+    copy.onclick = () => doShare(gridText());
     const again = el("button", "btn");
     again.textContent = view.kind === "random" ? "New random" : "Play again";
     again.onclick = () => {
