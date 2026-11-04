@@ -6417,47 +6417,56 @@ const POOLS = {
    "words": [
     {
      "word": "BALANCE",
-     "clue": "What a tightrope walker needs"
+     "clue": "Bank statement bottom line, or a gymnast's gift",
+     "plain": "What a tightrope walker needs"
     },
     {
      "word": "WHOLE",
-     "clue": "Sounds like \"hole\" but means entire",
-     "link": "E"
+     "clue": "Opposite of part; sounds like a gap",
+     "link": "E",
+     "plain": "Sounds like \"hole\" but means entire"
     },
     {
      "word": "INFLATE",
-     "clue": "Fill a balloon with air",
-     "link": "L"
+     "clue": "Pump up a tire or an ego",
+     "link": "L",
+     "plain": "Fill a balloon with air"
     },
     {
      "word": "ANNOUNCE",
-     "clue": "Declare publicly",
-     "link": "E"
+     "clue": "Say it over the loudspeaker for all to hear",
+     "link": "E",
+     "plain": "Declare publicly"
     },
     {
      "word": "TRICK",
-     "clue": "Treat's Halloween partner",
-     "link": "C"
+     "clue": "Roll over or play dead, for a dog",
+     "link": "C",
+     "plain": "Treat's Halloween partner"
     },
     {
      "word": "INTRODUCE",
-     "clue": "Present to a stranger",
-     "link": "T"
+     "clue": "Do the honors at a meet-and-greet",
+     "link": "T",
+     "plain": "Present to a stranger"
     },
     {
      "word": "PRIVATE",
-     "clue": "Army's lowest rank",
-     "link": "R"
+     "clue": "Keep out! Also, a lowly G.I.",
+     "link": "R",
+     "plain": "Army's lowest rank"
     },
     {
      "word": "TRAGIC",
-     "clue": "Like Romeo and Juliet's ending",
-     "link": "I"
+     "clue": "Like a play where everyone ends up dead",
+     "link": "I",
+     "plain": "Like Romeo and Juliet's ending"
     },
     {
      "word": "JUICE",
-     "clue": "Orange ___ at breakfast",
-     "link": "C"
+     "clue": "What a squeezed orange gives up",
+     "link": "C",
+     "plain": "Orange ___ at breakfast"
     }
    ]
   },
@@ -6469,47 +6478,56 @@ const POOLS = {
    "words": [
     {
      "word": "PISTOL",
-     "clue": "Duelist's weapon"
+     "clue": "Pearl-handled sidearm drawn at high noon",
+     "plain": "Duelist's weapon"
     },
     {
      "word": "MASK",
-     "clue": "Face cover at a ball",
-     "link": "S"
+     "clue": "Halloween face you hide behind",
+     "link": "S",
+     "plain": "Face cover at a ball"
     },
     {
      "word": "WEDNESDAY",
-     "clue": "Hump day",
-     "link": "A"
+     "clue": "Midweek day with a camel's back",
+     "link": "A",
+     "plain": "Hump day"
     },
     {
      "word": "COMMAND",
-     "clue": "Order, or Mac's Cmd key",
-     "link": "N"
+     "clue": "Say 'Sit!' in a firm voice",
+     "link": "N",
+     "plain": "Order, or Mac's Cmd key"
     },
     {
      "word": "CROWD",
-     "clue": "Stadium throng",
-     "link": "D"
+     "clue": "Many people gathered, cheering together",
+     "link": "D",
+     "plain": "Stadium throng"
     },
     {
      "word": "WHILE",
-     "clue": "Short time, as in \"a ___\"",
-     "link": "W"
+     "clue": "Worth your ___, as the saying goes",
+     "link": "W",
+     "plain": "Short time, as in \"a ___\""
     },
     {
      "word": "APRICOT",
-     "clue": "Peach's smaller orange cousin",
-     "link": "I"
+     "clue": "Fuzzy fruit, jam favorite, smaller than peach",
+     "link": "I",
+     "plain": "Peach's smaller orange cousin"
     },
     {
      "word": "REACH",
-     "clue": "Arm's range",
-     "link": "C"
+     "clue": "Stretch for the stars, or a boxer's advantage",
+     "link": "C",
+     "plain": "Arm's range"
     },
     {
      "word": "CHALK",
-     "clue": "Teacher's blackboard stick",
-     "link": "H"
+     "clue": "Sidewalk art supply, dusty on fingers",
+     "link": "H",
+     "plain": "Teacher's blackboard stick"
     }
    ]
   },
@@ -6521,47 +6539,56 @@ const POOLS = {
    "words": [
     {
      "word": "COUCH",
-     "clue": "Sofa by any other name"
+     "clue": "Where a potato is said to lounge",
+     "plain": "Sofa by any other name"
     },
     {
      "word": "DOCUMENT",
-     "clue": "Something you might save and print",
-     "link": "U"
+     "clue": "Word processor file, or to record evidence",
+     "link": "U",
+     "plain": "Something you might save and print"
     },
     {
      "word": "HAMBURGER",
-     "clue": "Patty on a bun",
-     "link": "M"
+     "clue": "Ground beef sandwich with no ham in it",
+     "link": "M",
+     "plain": "Patty on a bun"
     },
     {
      "word": "AMBER",
-     "clue": "Traffic light's middle glow",
-     "link": "B"
+     "clue": "Yellow-orange gem that traps ancient insects",
+     "link": "B",
+     "plain": "Traffic light's middle glow"
     },
     {
      "word": "CALENDAR",
-     "clue": "Page-a-month wall hanging",
-     "link": "R"
+     "clue": "Wall hanging that tracks 365 days",
+     "link": "R",
+     "plain": "Page-a-month wall hanging"
     },
     {
      "word": "TACKLE",
-     "clue": "Stop a runner in football",
-     "link": "E"
+     "clue": "Bring down a ball carrier",
+     "link": "E",
+     "plain": "Stop a runner in football"
     },
     {
      "word": "BLOCK",
-     "clue": "Toddler's stacking cube",
-     "link": "L"
+     "clue": "Wooden cube in a nursery tower",
+     "link": "L",
+     "plain": "Toddler's stacking cube"
     },
     {
      "word": "LATE",
-     "clue": "Not on time",
-     "link": "L"
+     "clue": "Where the tardy student arrives",
+     "link": "L",
+     "plain": "Not on time"
     },
     {
      "word": "TEASPOON",
-     "clue": "Small stirring utensil",
-     "link": "A"
+     "clue": "Stirrer for a cup of Earl Grey",
+     "link": "A",
+     "plain": "Small stirring utensil"
     }
    ]
   },
@@ -6573,47 +6600,56 @@ const POOLS = {
    "words": [
     {
      "word": "STEAM",
-     "clue": "Locomotive's power source"
+     "clue": "Kettle's whistling breath",
+     "plain": "Locomotive's power source"
     },
     {
      "word": "STURGEON",
-     "clue": "Fish whose eggs become caviar",
-     "link": "S"
+     "clue": "Large fish prized for its roe",
+     "link": "S",
+     "plain": "Fish whose eggs become caviar"
     },
     {
      "word": "BURN",
-     "clue": "Result of too much beach",
-     "link": "U"
+     "clue": "Beach souvenir you don't want, in red",
+     "link": "U",
+     "plain": "Result of too much beach"
     },
     {
      "word": "DESIGNER",
-     "clue": "Fashion label creator",
-     "link": "N"
+     "clue": "Person behind a runway label",
+     "link": "N",
+     "plain": "Fashion label creator"
     },
     {
      "word": "FLASH",
-     "clue": "Camera's bright burst",
-     "link": "S"
+     "clue": "Photographer's sudden light, or a quick burst",
+     "link": "S",
+     "plain": "Camera's bright burst"
     },
     {
      "word": "HIPPO",
-     "clue": "River horse, literally",
-     "link": "H"
+     "clue": "Heavy river mammal with a big yawn",
+     "link": "H",
+     "plain": "River horse, literally"
     },
     {
      "word": "GUARDIAN",
-     "clue": "Legal caretaker of a minor",
-     "link": "I"
+     "clue": "Warden of an orphan's affairs",
+     "link": "I",
+     "plain": "Legal caretaker of a minor"
     },
     {
      "word": "CANOE",
-     "clue": "Paddle-powered boat",
-     "link": "N"
+     "clue": "Paddle sport vessel, no motor",
+     "link": "N",
+     "plain": "Paddle-powered boat"
     },
     {
      "word": "PALACE",
-     "clue": "Royal residence",
-     "link": "E"
+     "clue": "Where a king or queen might reside",
+     "link": "E",
+     "plain": "Royal residence"
     }
    ]
   },
@@ -6625,47 +6661,56 @@ const POOLS = {
    "words": [
     {
      "word": "TOUGH",
-     "clue": "Hard to chew or beat"
+     "clue": "Steak that fights back when you chew",
+     "plain": "Hard to chew or beat"
     },
     {
      "word": "AUTHOR",
-     "clue": "Writer of a book",
-     "link": "T"
+     "clue": "Writer whose name goes on the cover",
+     "link": "T",
+     "plain": "Writer of a book"
     },
     {
      "word": "RING",
-     "clue": "Finger jewelry; phone sound",
-     "link": "R"
+     "clue": "Bell sound, or a wedding band",
+     "link": "R",
+     "plain": "Finger jewelry; phone sound"
     },
     {
      "word": "NAIL",
-     "clue": "Hammer's target",
-     "link": "I"
+     "clue": "Hit on the head; filed at the salon",
+     "link": "I",
+     "plain": "Hammer's target"
     },
     {
      "word": "ORIGINAL",
-     "clue": "Not a copy; the first",
-     "link": "A"
+     "clue": "The master copy, not a knockoff",
+     "link": "A",
+     "plain": "Not a copy; the first"
     },
     {
      "word": "PARKING",
-     "clue": "What a meter pays for",
-     "link": "N"
+     "clue": "Garage charge by the hour",
+     "link": "N",
+     "plain": "What a meter pays for"
     },
     {
      "word": "SLEIGH",
-     "clue": "Santa's ride",
-     "link": "G"
+     "clue": "Ride pulled by reindeer",
+     "link": "G",
+     "plain": "Santa's ride"
     },
     {
      "word": "MAPLE",
-     "clue": "Syrup tree",
-     "link": "L"
+     "clue": "Tree that gives breakfast topping",
+     "link": "L",
+     "plain": "Syrup tree"
     },
     {
      "word": "SEAT",
-     "clue": "Stadium chair",
-     "link": "E"
+     "clue": "Where you sit at the game",
+     "link": "E",
+     "plain": "Stadium chair"
     }
    ]
   },
@@ -6677,47 +6722,56 @@ const POOLS = {
    "words": [
     {
      "word": "ESSAY",
-     "clue": "Five-paragraph school assignment"
+     "clue": "Writing assignment with intro, body, and conclusion",
+     "plain": "Five-paragraph school assignment"
     },
     {
      "word": "NERVOUS",
-     "clue": "Jittery before a speech",
-     "link": "E"
+     "clue": "Butterflies in the stomach, perhaps",
+     "link": "E",
+     "plain": "Jittery before a speech"
     },
     {
      "word": "PROVIDE",
-     "clue": "Give what's needed",
-     "link": "V"
+     "clue": "Supply for a hungry guest",
+     "link": "V",
+     "plain": "Give what's needed"
     },
     {
      "word": "SPRINKLE",
-     "clue": "Light rain, or ice cream topping",
-     "link": "E"
+     "clue": "Dust sugar on a donut, or drizzle lightly",
+     "link": "E",
+     "plain": "Light rain, or ice cream topping"
     },
     {
      "word": "SALARY",
-     "clue": "Yearly pay",
-     "link": "R"
+     "clue": "Paycheck total over twelve months",
+     "link": "R",
+     "plain": "Yearly pay"
     },
     {
      "word": "YOGURT",
-     "clue": "Cultured dairy snack",
-     "link": "Y"
+     "clue": "Greek or fruity cup with a spoon",
+     "link": "Y",
+     "plain": "Cultured dairy snack"
     },
     {
      "word": "SESSION",
-     "clue": "Therapy hour, e.g.",
-     "link": "O"
+     "clue": "Single meeting with your counselor",
+     "link": "O",
+     "plain": "Therapy hour, e.g."
     },
     {
      "word": "INSTEAD",
-     "clue": "In place of that",
-     "link": "N"
+     "clue": "Rather than the other option",
+     "link": "N",
+     "plain": "In place of that"
     },
     {
      "word": "BEND",
-     "clue": "Curve in a road",
-     "link": "E"
+     "clue": "Elbow in a river",
+     "link": "E",
+     "plain": "Curve in a road"
     }
    ]
   },
@@ -6729,47 +6783,56 @@ const POOLS = {
    "words": [
     {
      "word": "CHUNK",
-     "clue": "Thick hunk of bread or meat"
+     "clue": "Big piece broken off a block of cheese",
+     "plain": "Thick hunk of bread or meat"
     },
     {
      "word": "MONARCH",
-     "clue": "Butterfly that migrates to Mexico",
-     "link": "H"
+     "clue": "Orange king of the milkweed",
+     "link": "H",
+     "plain": "Butterfly that migrates to Mexico"
     },
     {
      "word": "POSSUM",
-     "clue": "Marsupial that plays dead",
-     "link": "O"
+     "clue": "Playing dead is its best trick",
+     "link": "O",
+     "plain": "Marsupial that plays dead"
     },
     {
      "word": "BLAME",
-     "clue": "Accuse of causing the mess",
-     "link": "M"
+     "clue": "Say 'It was you!' and point",
+     "link": "M",
+     "plain": "Accuse of causing the mess"
     },
     {
      "word": "SNOWFLAKE",
-     "clue": "Six-sided winter crystal",
-     "link": "E"
+     "clue": "Unique and never repeated, one falls on your tongue",
+     "link": "E",
+     "plain": "Six-sided winter crystal"
     },
     {
      "word": "YELLOW",
-     "clue": "School bus color",
-     "link": "W"
+     "clue": "Banana or lemon shade",
+     "link": "W",
+     "plain": "School bus color"
     },
     {
      "word": "COLLAR",
-     "clue": "Where a dog's tag hangs",
-     "link": "O"
+     "clue": "Part of a shirt that gets starched",
+     "link": "O",
+     "plain": "Where a dog's tag hangs"
     },
     {
      "word": "SHARK",
-     "clue": "Jaws, for one",
-     "link": "R"
+     "clue": "Predator with a dorsal fin cruising near swimmers",
+     "link": "R",
+     "plain": "Jaws, for one"
     },
     {
      "word": "CHIPMUNK",
-     "clue": "Striped, cheek-stuffing rodent",
-     "link": "K"
+     "clue": "Acorn hoarder with stripes down its back",
+     "link": "K",
+     "plain": "Striped, cheek-stuffing rodent"
     }
    ]
   },
@@ -6781,47 +6844,56 @@ const POOLS = {
    "words": [
     {
      "word": "MEADOW",
-     "clue": "Grassy field dotted with wildflowers"
+     "clue": "Place for picnics and butterflies",
+     "plain": "Grassy field dotted with wildflowers"
     },
     {
      "word": "HIGHWAY",
-     "clue": "Road with on-ramps and exits",
-     "link": "W"
+     "clue": "Interstate, for a road trip",
+     "link": "W",
+     "plain": "Road with on-ramps and exits"
     },
     {
      "word": "SNAIL",
-     "clue": "Slow creature carrying its home",
-     "link": "I"
+     "clue": "Garden pest leaving a silver trail",
+     "link": "I",
+     "plain": "Slow creature carrying its home"
     },
     {
      "word": "LEDGE",
-     "clue": "Narrow shelf on a cliff face",
-     "link": "L"
+     "clue": "Where mountain goats pose on a cliff",
+     "link": "L",
+     "plain": "Narrow shelf on a cliff face"
     },
     {
      "word": "BLIZZARD",
-     "clue": "Whiteout-causing winter storm",
-     "link": "D"
+     "clue": "Whiteout storm, or a Dairy Queen treat",
+     "link": "D",
+     "plain": "Whiteout-causing winter storm"
     },
     {
      "word": "SAILOR",
-     "clue": "Popeye, by trade",
-     "link": "L"
+     "clue": "Seaman with a pipe and spinach",
+     "link": "L",
+     "plain": "Popeye, by trade"
     },
     {
      "word": "FILTER",
-     "clue": "Coffee maker's paper insert",
-     "link": "I"
+     "clue": "Screen that catches grounds or dust",
+     "link": "I",
+     "plain": "Coffee maker's paper insert"
     },
     {
      "word": "FABLE",
-     "clue": "Aesop's tale with a moral",
-     "link": "F"
+     "clue": "Tortoise and the Hare, for one",
+     "link": "F",
+     "plain": "Aesop's tale with a moral"
     },
     {
      "word": "BEARD",
-     "clue": "Santa's facial fluff",
-     "link": "E"
+     "clue": "Whiskers on a lumberjack's chin",
+     "link": "E",
+     "plain": "Santa's facial fluff"
     }
    ]
   },
@@ -6833,47 +6905,56 @@ const POOLS = {
    "words": [
     {
      "word": "TANGLE",
-     "clue": "Snarl of knotted hair"
+     "clue": "Mess of knots after a windy day",
+     "plain": "Snarl of knotted hair"
     },
     {
      "word": "POODLE",
-     "clue": "Curly dog given fancy haircuts",
-     "link": "E"
+     "clue": "Pet with pompom haircut, rated by shows",
+     "link": "E",
+     "plain": "Curly dog given fancy haircuts"
     },
     {
      "word": "FLOWER",
-     "clue": "Rose or tulip",
-     "link": "L"
+     "clue": "Bouquet ingredient, bee magnet",
+     "link": "L",
+     "plain": "Rose or tulip"
     },
     {
      "word": "TEMPT",
-     "clue": "Lure with an irresistible offer",
-     "link": "E"
+     "clue": "Dangle a cookie in front of a dieter",
+     "link": "E",
+     "plain": "Lure with an irresistible offer"
     },
     {
      "word": "WHISPER",
-     "clue": "Speak very softly",
-     "link": "P"
+     "clue": "Speak quietly, as in a library",
+     "link": "P",
+     "plain": "Speak very softly"
     },
     {
      "word": "BREATHE",
-     "clue": "Inhale and exhale",
-     "link": "H"
+     "clue": "Take in air, then let it go",
+     "link": "H",
+     "plain": "Inhale and exhale"
     },
     {
      "word": "SNACK",
-     "clue": "Light bite between meals",
-     "link": "A"
+     "clue": "Between-meals nibble, often crunchy",
+     "link": "A",
+     "plain": "Light bite between meals"
     },
     {
      "word": "FANTASY",
-     "clue": "Dragons-and-wizards genre",
-     "link": "N"
+     "clue": "Genre with elves and quests",
+     "link": "N",
+     "plain": "Dragons-and-wizards genre"
     },
     {
      "word": "FROST",
-     "clue": "Icy coating on a winter window",
-     "link": "T"
+     "clue": "Winter's icy decoration on the grass",
+     "link": "T",
+     "plain": "Icy coating on a winter window"
     }
    ]
   },
@@ -6885,47 +6966,56 @@ const POOLS = {
    "words": [
     {
      "word": "TREMBLE",
-     "clue": "Shake with fear"
+     "clue": "Quiver at the knees",
+     "plain": "Shake with fear"
     },
     {
      "word": "DRESS",
-     "clue": "Frock worn to a party",
-     "link": "R"
+     "clue": "Wedding gown, or a salad's seasoning",
+     "link": "R",
+     "plain": "Frock worn to a party"
     },
     {
      "word": "RUMBLE",
-     "clue": "Low, thunder-like sound",
-     "link": "E"
+     "clue": "Thunder's low roll in the distance",
+     "link": "E",
+     "plain": "Low, thunder-like sound"
     },
     {
      "word": "STREAM",
-     "clue": "Flow of water; watch Netflix",
-     "link": "M"
+     "clue": "Brook or river, or watch a show online",
+     "link": "M",
+     "plain": "Flow of water; watch Netflix"
     },
     {
      "word": "MELON",
-     "clue": "Cantaloupe or honeydew",
-     "link": "E"
+     "clue": "Fruit with a rind and seeds, served at barbecues",
+     "link": "E",
+     "plain": "Cantaloupe or honeydew"
     },
     {
      "word": "CUCUMBER",
-     "clue": "Cool green salad staple",
-     "link": "M"
+     "clue": "Pickle's raw ancestor",
+     "link": "M",
+     "plain": "Cool green salad staple"
     },
     {
      "word": "BASKET",
-     "clue": "Picnic carrier with a handle",
-     "link": "B"
+     "clue": "Wicker holder for Red Riding Hood's goodies",
+     "link": "B",
+     "plain": "Picnic carrier with a handle"
     },
     {
      "word": "THREAT",
-     "clue": "Menacing warning of harm",
-     "link": "E"
+     "clue": "Menace delivered in an anonymous letter",
+     "link": "E",
+     "plain": "Menacing warning of harm"
     },
     {
      "word": "DOCTOR",
-     "clue": "Stethoscope wearer",
-     "link": "R"
+     "clue": "House call maker with a bag",
+     "link": "R",
+     "plain": "Stethoscope wearer"
     }
    ]
   },
@@ -6937,47 +7027,56 @@ const POOLS = {
    "words": [
     {
      "word": "ANCHOR",
-     "clue": "Dropped to keep a ship put"
+     "clue": "Ship's heavy hook below the waterline",
+     "plain": "Dropped to keep a ship put"
     },
     {
      "word": "TOUCAN",
-     "clue": "Big-billed bird on Froot Loops",
-     "link": "C"
+     "clue": "Cereal mascot with a rainbow beak",
+     "link": "C",
+     "plain": "Big-billed bird on Froot Loops"
     },
     {
      "word": "PUNCH",
-     "clue": "Fruit drink in a party bowl",
-     "link": "U"
+     "clue": "Bowl of party drink, or a boxer's blow",
+     "link": "U",
+     "plain": "Fruit drink in a party bowl"
     },
     {
      "word": "RASPBERRY",
-     "clue": "Red berry; also a rude noise",
-     "link": "P"
+     "clue": "Fruit with a rude noise's name",
+     "link": "P",
+     "plain": "Red berry; also a rude noise"
     },
     {
      "word": "LOBSTER",
-     "clue": "Red crustacean from a boiling pot",
-     "link": "B"
+     "clue": "Red clawed seafood for a dipping butter",
+     "link": "B",
+     "plain": "Red crustacean from a boiling pot"
     },
     {
      "word": "HARBOR",
-     "clue": "Sheltered port for boats",
-     "link": "O"
+     "clue": "Place for ships to dock safely",
+     "link": "O",
+     "plain": "Sheltered port for boats"
     },
     {
      "word": "THROAT",
-     "clue": "Sore spot for a cough drop",
-     "link": "A"
+     "clue": "Where the tonsils live",
+     "link": "A",
+     "plain": "Sore spot for a cough drop"
     },
     {
      "word": "DRAIN",
-     "clue": "Sink's exit hole",
-     "link": "R"
+     "clue": "Where the bathwater goes",
+     "link": "R",
+     "plain": "Sink's exit hole"
     },
     {
      "word": "LODGE",
-     "clue": "Ski resort cabin",
-     "link": "D"
+     "clue": "Place to bunk after the slopes",
+     "link": "D",
+     "plain": "Ski resort cabin"
     }
    ]
   },
@@ -6989,47 +7088,56 @@ const POOLS = {
    "words": [
     {
      "word": "LEAGUE",
-     "clue": "Baseball's group of teams"
+     "clue": "Group of conferences in a sport",
+     "plain": "Baseball's group of teams"
     },
     {
      "word": "KANGAROO",
-     "clue": "Hopping Aussie with a pouch",
-     "link": "G"
+     "clue": "Joey's mother, bouncing down under",
+     "link": "G",
+     "plain": "Hopping Aussie with a pouch"
     },
     {
      "word": "SQUARE",
-     "clue": "Four equal sides, four right angles",
-     "link": "R"
+     "clue": "Shape of a chessboard tile",
+     "link": "R",
+     "plain": "Four equal sides, four right angles"
     },
     {
      "word": "FURNACE",
-     "clue": "Basement heater",
-     "link": "A"
+     "clue": "Basement's winter warmer",
+     "link": "A",
+     "plain": "Basement heater"
     },
     {
      "word": "NOODLE",
-     "clue": "Ramen strand",
-     "link": "N"
+     "clue": "Spaghetti's thin cousin, long and slurped",
+     "link": "N",
+     "plain": "Ramen strand"
     },
     {
      "word": "DISTRICT",
-     "clue": "School ___; area of a city",
-     "link": "D"
+     "clue": "Mayor's jurisdiction, or voting division",
+     "link": "D",
+     "plain": "School ___; area of a city"
     },
     {
      "word": "BOAST",
-     "clue": "Brag shamelessly",
-     "link": "S"
+     "clue": "Talk big about your own accomplishments",
+     "link": "S",
+     "plain": "Brag shamelessly"
     },
     {
      "word": "BEACON",
-     "clue": "Lighthouse's guiding light",
-     "link": "O"
+     "clue": "Signal fire on a hilltop",
+     "link": "O",
+     "plain": "Lighthouse's guiding light"
     },
     {
      "word": "ROBIN",
-     "clue": "Red-breasted spring bird",
-     "link": "N"
+     "clue": "Bird whose breast heralds spring",
+     "link": "N",
+     "plain": "Red-breasted spring bird"
     }
    ]
   },
@@ -7041,47 +7149,56 @@ const POOLS = {
    "words": [
     {
      "word": "SKULL",
-     "clue": "Pirate flag's bony symbol"
+     "clue": "Pirate flag's grinning crossbones partner",
+     "plain": "Pirate flag's bony symbol"
     },
     {
      "word": "TICKLE",
-     "clue": "Lightly touch to make laugh",
-     "link": "K"
+     "clue": "Feather trick to get giggles",
+     "link": "K",
+     "plain": "Lightly touch to make laugh"
     },
     {
      "word": "PULLEY",
-     "clue": "Wheel and rope for lifting",
-     "link": "E"
+     "clue": "Rope-and-wheel lifting device on a well",
+     "link": "E",
+     "plain": "Wheel and rope for lifting"
     },
     {
      "word": "TRUMPET",
-     "clue": "Brass horn Louis Armstrong blew",
-     "link": "E"
+     "clue": "Jazz horn with three valves",
+     "link": "E",
+     "plain": "Brass horn Louis Armstrong blew"
     },
     {
      "word": "STRIPE",
-     "clue": "Zebra marking",
-     "link": "P"
+     "clue": "Candy cane's swirl, or a zebra's mark",
+     "link": "P",
+     "plain": "Zebra marking"
     },
     {
      "word": "CONSONANT",
-     "clue": "B, C, D, but not A",
-     "link": "S"
+     "clue": "Any letter that isn't a vowel",
+     "link": "S",
+     "plain": "B, C, D, but not A"
     },
     {
      "word": "CUPCAKE",
-     "clue": "Frosted single-serving treat",
-     "link": "A"
+     "clue": "Birthday treat with a single candle",
+     "link": "A",
+     "plain": "Frosted single-serving treat"
     },
     {
      "word": "SHAKE",
-     "clue": "Thick blended drink at a diner",
-     "link": "K"
+     "clue": "Milk, ice cream, and a straw, mixed up",
+     "link": "K",
+     "plain": "Thick blended drink at a diner"
     },
     {
      "word": "VOLUME",
-     "clue": "Loudness setting on a remote",
-     "link": "E"
+     "clue": "Control on a speaker you turn up",
+     "link": "E",
+     "plain": "Loudness setting on a remote"
     }
    ]
   },
@@ -7093,47 +7210,56 @@ const POOLS = {
    "words": [
     {
      "word": "KNEEL",
-     "clue": "Get down on one knee"
+     "clue": "Propose, in a classic way",
+     "plain": "Get down on one knee"
     },
     {
      "word": "ANKLE",
-     "clue": "Joint above the foot",
-     "link": "K"
+     "clue": "Where a sprain often hits above the shoe",
+     "link": "K",
+     "plain": "Joint above the foot"
     },
     {
      "word": "COMEDY",
-     "clue": "Genre meant to make you laugh",
-     "link": "E"
+     "clue": "Laughs on stage; opposite of tragedy",
+     "link": "E",
+     "plain": "Genre meant to make you laugh"
     },
     {
      "word": "COWBOY",
-     "clue": "Rodeo rider in a hat",
-     "link": "Y"
+     "clue": "Western hero in boots and spurs",
+     "link": "Y",
+     "plain": "Rodeo rider in a hat"
     },
     {
      "word": "BUFFALO",
-     "clue": "Plains bison, or NY city",
-     "link": "B"
+     "clue": "Plains bison, or Bills country in New York",
+     "link": "B",
+     "plain": "Plains bison, or NY city"
     },
     {
      "word": "ACTOR",
-     "clue": "Oscar nominee on screen",
-     "link": "O"
+     "clue": "Person in a movie role",
+     "link": "O",
+     "plain": "Oscar nominee on screen"
     },
     {
      "word": "THREATEN",
-     "clue": "Menace with harm",
-     "link": "A"
+     "clue": "Hint of danger in a stern voice",
+     "link": "A",
+     "plain": "Menace with harm"
     },
     {
      "word": "GOURD",
-     "clue": "Hard-shelled squash used as decoration",
-     "link": "R"
+     "clue": "Autumn decoration that is also a hard squash",
+     "link": "R",
+     "plain": "Hard-shelled squash used as decoration"
     },
     {
      "word": "DETECT",
-     "clue": "Sense, as a smoke alarm does",
-     "link": "D"
+     "clue": "Smoke alarm's job",
+     "link": "D",
+     "plain": "Sense, as a smoke alarm does"
     }
    ]
   },
@@ -7145,47 +7271,56 @@ const POOLS = {
    "words": [
     {
      "word": "BEDTIME",
-     "clue": "When parents say lights out"
+     "clue": "When the sandman comes by",
+     "plain": "When parents say lights out"
     },
     {
      "word": "BOUQUET",
-     "clue": "Flowers a bride tosses",
-     "link": "B"
+     "clue": "Tossed over the shoulder at weddings",
+     "link": "B",
+     "plain": "Flowers a bride tosses"
     },
     {
      "word": "MAYOR",
-     "clue": "City hall's top elected official",
-     "link": "O"
+     "clue": "Elected leader of a city",
+     "link": "O",
+     "plain": "City hall's top elected official"
     },
     {
      "word": "POLKA",
-     "clue": "Lively dance with an accordion",
-     "link": "O"
+     "clue": "Dance with a fast, hopping beat",
+     "link": "O",
+     "plain": "Lively dance with an accordion"
     },
     {
      "word": "PUMPKIN",
-     "clue": "Jack-o'-lantern before carving",
-     "link": "K"
+     "clue": "Autumn patch crop that becomes a lantern",
+     "link": "K",
+     "plain": "Jack-o'-lantern before carving"
     },
     {
      "word": "MUSTACHE",
-     "clue": "Handlebar facial hair",
-     "link": "M"
+     "clue": "Facial hair above the lip",
+     "link": "M",
+     "plain": "Handlebar facial hair"
     },
     {
      "word": "ROOMMATE",
-     "clue": "Person you share an apartment with",
-     "link": "A"
+     "clue": "Sharer of rent and the fridge",
+     "link": "A",
+     "plain": "Person you share an apartment with"
     },
     {
      "word": "PARKA",
-     "clue": "Hooded winter coat",
-     "link": "R"
+     "clue": "Insulated coat with fur-lined hood",
+     "link": "R",
+     "plain": "Hooded winter coat"
     },
     {
      "word": "JOKER",
-     "clue": "Batman's clownish nemesis",
-     "link": "K"
+     "clue": "Wildcard in a deck of cards",
+     "link": "K",
+     "plain": "Batman's clownish nemesis"
     }
    ]
   },
@@ -7197,47 +7332,56 @@ const POOLS = {
    "words": [
     {
      "word": "PIANO",
-     "clue": "Instrument with 88 keys"
+     "clue": "Grand instrument with black and white keys",
+     "plain": "Instrument with 88 keys"
     },
     {
      "word": "APRON",
-     "clue": "Cook's front cover-up",
-     "link": "P"
+     "clue": "Kitchen garment tied around the waist",
+     "link": "P",
+     "plain": "Cook's front cover-up"
     },
     {
      "word": "SALMON",
-     "clue": "Fish that swims upstream to spawn",
-     "link": "A"
+     "clue": "Pink fish returning home to spawn",
+     "link": "A",
+     "plain": "Fish that swims upstream to spawn"
     },
     {
      "word": "OCEAN",
-     "clue": "Atlantic or Pacific",
-     "link": "N"
+     "clue": "Salty expanse covering most of Earth",
+     "link": "N",
+     "plain": "Atlantic or Pacific"
     },
     {
      "word": "SAUCE",
-     "clue": "Marinara, for pasta",
-     "link": "C"
+     "clue": "Red topping for spaghetti",
+     "link": "C",
+     "plain": "Marinara, for pasta"
     },
     {
      "word": "STALK",
-     "clue": "Celery or corn stem",
-     "link": "A"
+     "clue": "Plant part that holds a celery bunch",
+     "link": "A",
+     "plain": "Celery or corn stem"
     },
     {
      "word": "HOCKEY",
-     "clue": "Game of sticks, pucks and ice",
-     "link": "K"
+     "clue": "Winter sport on ice with a goalie",
+     "link": "K",
+     "plain": "Game of sticks, pucks and ice"
     },
     {
      "word": "SCENT",
-     "clue": "Smell, as of perfume",
-     "link": "E"
+     "clue": "What a bloodhound follows",
+     "link": "E",
+     "plain": "Smell, as of perfume"
     },
     {
      "word": "SHOCK",
-     "clue": "Sudden surprise or jolt",
-     "link": "S"
+     "clue": "Zap from a doorknob in winter",
+     "link": "S",
+     "plain": "Sudden surprise or jolt"
     }
    ]
   },
@@ -7249,47 +7393,56 @@ const POOLS = {
    "words": [
     {
      "word": "SEAGULL",
-     "clue": "Beach bird that steals fries"
+     "clue": "Pesky bird at a seaside snack stand",
+     "plain": "Beach bird that steals fries"
     },
     {
      "word": "GRAPH",
-     "clue": "Bar or line chart",
-     "link": "G"
+     "clue": "Visual that shows data as lines or bars",
+     "link": "G",
+     "plain": "Bar or line chart"
     },
     {
      "word": "CRAWL",
-     "clue": "Move on hands and knees",
-     "link": "R"
+     "clue": "Baby's way of getting around before walking",
+     "link": "R",
+     "plain": "Move on hands and knees"
     },
     {
      "word": "LIZARD",
-     "clue": "Gecko or iguana",
-     "link": "A"
+     "clue": "Cold-blooded reptile that sheds its tail",
+     "link": "A",
+     "plain": "Gecko or iguana"
     },
     {
      "word": "DEPUTY",
-     "clue": "Sheriff's assistant",
-     "link": "D"
+     "clue": "Sheriff's right-hand person",
+     "link": "D",
+     "plain": "Sheriff's assistant"
     },
     {
      "word": "SQUAD",
-     "clue": "Small police or military unit",
-     "link": "U"
+     "clue": "Cops' small team in a patrol car",
+     "link": "U",
+     "plain": "Small police or military unit"
     },
     {
      "word": "CHEETAH",
-     "clue": "Fastest land animal",
-     "link": "A"
+     "clue": "Spotted sprinter of the savanna",
+     "link": "A",
+     "plain": "Fastest land animal"
     },
     {
      "word": "JUSTICE",
-     "clue": "What blindfolded scales represent",
-     "link": "T"
+     "clue": "Lady with scales and a blindfold",
+     "link": "T",
+     "plain": "What blindfolded scales represent"
     },
     {
      "word": "MARMALADE",
-     "clue": "Orange spread for toast",
-     "link": "E"
+     "clue": "Sweet citrus spread for English muffins",
+     "link": "E",
+     "plain": "Orange spread for toast"
     }
    ]
   },
@@ -7301,47 +7454,56 @@ const POOLS = {
    "words": [
     {
      "word": "FLASK",
-     "clue": "Lab bottle or hip-pocket booze holder"
+     "clue": "Lab glass with a narrow neck",
+     "plain": "Lab bottle or hip-pocket booze holder"
     },
     {
      "word": "SHELF",
-     "clue": "Bookcase level",
-     "link": "S"
+     "clue": "Where books sit in rows",
+     "link": "S",
+     "plain": "Bookcase level"
     },
     {
      "word": "HAUNT",
-     "clue": "Visit as a ghost might",
-     "link": "H"
+     "clue": "What ghosts do to old houses",
+     "link": "H",
+     "plain": "Visit as a ghost might"
     },
     {
      "word": "MARRY",
-     "clue": "Say \"I do\" to",
-     "link": "A"
+     "clue": "Join in holy matrimony",
+     "link": "A",
+     "plain": "Say \"I do\" to"
     },
     {
      "word": "DRAMA",
-     "clue": "Theater genre opposite comedy",
-     "link": "M"
+     "clue": "Stage genre of serious conflict",
+     "link": "M",
+     "plain": "Theater genre opposite comedy"
     },
     {
      "word": "STORK",
-     "clue": "Bird said to deliver babies",
-     "link": "R"
+     "clue": "Bird in baby delivery legend",
+     "link": "R",
+     "plain": "Bird said to deliver babies"
     },
     {
      "word": "COURAGE",
-     "clue": "Cowardly Lion sought it",
-     "link": "O"
+     "clue": "What the Cowardly Lion lacked",
+     "link": "O",
+     "plain": "Cowardly Lion sought it"
     },
     {
      "word": "ROCKET",
-     "clue": "NASA launch vehicle",
-     "link": "C"
+     "clue": "Moon mission launcher on a pad",
+     "link": "C",
+     "plain": "NASA launch vehicle"
     },
     {
      "word": "SKIRT",
-     "clue": "Pleated garment from the waist down",
-     "link": "K"
+     "clue": "Hem hangs from its waistband",
+     "link": "K",
+     "plain": "Pleated garment from the waist down"
     }
    ]
   },
@@ -7353,47 +7515,56 @@ const POOLS = {
    "words": [
     {
      "word": "PHEASANT",
-     "clue": "Ring-necked game bird"
+     "clue": "Long-tailed game bird of fields",
+     "plain": "Ring-necked game bird"
     },
     {
      "word": "PLANE",
-     "clue": "Jumbo jet, for one",
-     "link": "P"
+     "clue": "Flier that boards at a gate",
+     "link": "P",
+     "plain": "Jumbo jet, for one"
     },
     {
      "word": "EYELASH",
-     "clue": "Mascara target",
-     "link": "A"
+     "clue": "Where mascara gets applied",
+     "link": "A",
+     "plain": "Mascara target"
     },
     {
      "word": "COAST",
-     "clue": "Seashore; ride without pedaling",
-     "link": "S"
+     "clue": "Glide downhill on a bike without pedaling",
+     "link": "S",
+     "plain": "Seashore; ride without pedaling"
     },
     {
      "word": "SWEEP",
-     "clue": "Clean with a broom",
-     "link": "S"
+     "clue": "Push a broom across the kitchen",
+     "link": "S",
+     "plain": "Clean with a broom"
     },
     {
      "word": "SCALLOP",
-     "clue": "Shellfish with a fan-shaped shell",
-     "link": "P"
+     "clue": "Fan-shaped bivalve served with bacon",
+     "link": "P",
+     "plain": "Shellfish with a fan-shaped shell"
     },
     {
      "word": "GROWL",
-     "clue": "Dog's warning sound",
-     "link": "O"
+     "clue": "Menacing dog noise before a bite",
+     "link": "O",
+     "plain": "Dog's warning sound"
     },
     {
      "word": "METER",
-     "clue": "Taxi's fare counter",
-     "link": "R"
+     "clue": "Taxi's running tally, or a yard-ish",
+     "link": "R",
+     "plain": "Taxi's fare counter"
     },
     {
      "word": "TIGER",
-     "clue": "Striped big cat of Asia",
-     "link": "T"
+     "clue": "Orange cat with black stripes, in the jungle",
+     "link": "T",
+     "plain": "Striped big cat of Asia"
     }
    ]
   },
@@ -7405,47 +7576,56 @@ const POOLS = {
    "words": [
     {
      "word": "PEACH",
-     "clue": "Fuzzy Georgia fruit"
+     "clue": "Georgia's fruit with a fuzzy skin",
+     "plain": "Fuzzy Georgia fruit"
     },
     {
      "word": "STARFISH",
-     "clue": "Five-armed sea creature",
-     "link": "A"
+     "clue": "Echinoderm with five arms in a tidepool",
+     "link": "A",
+     "plain": "Five-armed sea creature"
     },
     {
      "word": "LITTER",
-     "clue": "Kittens born together; trash",
-     "link": "I"
+     "clue": "Group of puppies born together",
+     "link": "I",
+     "plain": "Kittens born together; trash"
     },
     {
      "word": "SCORPION",
-     "clue": "Desert arachnid with a stinging tail",
-     "link": "R"
+     "clue": "Desert creature with a stinging tail",
+     "link": "R",
+     "plain": "Desert arachnid with a stinging tail"
     },
     {
      "word": "LANDSCAPE",
-     "clue": "Painting of rolling hills",
-     "link": "P"
+     "clue": "Scenery painted on a wide canvas",
+     "link": "P",
+     "plain": "Painting of rolling hills"
     },
     {
      "word": "SLOGAN",
-     "clue": "Catchy advertising phrase",
-     "link": "L"
+     "clue": "Brand's catchy tag line",
+     "link": "L",
+     "plain": "Catchy advertising phrase"
     },
     {
      "word": "MACHINERY",
-     "clue": "Factory equipment, collectively",
-     "link": "A"
+     "clue": "Gear in a factory",
+     "link": "A",
+     "plain": "Factory equipment, collectively"
     },
     {
      "word": "PLUNGE",
-     "clue": "Dive in headfirst",
-     "link": "N"
+     "clue": "Dive headfirst into a pool",
+     "link": "N",
+     "plain": "Dive in headfirst"
     },
     {
      "word": "FORTUNE",
-     "clue": "What a cookie tells you",
-     "link": "E"
+     "clue": "Cookie's hidden slip of paper",
+     "link": "E",
+     "plain": "What a cookie tells you"
     }
    ]
   },
@@ -7457,47 +7637,56 @@ const POOLS = {
    "words": [
     {
      "word": "CASHEW",
-     "clue": "Kidney-shaped nut"
+     "clue": "Nut that hangs off the bottom of an apple",
+     "plain": "Kidney-shaped nut"
     },
     {
      "word": "SHARP",
-     "clue": "Not dull, like a knife",
-     "link": "S"
+     "clue": "Dapper, or the opposite of a flat note",
+     "link": "S",
+     "plain": "Not dull, like a knife"
     },
     {
      "word": "NACHO",
-     "clue": "Chip smothered in melted cheese",
-     "link": "H"
+     "clue": "Cheese that's \"not yours,\" in a pun",
+     "link": "H",
+     "plain": "Chip smothered in melted cheese"
     },
     {
      "word": "OUNCE",
-     "clue": "One sixteenth of a pound",
-     "link": "O"
+     "clue": "An ___ of prevention beats a pound of cure",
+     "link": "O",
+     "plain": "One sixteenth of a pound"
     },
     {
      "word": "LECTURE",
-     "clue": "Professor's long talk",
-     "link": "U"
+     "clue": "Where students take notes while one person talks",
+     "link": "U",
+     "plain": "Professor's long talk"
     },
     {
      "word": "HOLIDAY",
-     "clue": "Day off, like Thanksgiving",
-     "link": "L"
+     "clue": "Occasion Hallmark makes cards for, like Easter",
+     "link": "L",
+     "plain": "Day off, like Thanksgiving"
     },
     {
      "word": "BORDER",
-     "clue": "Line between two countries",
-     "link": "D"
+     "clue": "Sounds like a lodger; separates nations",
+     "link": "D",
+     "plain": "Line between two countries"
     },
     {
      "word": "CRANE",
-     "clue": "Construction hoist; wading bird",
-     "link": "E"
+     "clue": "Origami bird; skyline fixture on building sites",
+     "link": "E",
+     "plain": "Construction hoist; wading bird"
     },
     {
      "word": "HYBRID",
-     "clue": "Gas-electric Prius, for one",
-     "link": "R"
+     "clue": "Mule or Prius: both are one",
+     "link": "R",
+     "plain": "Gas-electric Prius, for one"
     }
    ]
   },
@@ -7509,47 +7698,56 @@ const POOLS = {
    "words": [
     {
      "word": "MARINE",
-     "clue": "Semper Fi serviceman"
+     "clue": "Leatherneck, or of the sea",
+     "plain": "Semper Fi serviceman"
     },
     {
      "word": "FORMULA",
-     "clue": "Baby's bottle mix, or math rule",
-     "link": "M"
+     "clue": "Racing series, or what bottle-fed babies drink",
+     "link": "M",
+     "plain": "Baby's bottle mix, or math rule"
     },
     {
      "word": "DELICIOUS",
-     "clue": "Mouthwateringly tasty",
-     "link": "O"
+     "clue": "Red or Golden, apple-wise",
+     "link": "O",
+     "plain": "Mouthwateringly tasty"
     },
     {
      "word": "QUEEN",
-     "clue": "Chess piece that moves anywhere",
-     "link": "U"
+     "clue": "Freddie Mercury's band; ruler of the hive",
+     "link": "U",
+     "plain": "Chess piece that moves anywhere"
     },
     {
      "word": "STRANGER",
-     "clue": "Don't talk to one, kids",
-     "link": "N"
+     "clue": "Weirder, or someone you haven't met",
+     "link": "N",
+     "plain": "Don't talk to one, kids"
     },
     {
      "word": "NECTAR",
-     "clue": "Sweet liquid bees collect",
-     "link": "T"
+     "clue": "Hummingbird feeder fill",
+     "link": "T",
+     "plain": "Sweet liquid bees collect"
     },
     {
      "word": "STAIN",
-     "clue": "Red wine spot on carpet",
-     "link": "A"
+     "clue": "Wood finish; blemish on a shirt",
+     "link": "A",
+     "plain": "Red wine spot on carpet"
     },
     {
      "word": "RIBBON",
-     "clue": "Gift-wrapping bow material",
-     "link": "I"
+     "clue": "County fair prize, blue or red",
+     "link": "I",
+     "plain": "Gift-wrapping bow material"
     },
     {
      "word": "SURGEON",
-     "clue": "Operating room expert",
-     "link": "N"
+     "clue": "Scalpel wielder on a medical drama",
+     "link": "N",
+     "plain": "Operating room expert"
     }
    ]
   },
@@ -7561,47 +7759,56 @@ const POOLS = {
    "words": [
     {
      "word": "RODEO",
-     "clue": "Bucking bronco event"
+     "clue": "Where eight seconds feels like forever",
+     "plain": "Bucking bronco event"
     },
     {
      "word": "BRIDGE",
-     "clue": "Golden Gate, for one",
-     "link": "D"
+     "clue": "Four-player card game; river crossing",
+     "link": "D",
+     "plain": "Golden Gate, for one"
     },
     {
      "word": "REPAIR",
-     "clue": "Fix what's broken",
-     "link": "I"
+     "clue": "Mechanic's job on a busted car",
+     "link": "I",
+     "plain": "Fix what's broken"
     },
     {
      "word": "CAMEL",
-     "clue": "Humped desert transport",
-     "link": "A"
+     "clue": "Hump Day commercial's star animal",
+     "link": "A",
+     "plain": "Humped desert transport"
     },
     {
      "word": "METEOR",
-     "clue": "Shooting star",
-     "link": "M"
+     "clue": "Wish-upon object that isn't a star",
+     "link": "M",
+     "plain": "Shooting star"
     },
     {
      "word": "GALLON",
-     "clue": "Four quarts of milk",
-     "link": "O"
+     "clue": "Jug of milk's size; 128 fluid ounces",
+     "link": "O",
+     "plain": "Four quarts of milk"
     },
     {
      "word": "TENDER",
-     "clue": "Soft, like a well-cooked steak",
-     "link": "N"
+     "clue": "Legal ___; also gentle",
+     "link": "N",
+     "plain": "Soft, like a well-cooked steak"
     },
     {
      "word": "RADISH",
-     "clue": "Red, peppery salad root",
-     "link": "D"
+     "clue": "Small red root; spicy salad crunch",
+     "link": "D",
+     "plain": "Red, peppery salad root"
     },
     {
      "word": "REFRESH",
-     "clue": "Reload a web page",
-     "link": "S"
+     "clue": "What F5 does to a web page",
+     "link": "S",
+     "plain": "Reload a web page"
     }
    ]
   },
@@ -7613,47 +7820,56 @@ const POOLS = {
    "words": [
     {
      "word": "CANAL",
-     "clue": "Panama's famed waterway"
+     "clue": "Suez or Erie, e.g.",
+     "plain": "Panama's famed waterway"
     },
     {
      "word": "CANYON",
-     "clue": "Grand rocky gorge",
-     "link": "C"
+     "clue": "Grand ___ in Arizona",
+     "link": "C",
+     "plain": "Grand rocky gorge"
     },
     {
      "word": "SNOWMAN",
-     "clue": "Frosty, for one",
-     "link": "O"
+     "clue": "Three stacked balls with a carrot nose",
+     "link": "O",
+     "plain": "Frosty, for one"
     },
     {
      "word": "COMPASS",
-     "clue": "Needle that points north",
-     "link": "M"
+     "clue": "Hiker's guide, or circle drawer",
+     "link": "M",
+     "plain": "Needle that points north"
     },
     {
      "word": "TURNIP",
-     "clue": "Purple-topped root vegetable",
-     "link": "P"
+     "clue": "Rutabaga's lookalike cousin",
+     "link": "P",
+     "plain": "Purple-topped root vegetable"
     },
     {
      "word": "VOLUNTEER",
-     "clue": "Work for free, willingly",
-     "link": "U"
+     "clue": "Tennessee's nickname; hand-raiser",
+     "link": "U",
+     "plain": "Work for free, willingly"
     },
     {
      "word": "TISSUE",
-     "clue": "Sneeze-catcher from a box",
-     "link": "T"
+     "clue": "Kleenex's generic; also body material",
+     "link": "T",
+     "plain": "Sneeze-catcher from a box"
     },
     {
      "word": "GROVE",
-     "clue": "Small stand of trees",
-     "link": "E"
+     "clue": "Where citrus trees stand in rows",
+     "link": "E",
+     "plain": "Small stand of trees"
     },
     {
      "word": "VENTURE",
-     "clue": "Risky business undertaking",
-     "link": "R"
+     "clue": "Capital type that startups seek",
+     "link": "R",
+     "plain": "Risky business undertaking"
     }
    ]
   },
@@ -7665,47 +7881,56 @@ const POOLS = {
    "words": [
     {
      "word": "FABRIC",
-     "clue": "Cotton or silk material"
+     "clue": "Social ___ holds communities together",
+     "plain": "Cotton or silk material"
     },
     {
      "word": "FRAME",
-     "clue": "Picture's border",
-     "link": "F"
+     "clue": "One of ten in bowling",
+     "link": "F",
+     "plain": "Picture's border"
     },
     {
      "word": "GORILLA",
-     "clue": "Largest living primate",
-     "link": "R"
+     "clue": "800-pound beast that sits anywhere",
+     "link": "R",
+     "plain": "Largest living primate"
     },
     {
      "word": "RINSE",
-     "clue": "Wash the soap off",
-     "link": "I"
+     "clue": "Lather, ___, repeat",
+     "link": "I",
+     "plain": "Wash the soap off"
     },
     {
      "word": "HONEY",
-     "clue": "Bee-made sweetener",
-     "link": "E"
+     "clue": "Pet name that comes from bees",
+     "link": "E",
+     "plain": "Bee-made sweetener"
     },
     {
      "word": "HOUND",
-     "clue": "Hunting dog that tracks by scent",
-     "link": "N"
+     "clue": "Elvis sang \"You ain't nothin' but a ___ dog\"",
+     "link": "N",
+     "plain": "Hunting dog that tracks by scent"
     },
     {
      "word": "HANDLE",
-     "clue": "Mug's grip",
-     "link": "D"
+     "clue": "Cope with; grab it on a door",
+     "link": "D",
+     "plain": "Mug's grip"
     },
     {
      "word": "BIOLOGY",
-     "clue": "Science of living things",
-     "link": "L"
+     "clue": "Class with frog dissections",
+     "link": "L",
+     "plain": "Science of living things"
     },
     {
      "word": "EMERGENCY",
-     "clue": "Dial 911 situation",
-     "link": "Y"
+     "clue": "Break glass in case of ___",
+     "link": "Y",
+     "plain": "Dial 911 situation"
     }
    ]
   },
@@ -7717,47 +7942,56 @@ const POOLS = {
    "words": [
     {
      "word": "SCRAP",
-     "clue": "Bit of leftover paper or food"
+     "clue": "Throw away an idea, or a brawl",
+     "plain": "Bit of leftover paper or food"
     },
     {
      "word": "AIRPORT",
-     "clue": "Where jets take off and land",
-     "link": "P"
+     "clue": "Place you remove belts and shoes for security",
+     "link": "P",
+     "plain": "Where jets take off and land"
     },
     {
      "word": "ROAST",
-     "clue": "Oven-cooked Sunday beef dinner",
-     "link": "O"
+     "clue": "Celebrity event full of friendly insults",
+     "link": "O",
+     "plain": "Oven-cooked Sunday beef dinner"
     },
     {
      "word": "GUEST",
-     "clue": "Person invited to your home",
-     "link": "S"
+     "clue": "Be our ___, sang the candlestick",
+     "link": "S",
+     "plain": "Person invited to your home"
     },
     {
      "word": "CLOTH",
-     "clue": "Rag for wiping up spills",
-     "link": "T"
+     "clue": "What a tailor sells by the yard",
+     "link": "T",
+     "plain": "Rag for wiping up spills"
     },
     {
      "word": "TRAFFIC",
-     "clue": "Rush-hour jam",
-     "link": "C"
+     "clue": "What honks and crawls at 5 p.m.",
+     "link": "C",
+     "plain": "Rush-hour jam"
     },
     {
      "word": "CAROL",
-     "clue": "Christmas song sung door-to-door",
-     "link": "A"
+     "clue": "Brady Bunch mom's name",
+     "link": "A",
+     "plain": "Christmas song sung door-to-door"
     },
     {
      "word": "LAUNDRY",
-     "clue": "Dirty clothes pile",
-     "link": "R"
+     "clue": "Dirty ___ you shouldn't air publicly",
+     "link": "R",
+     "plain": "Dirty clothes pile"
     },
     {
      "word": "HAZARD",
-     "clue": "Danger a wet-floor sign warns of",
-     "link": "D"
+     "clue": "Dukes of ___",
+     "link": "D",
+     "plain": "Danger a wet-floor sign warns of"
     }
    ]
   },
@@ -7769,47 +8003,56 @@ const POOLS = {
    "words": [
     {
      "word": "PICTURE",
-     "clue": "Worth a thousand words, supposedly"
+     "clue": "Say cheese for this",
+     "plain": "Worth a thousand words, supposedly"
     },
     {
      "word": "TRAIL",
-     "clue": "Hiking path through woods",
-     "link": "T"
+     "clue": "Hansel and Gretel's breadcrumb line",
+     "link": "T",
+     "plain": "Hiking path through woods"
     },
     {
      "word": "RIDGE",
-     "clue": "Mountain's high crest line",
-     "link": "R"
+     "clue": "Ruffles feature; mountain spine",
+     "link": "R",
+     "plain": "Mountain's high crest line"
     },
     {
      "word": "SADDLE",
-     "clue": "Seat on a horse",
-     "link": "E"
+     "clue": "Burden someone with, or a rider's seat",
+     "link": "E",
+     "plain": "Seat on a horse"
     },
     {
      "word": "PASTRY",
-     "clue": "Flaky baked treat, like a danish",
-     "link": "A"
+     "clue": "Puff stuff in a bakery case",
+     "link": "A",
+     "plain": "Flaky baked treat, like a danish"
     },
     {
      "word": "SQUID",
-     "clue": "Calamari source",
-     "link": "S"
+     "clue": "Giant one fought sperm whales in the deep",
+     "link": "S",
+     "plain": "Calamari source"
     },
     {
      "word": "WALRUS",
-     "clue": "Tusked Arctic seal relative",
-     "link": "U"
+     "clue": "Beatles' \"I am the ___\"",
+     "link": "U",
+     "plain": "Tusked Arctic seal relative"
     },
     {
      "word": "GARAGE",
-     "clue": "Car's home at the house",
-     "link": "R"
+     "clue": "Band's first rehearsal space, often",
+     "link": "R",
+     "plain": "Car's home at the house"
     },
     {
      "word": "TRANSFER",
-     "clue": "Switch from one bus to another",
-     "link": "E"
+     "clue": "Move money between accounts; change buses",
+     "link": "E",
+     "plain": "Switch from one bus to another"
     }
    ]
   },
@@ -7821,47 +8064,56 @@ const POOLS = {
    "words": [
     {
      "word": "GLARE",
-     "clue": "Blinding reflection; angry stare"
+     "clue": "What sunglasses fight, and angry eyes deliver",
+     "plain": "Blinding reflection; angry stare"
     },
     {
      "word": "PLANT",
-     "clue": "Fern or ficus",
-     "link": "L"
+     "clue": "Factory, or to place a seed",
+     "link": "L",
+     "plain": "Fern or ficus"
     },
     {
      "word": "BACON",
-     "clue": "Crispy breakfast strips of pork",
-     "link": "A"
+     "clue": "Six Degrees of Kevin ___",
+     "link": "A",
+     "plain": "Crispy breakfast strips of pork"
     },
     {
      "word": "RANGER",
-     "clue": "Park official in a campaign hat",
-     "link": "N"
+     "clue": "Tonto's masked partner",
+     "link": "N",
+     "plain": "Park official in a campaign hat"
     },
     {
      "word": "SAUSAGE",
-     "clue": "Link of ground pork",
-     "link": "G"
+     "clue": "Stuffed casing at a ballgame",
+     "link": "G",
+     "plain": "Link of ground pork"
     },
     {
      "word": "PLATYPUS",
-     "clue": "Duck-billed egg-laying mammal",
-     "link": "U"
+     "clue": "Perry the ___, Phineas's pet agent",
+     "link": "U",
+     "plain": "Duck-billed egg-laying mammal"
     },
     {
      "word": "GAVEL",
-     "clue": "Judge's hammer",
-     "link": "A"
+     "clue": "Auctioneer's or judge's banger",
+     "link": "A",
+     "plain": "Judge's hammer"
     },
     {
      "word": "TONGUE",
-     "clue": "Taste organ",
-     "link": "G"
+     "clue": "Cat got yours?",
+     "link": "G",
+     "plain": "Taste organ"
     },
     {
      "word": "PARALLEL",
-     "clue": "Never meeting, like railroad tracks",
-     "link": "E"
+     "clue": "___ parking challenge",
+     "link": "E",
+     "plain": "Never meeting, like railroad tracks"
     }
    ]
   },
@@ -7873,47 +8125,56 @@ const POOLS = {
    "words": [
     {
      "word": "THISTLE",
-     "clue": "Prickly purple flower, Scotland's emblem"
+     "clue": "Scotland's spiny national flower",
+     "plain": "Prickly purple flower, Scotland's emblem"
     },
     {
      "word": "CRUSH",
-     "clue": "Squash flat; schoolyard infatuation",
-     "link": "S"
+     "clue": "Orange soda; also schoolyard flame",
+     "link": "S",
+     "plain": "Squash flat; schoolyard infatuation"
     },
     {
      "word": "PHONE",
-     "clue": "Device with apps and texts",
-     "link": "H"
+     "clue": "Alexander Graham Bell's invention",
+     "link": "H",
+     "plain": "Device with apps and texts"
     },
     {
      "word": "POETRY",
-     "clue": "Verse, as in sonnets",
-     "link": "O"
+     "clue": "Genre of \"roses are red\"",
+     "link": "O",
+     "plain": "Verse, as in sonnets"
     },
     {
      "word": "CREEP",
-     "clue": "Move slowly and stealthily",
-     "link": "P"
+     "clue": "Radiohead's breakout \"I'm a weirdo\" song",
+     "link": "P",
+     "plain": "Move slowly and stealthily"
     },
     {
      "word": "PITCH",
-     "clue": "Baseball throw",
-     "link": "P"
+     "clue": "Perfect ___ in music, or a sales spiel",
+     "link": "P",
+     "plain": "Baseball throw"
     },
     {
      "word": "CROISSANT",
-     "clue": "Crescent-shaped French breakfast roll",
-     "link": "I"
+     "clue": "Buttery crescent served with café au lait",
+     "link": "I",
+     "plain": "Crescent-shaped French breakfast roll"
     },
     {
      "word": "GYMNAST",
-     "clue": "Balance-beam athlete",
-     "link": "N"
+     "clue": "Simone Biles, for one",
+     "link": "N",
+     "plain": "Balance-beam athlete"
     },
     {
      "word": "EIGHT",
-     "clue": "Spider's leg count",
-     "link": "G"
+     "clue": "Sounds like \"ate\"; spider leg count",
+     "link": "G",
+     "plain": "Spider's leg count"
     }
    ]
   },
@@ -7925,47 +8186,56 @@ const POOLS = {
    "words": [
     {
      "word": "INSPECT",
-     "clue": "Examine closely for flaws"
+     "clue": "What a detective does to a clue",
+     "plain": "Examine closely for flaws"
     },
     {
      "word": "POCKET",
-     "clue": "Pants pouch for loose change",
-     "link": "T"
+     "clue": "Billiards target; roo's baby holder",
+     "link": "T",
+     "plain": "Pants pouch for loose change"
     },
     {
      "word": "STEAK",
-     "clue": "Ribeye or sirloin",
-     "link": "E"
+     "clue": "Rare, medium, or well-done choice",
+     "link": "E",
+     "plain": "Ribeye or sirloin"
     },
     {
      "word": "CLOAK",
-     "clue": "Hooded cape like Dracula's",
-     "link": "A"
+     "clue": "Harry Potter's invisible garment",
+     "link": "A",
+     "plain": "Hooded cape like Dracula's"
     },
     {
      "word": "TECHNIQUE",
-     "clue": "Skillful way of executing a move",
-     "link": "C"
+     "clue": "Judges score this plus artistry in skating",
+     "link": "C",
+     "plain": "Skillful way of executing a move"
     },
     {
      "word": "CHERRY",
-     "clue": "Fruit atop a sundae",
-     "link": "H"
+     "clue": "Tree George Washington allegedly chopped",
+     "link": "H",
+     "plain": "Fruit atop a sundae"
     },
     {
      "word": "BEDROOM",
-     "clue": "Room with a mattress",
-     "link": "E"
+     "clue": "Where you hit the snooze button",
+     "link": "E",
+     "plain": "Room with a mattress"
     },
     {
      "word": "DESERT",
-     "clue": "Sahara's landscape",
-     "link": "R"
+     "clue": "Leave behind, or a dry wasteland",
+     "link": "R",
+     "plain": "Sahara's landscape"
     },
     {
      "word": "TOAST",
-     "clue": "Browned bread slice",
-     "link": "S"
+     "clue": "Speech at a wedding, with raised glasses",
+     "link": "S",
+     "plain": "Browned bread slice"
     }
    ]
   },
@@ -7977,47 +8247,56 @@ const POOLS = {
    "words": [
     {
      "word": "KNIFE",
-     "clue": "Butter spreader or steak slicer"
+     "clue": "Chef's essential tool in a wooden block",
+     "plain": "Butter spreader or steak slicer"
     },
     {
      "word": "FATHER",
-     "clue": "Dad",
-     "link": "F"
+     "clue": "Pop, who walks the bride down aisle",
+     "link": "F",
+     "plain": "Dad"
     },
     {
      "word": "CUSTOMER",
-     "clue": "Always right, per the saying",
-     "link": "E"
+     "clue": "Shopper whom stores call \"king\"",
+     "link": "E",
+     "plain": "Always right, per the saying"
     },
     {
      "word": "CRUST",
-     "clue": "Pizza's outer edge",
-     "link": "S"
+     "clue": "Earth's thin outer layer; pie's edge",
+     "link": "S",
+     "plain": "Pizza's outer edge"
     },
     {
      "word": "THIMBLE",
-     "clue": "Seamstress's finger cap",
-     "link": "T"
+     "clue": "Monopoly piece that is also for sewing",
+     "link": "T",
+     "plain": "Seamstress's finger cap"
     },
     {
      "word": "DRIVEWAY",
-     "clue": "Pavement from garage to street",
-     "link": "I"
+     "clue": "Paved strip where kids shoot hoops at home",
+     "link": "I",
+     "plain": "Pavement from garage to street"
     },
     {
      "word": "VOLCANO",
-     "clue": "Mountain that erupts lava",
-     "link": "V"
+     "clue": "Science fair baking-soda project",
+     "link": "V",
+     "plain": "Mountain that erupts lava"
     },
     {
      "word": "MIRACLE",
-     "clue": "Wonder beyond natural laws",
-     "link": "A"
+     "clue": "Event on 34th Street, in a classic film",
+     "link": "A",
+     "plain": "Wonder beyond natural laws"
     },
     {
      "word": "SCRIBBLE",
-     "clue": "Messy doodle",
-     "link": "L"
+     "clue": "Doctor's handwriting, or toddler's art",
+     "link": "L",
+     "plain": "Messy doodle"
     }
    ]
   },
@@ -8029,47 +8308,56 @@ const POOLS = {
    "words": [
     {
      "word": "CORNER",
-     "clue": "Where two walls meet"
+     "clue": "Boxer's rest stop between rounds",
+     "plain": "Where two walls meet"
     },
     {
      "word": "SCHOOL",
-     "clue": "Place with homeroom and recess",
-     "link": "C"
+     "clue": "Group of fish; where bells ring for class",
+     "link": "C",
+     "plain": "Place with homeroom and recess"
     },
     {
      "word": "SHELL",
-     "clue": "Turtle's armor",
-     "link": "H"
+     "clue": "Egg's armor, or a gas station chain",
+     "link": "H",
+     "plain": "Turtle's armor"
     },
     {
      "word": "SINGER",
-     "clue": "Vocalist at the mic",
-     "link": "E"
+     "clue": "Sewing machine maker; Sinatra, e.g.",
+     "link": "E",
+     "plain": "Vocalist at the mic"
     },
     {
      "word": "DISCOUNT",
-     "clue": "Sale price reduction",
-     "link": "S"
+     "clue": "Ignore as unimportant, or mark down",
+     "link": "S",
+     "plain": "Sale price reduction"
     },
     {
      "word": "SAINT",
-     "clue": "Halo-wearing holy figure",
-     "link": "T"
+     "clue": "Holy person, or New Orleans footballer",
+     "link": "T",
+     "plain": "Halo-wearing holy figure"
     },
     {
      "word": "BOUNCE",
-     "clue": "Rebound, as a ball",
-     "link": "N"
+     "clue": "Bad checks and rubber balls do this",
+     "link": "N",
+     "plain": "Rebound, as a ball"
     },
     {
      "word": "WALNUT",
-     "clue": "Brain-shaped nut",
-     "link": "U"
+     "clue": "Dark wood prized for furniture",
+     "link": "U",
+     "plain": "Brain-shaped nut"
     },
     {
      "word": "THREAD",
-     "clue": "Needle's companion",
-     "link": "T"
+     "clue": "Needle's partner; online chain of replies",
+     "link": "T",
+     "plain": "Needle's companion"
     }
    ]
   },
@@ -8081,47 +8369,56 @@ const POOLS = {
    "words": [
     {
      "word": "GAUGE",
-     "clue": "Fuel meter on a dashboard"
+     "clue": "Estimate, or measure tire pressure",
+     "plain": "Fuel meter on a dashboard"
     },
     {
      "word": "REIGN",
-     "clue": "Queen's time on the throne",
-     "link": "E"
+     "clue": "Sounds like rain; monarch's term",
+     "link": "E",
+     "plain": "Queen's time on the throne"
     },
     {
      "word": "GIANT",
-     "clue": "Fee-fi-fo-fum character",
-     "link": "N"
+     "clue": "Jack climbed a beanstalk to meet one",
+     "link": "N",
+     "plain": "Fee-fi-fo-fum character"
     },
     {
      "word": "KNIGHT",
-     "clue": "Armored rider of the Round Table",
-     "link": "G"
+     "clue": "Chess piece that moves in an L",
+     "link": "G",
+     "plain": "Armored rider of the Round Table"
     },
     {
      "word": "GINGER",
-     "clue": "Pink pickled sushi side",
-     "link": "I"
+     "clue": "Fred Astaire's partner, Ms. Rogers",
+     "link": "I",
+     "plain": "Pink pickled sushi side"
     },
     {
      "word": "CONCERT",
-     "clue": "Live music show",
-     "link": "N"
+     "clue": "Arena night with a setlist",
+     "link": "N",
+     "plain": "Live music show"
     },
     {
      "word": "TIPTOE",
-     "clue": "Walk quietly on your toes",
-     "link": "E"
+     "clue": "Sneaky way to walk past a sleeping baby",
+     "link": "E",
+     "plain": "Walk quietly on your toes"
     },
     {
      "word": "LASER",
-     "clue": "Cat toy's red dot source",
-     "link": "E"
+     "clue": "Light beam used in eye surgery and pointers",
+     "link": "E",
+     "plain": "Cat toy's red dot source"
     },
     {
      "word": "SUMMER",
-     "clue": "June to August",
-     "link": "R"
+     "clue": "Season with no school, for kids",
+     "link": "R",
+     "plain": "June to August"
     }
    ]
   },
@@ -8133,47 +8430,56 @@ const POOLS = {
    "words": [
     {
      "word": "TWILIGHT",
-     "clue": "Dusk glow; vampire saga"
+     "clue": "Rod Serling's famous \"Zone\"",
+     "plain": "Dusk glow; vampire saga"
     },
     {
      "word": "SHADOW",
-     "clue": "Dark shape cast by sunlight",
-     "link": "W"
+     "clue": "Groundhog Day's make-or-break sight",
+     "link": "W",
+     "plain": "Dark shape cast by sunlight"
     },
     {
      "word": "TORCH",
-     "clue": "Olympic flame carrier",
-     "link": "O"
+     "clue": "Lady Liberty's raised item",
+     "link": "O",
+     "plain": "Olympic flame carrier"
     },
     {
      "word": "BAKERY",
-     "clue": "Shop selling fresh bread",
-     "link": "R"
+     "clue": "Storefront with baguettes at dawn",
+     "link": "R",
+     "plain": "Shop selling fresh bread"
     },
     {
      "word": "SPEAK",
-     "clue": "Talk; deliver a speech",
-     "link": "K"
+     "clue": "Command to make a dog bark",
+     "link": "K",
+     "plain": "Talk; deliver a speech"
     },
     {
      "word": "SYMPATHY",
-     "clue": "Card sent after a loss",
-     "link": "S"
+     "clue": "Why you send flowers after bad news",
+     "link": "S",
+     "plain": "Card sent after a loss"
     },
     {
      "word": "MOUTH",
-     "clue": "Where teeth live",
-     "link": "H"
+     "clue": "Where a river meets the sea",
+     "link": "H",
+     "plain": "Where teeth live"
     },
     {
      "word": "VAPOR",
-     "clue": "Steam or mist, scientifically",
-     "link": "O"
+     "clue": "Rising wisps over a hot kettle",
+     "link": "O",
+     "plain": "Steam or mist, scientifically"
     },
     {
      "word": "PROTEST",
-     "clue": "March with picket signs",
-     "link": "P"
+     "clue": "Object loudly with signs and chants",
+     "link": "P",
+     "plain": "March with picket signs"
     }
    ]
   },
@@ -8185,47 +8491,56 @@ const POOLS = {
    "words": [
     {
      "word": "FLINT",
-     "clue": "Hard stone used to spark fire"
+     "clue": "Stone Age sparker; Michigan city",
+     "plain": "Hard stone used to spark fire"
     },
     {
      "word": "SENATOR",
-     "clue": "Capitol Hill lawmaker, one of 100",
-     "link": "N"
+     "clue": "Member of the upper chamber, two per state",
+     "link": "N",
+     "plain": "Capitol Hill lawmaker, one of 100"
     },
     {
      "word": "YOUTH",
-     "clue": "Time of being young",
-     "link": "O"
+     "clue": "Fountain of ___",
+     "link": "O",
+     "plain": "Time of being young"
     },
     {
      "word": "WRITE",
-     "clue": "Put pen to paper",
-     "link": "T"
+     "clue": "Authors do it; sounds like \"right\"",
+     "link": "T",
+     "plain": "Put pen to paper"
     },
     {
      "word": "BOXER",
-     "clue": "Gloved ring fighter",
-     "link": "E"
+     "clue": "Ali, for one; also a dog breed",
+     "link": "E",
+     "plain": "Gloved ring fighter"
     },
     {
      "word": "OBSTACLE",
-     "clue": "Hurdle in your path",
-     "link": "B"
+     "clue": "What Ninja Warrior contestants must clear",
+     "link": "B",
+     "plain": "Hurdle in your path"
     },
     {
      "word": "PIGEON",
-     "clue": "City bird that coos",
-     "link": "O"
+     "clue": "Sucker, in con-man slang; city bird",
+     "link": "O",
+     "plain": "City bird that coos"
     },
     {
      "word": "TOKEN",
-     "clue": "Arcade coin",
-     "link": "O"
+     "clue": "Symbolic gesture, or subway fare coin",
+     "link": "O",
+     "plain": "Arcade coin"
     },
     {
      "word": "SPIKE",
-     "clue": "Sharp metal point; volleyball smash",
-     "link": "K"
+     "clue": "Cleat's grip; volleyball attacker's slam",
+     "link": "K",
+     "plain": "Sharp metal point; volleyball smash"
     }
    ]
   },
@@ -8237,47 +8552,56 @@ const POOLS = {
    "words": [
     {
      "word": "WISDOM",
-     "clue": "Owl's famed trait"
+     "clue": "Kind of tooth that comes last",
+     "plain": "Owl's famed trait"
     },
     {
      "word": "HUMOR",
-     "clue": "What comedians have a sense of",
-     "link": "M"
+     "clue": "What you hope your funny bone has",
+     "link": "M",
+     "plain": "What comedians have a sense of"
     },
     {
      "word": "BLOUSE",
-     "clue": "Woman's dressy shirt",
-     "link": "O"
+     "clue": "Skirt's usual top-half partner",
+     "link": "O",
+     "plain": "Woman's dressy shirt"
     },
     {
      "word": "BUNGALOW",
-     "clue": "Single-story house",
-     "link": "O"
+     "clue": "Low, porch-fronted home popular in the 1920s",
+     "link": "O",
+     "plain": "Single-story house"
     },
     {
      "word": "BALLOON",
-     "clue": "Party item that floats on helium",
-     "link": "N"
+     "clue": "Hot-air craft, or a pin's victim",
+     "link": "N",
+     "plain": "Party item that floats on helium"
     },
     {
      "word": "BRAVE",
-     "clue": "Facing danger without fear",
-     "link": "B"
+     "clue": "Pixar movie with red-haired Merida",
+     "link": "B",
+     "plain": "Facing danger without fear"
     },
     {
      "word": "PANEL",
-     "clue": "Solar ___ on a roof",
-     "link": "E"
+     "clue": "Expert group on stage at a conference",
+     "link": "E",
+     "plain": "Solar ___ on a roof"
     },
     {
      "word": "STAMP",
-     "clue": "Envelope's postage square",
-     "link": "A"
+     "clue": "What a philatelist collects",
+     "link": "A",
+     "plain": "Envelope's postage square"
     },
     {
      "word": "MATCH",
-     "clue": "Lights a candle",
-     "link": "M"
+     "clue": "Tinder's goal; fire starter",
+     "link": "M",
+     "plain": "Lights a candle"
     }
    ]
   },
@@ -8289,47 +8613,56 @@ const POOLS = {
    "words": [
     {
      "word": "BEAST",
-     "clue": "Beauty's Disney partner"
+     "clue": "Belle's fanged suitor",
+     "plain": "Beauty's Disney partner"
     },
     {
      "word": "TABLE",
-     "clue": "Dining furniture",
-     "link": "B"
+     "clue": "Postpone a motion; chart of elements",
+     "link": "B",
+     "plain": "Dining furniture"
     },
     {
      "word": "TRACK",
-     "clue": "Rails for a train; running oval",
-     "link": "A"
+     "clue": "Follow the trail of; the Olympic oval",
+     "link": "A",
+     "plain": "Rails for a train; running oval"
     },
     {
      "word": "JACKAL",
-     "clue": "Dog-like African scavenger",
-     "link": "C"
+     "clue": "Howling African scavenger; Anubis's head",
+     "link": "C",
+     "plain": "Dog-like African scavenger"
     },
     {
      "word": "MONKEY",
-     "clue": "Banana-loving primate",
-     "link": "K"
+     "clue": "The see-no-evil, hear-no-evil trio's animal",
+     "link": "K",
+     "plain": "Banana-loving primate"
     },
     {
      "word": "PHYSICAL",
-     "clue": "Annual doctor checkup",
-     "link": "Y"
+     "clue": "Not mental, as in fitness",
+     "link": "Y",
+     "plain": "Annual doctor checkup"
     },
     {
      "word": "FLAVOR",
-     "clue": "Vanilla or chocolate",
-     "link": "A"
+     "clue": "Baskin-Robbins boasts 31 of them",
+     "link": "A",
+     "plain": "Vanilla or chocolate"
     },
     {
      "word": "BILLBOARD",
-     "clue": "Giant roadside ad",
-     "link": "R"
+     "clue": "Magazine with a Hot 100 chart",
+     "link": "R",
+     "plain": "Giant roadside ad"
     },
     {
      "word": "FLOOD",
-     "clue": "Overflowing river disaster",
-     "link": "D"
+     "clue": "Sandbags fight this",
+     "link": "D",
+     "plain": "Overflowing river disaster"
     }
    ]
   },
@@ -8341,47 +8674,56 @@ const POOLS = {
    "words": [
     {
      "word": "CEREAL",
-     "clue": "Cheerios, in a bowl"
+     "clue": "Box with a free prize inside, once",
+     "plain": "Cheerios, in a bowl"
     },
     {
      "word": "FALCON",
-     "clue": "Swift hunting bird of prey",
-     "link": "L"
+     "clue": "Han Solo's Millennium ___",
+     "link": "L",
+     "plain": "Swift hunting bird of prey"
     },
     {
      "word": "CONVINCE",
-     "clue": "Talk someone into believing",
-     "link": "O"
+     "clue": "Make a skeptic believe",
+     "link": "O",
+     "plain": "Talk someone into believing"
     },
     {
      "word": "CURVE",
-     "clue": "Bend in the road",
-     "link": "V"
+     "clue": "Pitch that breaks, or a grading kindness",
+     "link": "V",
+     "plain": "Bend in the road"
     },
     {
      "word": "BATTLE",
-     "clue": "Fight between armies",
-     "link": "E"
+     "clue": "Fortnite is a ___ royale",
+     "link": "E",
+     "plain": "Fight between armies"
     },
     {
      "word": "ORBIT",
-     "clue": "Path the Moon takes around Earth",
-     "link": "B"
+     "clue": "Gum brand; satellite's circuit",
+     "link": "B",
+     "plain": "Path the Moon takes around Earth"
     },
     {
      "word": "SILVER",
-     "clue": "Second-place medal metal",
-     "link": "I"
+     "clue": "Hi-yo, ___! Away!",
+     "link": "I",
+     "plain": "Second-place medal metal"
     },
     {
      "word": "SWORD",
-     "clue": "Knight's blade",
-     "link": "R"
+     "clue": "Excalibur, for one",
+     "link": "R",
+     "plain": "Knight's blade"
     },
     {
      "word": "AVOCADO",
-     "clue": "Green fruit in guacamole",
-     "link": "D"
+     "clue": "Millennial toast topper",
+     "link": "D",
+     "plain": "Green fruit in guacamole"
     }
    ]
   },
@@ -8393,47 +8735,56 @@ const POOLS = {
    "words": [
     {
      "word": "OCTOPUS",
-     "clue": "Eight-armed ink squirter"
+     "clue": "Sea creature with three hearts",
+     "plain": "Eight-armed ink squirter"
     },
     {
      "word": "SHOUT",
-     "clue": "Yell at full volume",
-     "link": "S"
+     "clue": "Twist and ___, Beatles cover",
+     "link": "S",
+     "plain": "Yell at full volume"
     },
     {
      "word": "FLOCK",
-     "clue": "Group of sheep or birds",
-     "link": "O"
+     "clue": "Birds of a feather ___ together",
+     "link": "O",
+     "plain": "Group of sheep or birds"
     },
     {
      "word": "THIEF",
-     "clue": "One who steals",
-     "link": "F"
+     "clue": "Cat burglar, for one",
+     "link": "F",
+     "plain": "One who steals"
     },
     {
      "word": "ROBOT",
-     "clue": "Mechanical worker like R2-D2",
-     "link": "T"
+     "clue": "Asimov's Three Laws govern it",
+     "link": "T",
+     "plain": "Mechanical worker like R2-D2"
     },
     {
      "word": "BAGEL",
-     "clue": "Boiled bread ring with cream cheese",
-     "link": "B"
+     "clue": "Gets a schmear of cream cheese",
+     "link": "B",
+     "plain": "Boiled bread ring with cream cheese"
     },
     {
      "word": "ELEVATOR",
-     "clue": "Lift in a skyscraper",
-     "link": "A"
+     "clue": "Lobby button-pusher's ride; also a 30-second pitch",
+     "link": "A",
+     "plain": "Lift in a skyscraper"
     },
     {
      "word": "LENGTH",
-     "clue": "How long something is",
-     "link": "L"
+     "clue": "Half a lap of the pool",
+     "link": "L",
+     "plain": "How long something is"
     },
     {
      "word": "FLOUR",
-     "clue": "Baker's powdered wheat",
-     "link": "L"
+     "clue": "Sounds like \"flower\"; bread's main powder",
+     "link": "L",
+     "plain": "Baker's powdered wheat"
     }
    ]
   },
@@ -8445,47 +8796,56 @@ const POOLS = {
    "words": [
     {
      "word": "FREEZER",
-     "clue": "Appliance for ice cream storage"
+     "clue": "Where ice cube trays and leftovers sit forever",
+     "plain": "Appliance for ice cream storage"
     },
     {
      "word": "FIELD",
-     "clue": "Farmer's planted acreage",
-     "link": "F"
+     "clue": "Where wheat grows, or fly balls land",
+     "link": "F",
+     "plain": "Farmer's planted acreage"
     },
     {
      "word": "PADDLE",
-     "clue": "Canoe oar; ping-pong racket",
-     "link": "L"
+     "clue": "Up the creek without one",
+     "link": "L",
+     "plain": "Canoe oar; ping-pong racket"
     },
     {
      "word": "COTTAGE",
-     "clue": "Small lakeside house; type of cheese",
-     "link": "A"
+     "clue": "Curdy cheese that's lumpy",
+     "link": "A",
+     "plain": "Small lakeside house; type of cheese"
     },
     {
      "word": "GOSSIP",
-     "clue": "Idle talk about others",
-     "link": "G"
+     "clue": "Tabloid fodder passed along in whispers",
+     "link": "G",
+     "plain": "Idle talk about others"
     },
     {
      "word": "POUND",
-     "clue": "Sixteen ounces",
-     "link": "P"
+     "clue": "Where stray dogs may wait for adoption",
+     "link": "P",
+     "plain": "Sixteen ounces"
     },
     {
      "word": "DAFFODIL",
-     "clue": "Yellow trumpet-shaped spring bloom",
-     "link": "O"
+     "clue": "What Wordsworth saw while lonely as a cloud",
+     "link": "O",
+     "plain": "Yellow trumpet-shaped spring bloom"
     },
     {
      "word": "TOWEL",
-     "clue": "Bath drying cloth",
-     "link": "L"
+     "clue": "Corner throws this in to surrender",
+     "link": "L",
+     "plain": "Bath drying cloth"
     },
     {
      "word": "BADGE",
-     "clue": "Sheriff's star pin",
-     "link": "E"
+     "clue": "Scout's reward for tying knots",
+     "link": "E",
+     "plain": "Sheriff's star pin"
     }
    ]
   },
@@ -8497,47 +8857,56 @@ const POOLS = {
    "words": [
     {
      "word": "PAINT",
-     "clue": "Roller's wall coating"
+     "clue": "Brush's job on a fence",
+     "plain": "Roller's wall coating"
     },
     {
      "word": "REPUBLIC",
-     "clue": "Rome before the emperors",
-     "link": "P"
+     "clue": "'...and to the ___ for which it stands'",
+     "link": "P",
+     "plain": "Rome before the emperors"
     },
     {
      "word": "CRUMB",
-     "clue": "Tiny bread fragment",
-     "link": "U"
+     "clue": "Pieces a toaster tray collects",
+     "link": "U",
+     "plain": "Tiny bread fragment"
     },
     {
      "word": "SWAMP",
-     "clue": "Boggy wetland with gators",
-     "link": "M"
+     "clue": "Shrek's home",
+     "link": "M",
+     "plain": "Boggy wetland with gators"
     },
     {
      "word": "PICKLE",
-     "clue": "Cucumber in brine",
-     "link": "P"
+     "clue": "Tight spot, or deli spear",
+     "link": "P",
+     "plain": "Cucumber in brine"
     },
     {
      "word": "KIDNEY",
-     "clue": "Bean in chili; bean-shaped organ",
-     "link": "K"
+     "clue": "Pair of filters in your back",
+     "link": "K",
+     "plain": "Bean in chili; bean-shaped organ"
     },
     {
      "word": "BLINK",
-     "clue": "Close and open your eyes quickly",
-     "link": "I"
+     "clue": "Do this and you'll miss it",
+     "link": "I",
+     "plain": "Close and open your eyes quickly"
     },
     {
      "word": "NURSE",
-     "clue": "Hospital caregiver in scrubs",
-     "link": "N"
+     "clue": "Florence Nightingale's calling",
+     "link": "N",
+     "plain": "Hospital caregiver in scrubs"
     },
     {
      "word": "CAMPUS",
-     "clue": "College grounds",
-     "link": "S"
+     "clue": "Where quads aren't thigh muscles",
+     "link": "S",
+     "plain": "College grounds"
     }
    ]
   },
@@ -8549,47 +8918,56 @@ const POOLS = {
    "words": [
     {
      "word": "FERRY",
-     "clue": "Boat carrying cars across water"
+     "clue": "Floating bus across the harbor",
+     "plain": "Boat carrying cars across water"
     },
     {
      "word": "FEVER",
-     "clue": "High body temperature",
-     "link": "F"
+     "clue": "Cabin ___ or Saturday Night ___",
+     "link": "F",
+     "plain": "High body temperature"
     },
     {
      "word": "OFFICER",
-     "clue": "Police badge holder",
-     "link": "R"
+     "clue": "Excuse me, ___, was I speeding?",
+     "link": "R",
+     "plain": "Police badge holder"
     },
     {
      "word": "BANJO",
-     "clue": "Twangy bluegrass instrument",
-     "link": "O"
+     "clue": "Steve Martin's pickin' instrument",
+     "link": "O",
+     "plain": "Twangy bluegrass instrument"
     },
     {
      "word": "NUTMEG",
-     "clue": "Eggnog spice",
-     "link": "N"
+     "clue": "Spice grated on eggnog, or a soccer humiliation",
+     "link": "N",
+     "plain": "Eggnog spice"
     },
     {
      "word": "SLITHER",
-     "clue": "Move like a snake",
-     "link": "T"
+     "clue": "Locomotion with no legs, like a python",
+     "link": "T",
+     "plain": "Move like a snake"
     },
     {
      "word": "BICYCLE",
-     "clue": "Two-wheeler with pedals",
-     "link": "I"
+     "clue": "Tour de France machine",
+     "link": "I",
+     "plain": "Two-wheeler with pedals"
     },
     {
      "word": "CIRCLE",
-     "clue": "Round shape with no corners",
-     "link": "E"
+     "clue": "Pi's favorite shape",
+     "link": "E",
+     "plain": "Round shape with no corners"
     },
     {
      "word": "CHURCH",
-     "clue": "Steeple-topped house of worship",
-     "link": "R"
+     "clue": "Place for pews and hymns",
+     "link": "R",
+     "plain": "Steeple-topped house of worship"
     }
    ]
   },
@@ -8601,47 +8979,56 @@ const POOLS = {
    "words": [
     {
      "word": "WALLET",
-     "clue": "Billfold"
+     "clue": "Thief's favorite back-pocket target",
+     "plain": "Billfold"
     },
     {
      "word": "COBRA",
-     "clue": "Hooded snake of India",
-     "link": "A"
+     "clue": "Karate Kid dojo: ___ Kai",
+     "link": "A",
+     "plain": "Hooded snake of India"
     },
     {
      "word": "GRILL",
-     "clue": "Barbecue cooking rack",
-     "link": "R"
+     "clue": "Question hard, or cook burgers outdoors",
+     "link": "R",
+     "plain": "Barbecue cooking rack"
     },
     {
      "word": "DOUGH",
-     "clue": "Raw bread before baking",
-     "link": "G"
+     "clue": "Slang for cash, kneaded by bakers",
+     "link": "G",
+     "plain": "Raw bread before baking"
     },
     {
      "word": "CLUMSY",
-     "clue": "Always tripping over your own feet",
-     "link": "U"
+     "clue": "Having two left feet",
+     "link": "U",
+     "plain": "Always tripping over your own feet"
     },
     {
      "word": "MITTEN",
-     "clue": "Glove with no separate fingers",
-     "link": "M"
+     "clue": "Michigan's lower peninsula resembles this",
+     "link": "M",
+     "plain": "Glove with no separate fingers"
     },
     {
      "word": "PANCAKE",
-     "clue": "Flapjack on a griddle",
-     "link": "E"
+     "clue": "Syrup's best friend on a griddle",
+     "link": "E",
+     "plain": "Flapjack on a griddle"
     },
     {
      "word": "AUTUMN",
-     "clue": "Fall season",
-     "link": "N"
+     "clue": "Leaf-peeper's favorite season",
+     "link": "N",
+     "plain": "Fall season"
     },
     {
      "word": "TAXI",
-     "clue": "Yellow city cab",
-     "link": "T"
+     "clue": "Hail it in Manhattan",
+     "link": "T",
+     "plain": "Yellow city cab"
     }
    ]
   },
@@ -8653,47 +9040,56 @@ const POOLS = {
    "words": [
     {
      "word": "FIDDLE",
-     "clue": "Violin in a country band"
+     "clue": "Tinker with, or play bluegrass strings",
+     "plain": "Violin in a country band"
     },
     {
      "word": "CHIEF",
-     "clue": "Police ___, or head honcho",
-     "link": "F"
+     "clue": "Boss, or Kansas City's NFL team",
+     "link": "F",
+     "plain": "Police ___, or head honcho"
     },
     {
      "word": "STAIR",
-     "clue": "Single riser on a flight",
-     "link": "I"
+     "clue": "What you climb, one step at a time",
+     "link": "I",
+     "plain": "Single riser on a flight"
     },
     {
      "word": "MEMORY",
-     "clue": "Computer RAM; recollection",
-     "link": "R"
+     "clue": "What an elephant famously has plenty of",
+     "link": "R",
+     "plain": "Computer RAM; recollection"
     },
     {
      "word": "SCARECROW",
-     "clue": "Field guard stuffed with straw",
-     "link": "E"
+     "clue": "Dorothy's first companion on the Yellow Brick Road",
+     "link": "E",
+     "plain": "Field guard stuffed with straw"
     },
     {
      "word": "CROSSWALK",
-     "clue": "Striped street strip for walkers",
-     "link": "W"
+     "clue": "Zebra stripes are painted here",
+     "link": "W",
+     "plain": "Striped street strip for walkers"
     },
     {
      "word": "SEASHORE",
-     "clue": "Beach where waves meet the sand",
-     "link": "O"
+     "clue": "Shell collector's stroll location",
+     "link": "O",
+     "plain": "Beach where waves meet the sand"
     },
     {
      "word": "PARAKEET",
-     "clue": "Small budgie-like pet bird",
-     "link": "R"
+     "clue": "Little cage bird that can mimic words",
+     "link": "R",
+     "plain": "Small budgie-like pet bird"
     },
     {
      "word": "COOKIE",
-     "clue": "Chocolate chip baked treat",
-     "link": "K"
+     "clue": "Girl Scouts sell boxes of these",
+     "link": "K",
+     "plain": "Chocolate chip baked treat"
     }
    ]
   },
@@ -8705,47 +9101,56 @@ const POOLS = {
    "words": [
     {
      "word": "QUARTER",
-     "clue": "25 cents"
+     "clue": "Coin with Washington, or three months",
+     "plain": "25 cents"
     },
     {
      "word": "QUILT",
-     "clue": "Patchwork bed cover",
-     "link": "Q"
+     "clue": "Blanket sewn from scraps",
+     "link": "Q",
+     "plain": "Patchwork bed cover"
     },
     {
      "word": "SQUIRREL",
-     "clue": "Acorn-hoarding tree dweller",
-     "link": "U"
+     "clue": "Bushy-tailed park rodent that buries nuts",
+     "link": "U",
+     "plain": "Acorn-hoarding tree dweller"
     },
     {
      "word": "SPONGE",
-     "clue": "Bath-time scrubber full of holes",
-     "link": "E"
+     "clue": "Kitchen scrubber that soaks up spills",
+     "link": "E",
+     "plain": "Bath-time scrubber full of holes"
     },
     {
      "word": "ROOSTER",
-     "clue": "Dawn-crowing farm bird",
-     "link": "S"
+     "clue": "Barnyard alarm clock",
+     "link": "S",
+     "plain": "Dawn-crowing farm bird"
     },
     {
      "word": "SUMMIT",
-     "clue": "Mountain's very top",
-     "link": "T"
+     "clue": "Where Everest climbers aim, or leaders meet",
+     "link": "T",
+     "plain": "Mountain's very top"
     },
     {
      "word": "BISON",
-     "clue": "Great Plains shaggy grazer",
-     "link": "I"
+     "clue": "American buffalo, properly speaking",
+     "link": "I",
+     "plain": "Great Plains shaggy grazer"
     },
     {
      "word": "VIOLIN",
-     "clue": "Stradivarius, for one",
-     "link": "O"
+     "clue": "Four-stringed orchestra star with a bow",
+     "link": "O",
+     "plain": "Stradivarius, for one"
     },
     {
      "word": "CEREMONY",
-     "clue": "Graduation or wedding ritual",
-     "link": "N"
+     "clue": "Ribbon-cutting event, or wedding rite",
+     "link": "N",
+     "plain": "Graduation or wedding ritual"
     }
    ]
   },
@@ -8757,47 +9162,56 @@ const POOLS = {
    "words": [
     {
      "word": "JACKET",
-     "clue": "Blazer; book's dust cover"
+     "clue": "Light outer layer; a potato can wear one",
+     "plain": "Blazer; book's dust cover"
     },
     {
      "word": "JUGGLE",
-     "clue": "Keep several balls in the air",
-     "link": "J"
+     "clue": "Clown's feat with balls, or managing many tasks",
+     "link": "J",
+     "plain": "Keep several balls in the air"
     },
     {
      "word": "POUNCE",
-     "clue": "Leap on prey suddenly",
-     "link": "U"
+     "clue": "Cat's surprise attack on a toy",
+     "link": "U",
+     "plain": "Leap on prey suddenly"
     },
     {
      "word": "UNCLE",
-     "clue": "Dad's brother",
-     "link": "N"
+     "clue": "Say it to give up in a playground fight",
+     "link": "N",
+     "plain": "Dad's brother"
     },
     {
      "word": "SCRIPT",
-     "clue": "Actor's lines on paper",
-     "link": "C"
+     "clue": "Actor's memorized pages, or pharmacist's order",
+     "link": "C",
+     "plain": "Actor's lines on paper"
     },
     {
      "word": "MOSQUITO",
-     "clue": "Itchy-bite insect",
-     "link": "T"
+     "clue": "Summer's tiny buzzing bloodsucker",
+     "link": "T",
+     "plain": "Itchy-bite insect"
     },
     {
      "word": "FOSSIL",
-     "clue": "Dinosaur bone turned to stone",
-     "link": "I"
+     "clue": "Ancient life form preserved in rock",
+     "link": "I",
+     "plain": "Dinosaur bone turned to stone"
     },
     {
      "word": "ORGAN",
-     "clue": "Church keyboard with pipes",
-     "link": "O"
+     "clue": "Heart, liver or a church instrument",
+     "link": "O",
+     "plain": "Church keyboard with pipes"
     },
     {
      "word": "POPCORN",
-     "clue": "Movie theater snack in a tub",
-     "link": "N"
+     "clue": "Kernels that jump in a hot pan",
+     "link": "N",
+     "plain": "Movie theater snack in a tub"
     }
    ]
   },
@@ -8809,47 +9223,56 @@ const POOLS = {
    "words": [
     {
      "word": "WEASEL",
-     "clue": "Slinky, sneaky mink relative"
+     "clue": "Pop goes this in the nursery rhyme",
+     "plain": "Slinky, sneaky mink relative"
     },
     {
      "word": "LAWYER",
-     "clue": "Attorney",
-     "link": "W"
+     "clue": "Courtroom pro who bills by the hour",
+     "link": "W",
+     "plain": "Attorney"
     },
     {
      "word": "CHESS",
-     "clue": "Board game with kings and pawns",
-     "link": "E"
+     "clue": "Game where the queen rules, played with rooks",
+     "link": "E",
+     "plain": "Board game with kings and pawns"
     },
     {
      "word": "SNEAK",
-     "clue": "Creep around unnoticed",
-     "link": "E"
+     "clue": "Move quietly, like a ninja",
+     "link": "E",
+     "plain": "Creep around unnoticed"
     },
     {
      "word": "TURKEY",
-     "clue": "Thanksgiving centerpiece",
-     "link": "K"
+     "clue": "Gobbler on the table, or country on two continents",
+     "link": "K",
+     "plain": "Thanksgiving centerpiece"
     },
     {
      "word": "NIBBLE",
-     "clue": "Take tiny bites",
-     "link": "E"
+     "clue": "Light tug on a fisherman's line, or small bite",
+     "link": "E",
+     "plain": "Take tiny bites"
     },
     {
      "word": "LEGEND",
-     "clue": "Famous myth, like King Arthur's",
-     "link": "N"
+     "clue": "Map's key, or a famous hero",
+     "link": "N",
+     "plain": "Famous myth, like King Arthur's"
     },
     {
      "word": "SHADE",
-     "clue": "Cool spot under a tree",
-     "link": "D"
+     "clue": "What a parasol provides",
+     "link": "D",
+     "plain": "Cool spot under a tree"
     },
     {
      "word": "MARSH",
-     "clue": "Soggy wetland with reeds",
-     "link": "S"
+     "clue": "Where cattails and frogs thrive",
+     "link": "S",
+     "plain": "Soggy wetland with reeds"
     }
    ]
   },
@@ -8861,47 +9284,56 @@ const POOLS = {
    "words": [
     {
      "word": "THUMB",
-     "clue": "Hitchhiker's sign digit"
+     "clue": "Rule of ___; green gardener's digit",
+     "plain": "Hitchhiker's sign digit"
     },
     {
      "word": "BUTTON",
-     "clue": "Shirt fastener",
-     "link": "B"
+     "clue": "Press it to start, or sew it on",
+     "link": "B",
+     "plain": "Shirt fastener"
     },
     {
      "word": "EXPLORE",
-     "clue": "Go and discover new places",
-     "link": "O"
+     "clue": "Lewis and Clark did this out West",
+     "link": "O",
+     "plain": "Go and discover new places"
     },
     {
      "word": "CLOCK",
-     "clue": "Wall device with hour hand",
-     "link": "O"
+     "clue": "Has a face and hands but can't wave",
+     "link": "O",
+     "plain": "Wall device with hour hand"
     },
     {
      "word": "PACKAGE",
-     "clue": "Parcel delivered by mail",
-     "link": "K"
+     "clue": "Delivery that lands on your doorstep",
+     "link": "K",
+     "plain": "Parcel delivered by mail"
     },
     {
      "word": "STOMACH",
-     "clue": "Belly; organ that digests",
-     "link": "C"
+     "clue": "Home of butterflies when you're nervous",
+     "link": "C",
+     "plain": "Belly; organ that digests"
     },
     {
      "word": "SHAME",
-     "clue": "Guilt mixed with embarrassment",
-     "link": "A"
+     "clue": "What a pity it is, or cheek-reddening feeling",
+     "link": "A",
+     "plain": "Guilt mixed with embarrassment"
     },
     {
      "word": "TASTE",
-     "clue": "Sense of sweet and sour",
-     "link": "S"
+     "clue": "Your tongue's sense, or fashion judgment",
+     "link": "S",
+     "plain": "Sense of sweet and sour"
     },
     {
      "word": "PURPLE",
-     "clue": "Grape color",
-     "link": "E"
+     "clue": "Red plus blue, in the paint tray",
+     "link": "E",
+     "plain": "Grape color"
     }
    ]
   },
@@ -8913,47 +9345,56 @@ const POOLS = {
    "words": [
     {
      "word": "SCOLD",
-     "clue": "Reprimand a naughty child"
+     "clue": "Tell off, as a parent might",
+     "plain": "Reprimand a naughty child"
     },
     {
      "word": "BANDAGE",
-     "clue": "Gauze wrap for a wound",
-     "link": "D"
+     "clue": "Wrap for a scraped knee or sprain",
+     "link": "D",
+     "plain": "Gauze wrap for a wound"
     },
     {
      "word": "STOVE",
-     "clue": "Burners and an oven",
-     "link": "E"
+     "clue": "Where the kettle goes to whistle",
+     "link": "E",
+     "plain": "Burners and an oven"
     },
     {
      "word": "SPICE",
-     "clue": "Cumin or paprika",
-     "link": "S"
+     "clue": "Pumpkin ___ latte flavoring",
+     "link": "S",
+     "plain": "Cumin or paprika"
     },
     {
      "word": "CREEK",
-     "clue": "Small stream",
-     "link": "C"
+     "clue": "Up the ___ without a paddle",
+     "link": "C",
+     "plain": "Small stream"
     },
     {
      "word": "WIZARD",
-     "clue": "Gandalf, for one",
-     "link": "R"
+     "clue": "Oz's man behind the curtain",
+     "link": "R",
+     "plain": "Gandalf, for one"
     },
     {
      "word": "TRIBE",
-     "clue": "Group of people sharing ancestry",
-     "link": "I"
+     "clue": "Survivor team, or ancient clan",
+     "link": "I",
+     "plain": "Group of people sharing ancestry"
     },
     {
      "word": "BITTER",
-     "clue": "Sharply unsweet, like black coffee",
-     "link": "B"
+     "clue": "Like unsweetened chocolate, or a cold grudge",
+     "link": "B",
+     "plain": "Sharply unsweet, like black coffee"
     },
     {
      "word": "CATTLE",
-     "clue": "Herd of cows",
-     "link": "E"
+     "clue": "Cowboys drive these across the range",
+     "link": "E",
+     "plain": "Herd of cows"
     }
    ]
   },
@@ -8965,47 +9406,56 @@ const POOLS = {
    "words": [
     {
      "word": "SMOKE",
-     "clue": "Fire's gray cloud"
+     "clue": "Where there's this, there's fire",
+     "plain": "Fire's gray cloud"
     },
     {
      "word": "TICKET",
-     "clue": "Concert entry pass; speeding fine",
-     "link": "K"
+     "clue": "Concert entry, or reason to dread flashing lights",
+     "link": "K",
+     "plain": "Concert entry pass; speeding fine"
     },
     {
      "word": "RABBIT",
-     "clue": "Hopping Easter bunny",
-     "link": "I"
+     "clue": "Magician's hat resident",
+     "link": "I",
+     "plain": "Hopping Easter bunny"
     },
     {
      "word": "CAPTAIN",
-     "clue": "Ship's commander",
-     "link": "T"
+     "clue": "Skipper of a ship or sports team",
+     "link": "T",
+     "plain": "Ship's commander"
     },
     {
      "word": "STITCH",
-     "clue": "One loop of thread",
-     "link": "C"
+     "clue": "Pain in your side while running; seamstress's loop",
+     "link": "C",
+     "plain": "One loop of thread"
     },
     {
      "word": "CHANNEL",
-     "clue": "TV station number; English ___",
-     "link": "H"
+     "clue": "Remote's flipping target; also Dover's strait",
+     "link": "H",
+     "plain": "TV station number; English ___"
     },
     {
      "word": "HORNET",
-     "clue": "Large stinging wasp",
-     "link": "E"
+     "clue": "Superhero green insect with Kato",
+     "link": "E",
+     "plain": "Large stinging wasp"
     },
     {
      "word": "PLEASANT",
-     "clue": "Agreeable, like a sunny breeze",
-     "link": "N"
+     "clue": "Nice, like a mild spring day",
+     "link": "N",
+     "plain": "Agreeable, like a sunny breeze"
     },
     {
      "word": "STEEL",
-     "clue": "Iron alloy in skyscraper beams",
-     "link": "S"
+     "clue": "Superman's 'Man of ___'",
+     "link": "S",
+     "plain": "Iron alloy in skyscraper beams"
     }
    ]
   },
@@ -9017,47 +9467,56 @@ const POOLS = {
    "words": [
     {
      "word": "VEGETABLE",
-     "clue": "Carrot or broccoli"
+     "clue": "Category of food Mom insists you finish",
+     "plain": "Carrot or broccoli"
     },
     {
      "word": "ADOPT",
-     "clue": "Take in a shelter pet",
-     "link": "A"
+     "clue": "Take a child or pet as your own",
+     "link": "A",
+     "plain": "Take in a shelter pet"
     },
     {
      "word": "POUCH",
-     "clue": "Kangaroo's baby carrier",
-     "link": "P"
+     "clue": "Marsupial's built-in baby pocket",
+     "link": "P",
+     "plain": "Kangaroo's baby carrier"
     },
     {
      "word": "PUZZLE",
-     "clue": "Jigsaw or crossword",
-     "link": "P"
+     "clue": "Piece-by-piece pastime, or something baffling",
+     "link": "P",
+     "plain": "Jigsaw or crossword"
     },
     {
      "word": "VAULT",
-     "clue": "Bank's secure room; gymnastic leap",
-     "link": "L"
+     "clue": "Pole-___ event, or Fort Knox room",
+     "link": "L",
+     "plain": "Bank's secure room; gymnastic leap"
     },
     {
      "word": "QUARREL",
-     "clue": "Spat or squabble",
-     "link": "A"
+     "clue": "Crossbow bolt, or a heated sibling spat",
+     "link": "A",
+     "plain": "Spat or squabble"
     },
     {
      "word": "CIRCUS",
-     "clue": "Big top with clowns",
-     "link": "U"
+     "clue": "Greatest Show on Earth",
+     "link": "U",
+     "plain": "Big top with clowns"
     },
     {
      "word": "SWELL",
-     "clue": "Puff up, as a sprained ankle",
-     "link": "S"
+     "clue": "Ocean's rolling wave; old-timey 'terrific!'",
+     "link": "S",
+     "plain": "Puff up, as a sprained ankle"
     },
     {
      "word": "LADLE",
-     "clue": "Soup server's long spoon",
-     "link": "E"
+     "clue": "Soup bowl filler with a deep scoop",
+     "link": "E",
+     "plain": "Soup server's long spoon"
     }
    ]
   },
@@ -9069,47 +9528,56 @@ const POOLS = {
    "words": [
     {
      "word": "STOOP",
-     "clue": "Bend over; small front porch"
+     "clue": "Bend over, or Brooklyn front steps",
+     "plain": "Bend over; small front porch"
     },
     {
      "word": "NORTH",
-     "clue": "Opposite of south",
-     "link": "T"
+     "clue": "Where the compass needle points",
+     "link": "T",
+     "plain": "Opposite of south"
     },
     {
      "word": "HANDSOME",
-     "clue": "Good-looking, as a leading man",
-     "link": "O"
+     "clue": "Tall, dark and ___",
+     "link": "O",
+     "plain": "Good-looking, as a leading man"
     },
     {
      "word": "MONTH",
-     "clue": "May or June",
-     "link": "M"
+     "clue": "Thirty days, give or take",
+     "link": "M",
+     "plain": "May or June"
     },
     {
      "word": "DRAGON",
-     "clue": "Fire-breathing beast",
-     "link": "O"
+     "clue": "Smaug, for one",
+     "link": "O",
+     "plain": "Fire-breathing beast"
     },
     {
      "word": "SUGAR",
-     "clue": "Sweet crystals in a bowl",
-     "link": "R"
+     "clue": "A spoonful of ___ helps the medicine go down",
+     "link": "R",
+     "plain": "Sweet crystals in a bowl"
     },
     {
      "word": "RAINBOW",
-     "clue": "Arc of colors after a storm",
-     "link": "R"
+     "clue": "Roy G. Biv's arc",
+     "link": "R",
+     "plain": "Arc of colors after a storm"
     },
     {
      "word": "PILLOW",
-     "clue": "Head rest on a bed",
-     "link": "O"
+     "clue": "Sleepover weapon stuffed with feathers",
+     "link": "O",
+     "plain": "Head rest on a bed"
     },
     {
      "word": "EYEBROW",
-     "clue": "Arched hair above the eye",
-     "link": "W"
+     "clue": "Skeptic raises one",
+     "link": "W",
+     "plain": "Arched hair above the eye"
     }
    ]
   },
@@ -9121,47 +9589,56 @@ const POOLS = {
    "words": [
     {
      "word": "SALAD",
-     "clue": "Lettuce and tomato dish"
+     "clue": "Caesar or Cobb, for starters",
+     "plain": "Lettuce and tomato dish"
     },
     {
      "word": "DONUT",
-     "clue": "Glazed ring from Dunkin'",
-     "link": "D"
+     "clue": "Bakery ring with a hole in it",
+     "link": "D",
+     "plain": "Glazed ring from Dunkin'"
     },
     {
      "word": "THROW",
-     "clue": "Toss, as a football",
-     "link": "O"
+     "clue": "Quarterback's job, or a couch blanket",
+     "link": "O",
+     "plain": "Toss, as a football"
     },
     {
      "word": "DROWN",
-     "clue": "Sink beneath the waves",
-     "link": "W"
+     "clue": "Go under and not come up",
+     "link": "W",
+     "plain": "Sink beneath the waves"
     },
     {
      "word": "BANDIT",
-     "clue": "Masked outlaw of the Old West",
-     "link": "N"
+     "clue": "Burt Reynolds's 'Smokey and the ___'",
+     "link": "N",
+     "plain": "Masked outlaw of the Old West"
     },
     {
      "word": "DECORATE",
-     "clue": "Trim a Christmas tree",
-     "link": "T"
+     "clue": "Deck the halls, in other words",
+     "link": "T",
+     "plain": "Trim a Christmas tree"
     },
     {
      "word": "WELCOME",
-     "clue": "Greeting on a doormat",
-     "link": "O"
+     "clue": "'You're ___' after a thank-you",
+     "link": "O",
+     "plain": "Greeting on a doormat"
     },
     {
      "word": "WOMAN",
-     "clue": "Adult female",
-     "link": "W"
+     "clue": "Wonder ___ comic hero",
+     "link": "W",
+     "plain": "Adult female"
     },
     {
      "word": "SNEEZE",
-     "clue": "Ah-choo!",
-     "link": "N"
+     "clue": "'Bless you' trigger",
+     "link": "N",
+     "plain": "Ah-choo!"
     }
    ]
   },
@@ -9173,47 +9650,56 @@ const POOLS = {
    "words": [
     {
      "word": "HELMET",
-     "clue": "Biker's head protection"
+     "clue": "Skull-saver for cyclists",
+     "plain": "Biker's head protection"
     },
     {
      "word": "EARTH",
-     "clue": "Third planet from the Sun",
-     "link": "H"
+     "clue": "Planet with a Moon and oceans",
+     "link": "H",
+     "plain": "Third planet from the Sun"
     },
     {
      "word": "TEACH",
-     "clue": "Instruct a class",
-     "link": "E"
+     "clue": "Pass on knowledge in a classroom",
+     "link": "E",
+     "plain": "Instruct a class"
     },
     {
      "word": "SEAFOOD",
-     "clue": "Shrimp, crab and fish",
-     "link": "A"
+     "clue": "Fisherman's catch on a menu",
+     "link": "A",
+     "plain": "Shrimp, crab and fish"
     },
     {
      "word": "CLOUD",
-     "clue": "Fluffy sky formation",
-     "link": "D"
+     "clue": "Where your photos back up, or nimbus",
+     "link": "D",
+     "plain": "Fluffy sky formation"
     },
     {
      "word": "LINEN",
-     "clue": "Fabric from flax; tablecloths",
-     "link": "L"
+     "clue": "Wrinkly summer-suit fabric",
+     "link": "L",
+     "plain": "Fabric from flax; tablecloths"
     },
     {
      "word": "BASIN",
-     "clue": "Bathroom sink bowl",
-     "link": "I"
+     "clue": "Wash ___, or Amazon's drainage area",
+     "link": "I",
+     "plain": "Bathroom sink bowl"
     },
     {
      "word": "CURRENCY",
-     "clue": "Dollars or euros",
-     "link": "N"
+     "clue": "Yen, peso and euro, collectively",
+     "link": "N",
+     "plain": "Dollars or euros"
     },
     {
      "word": "GECKO",
-     "clue": "Insurance mascot lizard",
-     "link": "E"
+     "clue": "Cockney-voiced insurance mascot lizard",
+     "link": "E",
+     "plain": "Insurance mascot lizard"
     }
    ]
   },
@@ -9225,47 +9711,56 @@ const POOLS = {
    "words": [
     {
      "word": "BUFFET",
-     "clue": "All-you-can-eat spread"
+     "clue": "Self-serve smorgasbord, or to batter by wind",
+     "plain": "All-you-can-eat spread"
     },
     {
      "word": "LADYBUG",
-     "clue": "Red beetle with black spots",
-     "link": "B"
+     "clue": "Spotted garden helper that eats aphids",
+     "link": "B",
+     "plain": "Red beetle with black spots"
     },
     {
      "word": "BUILD",
-     "clue": "Construct with bricks",
-     "link": "L"
+     "clue": "Put up a house, brick by brick",
+     "link": "L",
+     "plain": "Construct with bricks"
     },
     {
      "word": "BUBBLE",
-     "clue": "Soapy sphere that pops",
-     "link": "U"
+     "clue": "Wand-blown sphere, or housing market worry",
+     "link": "U",
+     "plain": "Soapy sphere that pops"
     },
     {
      "word": "GLOBE",
-     "clue": "Spinning model of Earth",
-     "link": "E"
+     "clue": "Round map you spin",
+     "link": "E",
+     "plain": "Spinning model of Earth"
     },
     {
      "word": "BRIDE",
-     "clue": "Woman in white at the altar",
-     "link": "B"
+     "clue": "Bouquet tosser at the reception",
+     "link": "B",
+     "plain": "Woman in white at the altar"
     },
     {
      "word": "RAVINE",
-     "clue": "Deep, narrow gorge",
-     "link": "I"
+     "clue": "Gully a stream carved over centuries",
+     "link": "I",
+     "plain": "Deep, narrow gorge"
     },
     {
      "word": "POWDER",
-     "clue": "Talc or fine dust",
-     "link": "R"
+     "clue": "Fresh snow that skiers love",
+     "link": "R",
+     "plain": "Talc or fine dust"
     },
     {
      "word": "ADORE",
-     "clue": "Love deeply",
-     "link": "D"
+     "clue": "Feel more than just 'like' toward",
+     "link": "D",
+     "plain": "Love deeply"
     }
    ]
   },
@@ -9277,47 +9772,56 @@ const POOLS = {
    "words": [
     {
      "word": "PRESSURE",
-     "clue": "Tire gauge reading in psi"
+     "clue": "What a diamond forms under",
+     "plain": "Tire gauge reading in psi"
     },
     {
      "word": "PATIO",
-     "clue": "Backyard paved area for grilling",
-     "link": "P"
+     "clue": "Concrete spot for backyard barbecues",
+     "link": "P",
+     "plain": "Backyard paved area for grilling"
     },
     {
      "word": "SHORE",
-     "clue": "Where ocean meets land",
-     "link": "O"
+     "clue": "Where waves finally arrive",
+     "link": "O",
+     "plain": "Where ocean meets land"
     },
     {
      "word": "TENNIS",
-     "clue": "Racket sport with a net",
-     "link": "S"
+     "clue": "Love means zero in this sport",
+     "link": "S",
+     "plain": "Racket sport with a net"
     },
     {
      "word": "GUILT",
-     "clue": "Remorseful feeling after wrongdoing",
-     "link": "I"
+     "clue": "What Mom lays on thick",
+     "link": "I",
+     "plain": "Remorseful feeling after wrongdoing"
     },
     {
      "word": "FIFTY",
-     "clue": "Half of one hundred",
-     "link": "T"
+     "clue": "Half a century, in years",
+     "link": "T",
+     "plain": "Half of one hundred"
     },
     {
      "word": "TOILET",
-     "clue": "Bathroom fixture that flushes",
-     "link": "I"
+     "clue": "Porcelain throne",
+     "link": "I",
+     "plain": "Bathroom fixture that flushes"
     },
     {
      "word": "SKELETON",
-     "clue": "Bones of the body",
-     "link": "O"
+     "clue": "Bony Halloween decoration that rattles",
+     "link": "O",
+     "plain": "Bones of the body"
     },
     {
      "word": "TROMBONE",
-     "clue": "Slide brass instrument",
-     "link": "N"
+     "clue": "Brass instrument you play by sliding",
+     "link": "N",
+     "plain": "Slide brass instrument"
     }
    ]
   },
@@ -9329,47 +9833,56 @@ const POOLS = {
    "words": [
     {
      "word": "CHILL",
-     "clue": "Mild coldness; to relax"
+     "clue": "Netflix and ___",
+     "plain": "Mild coldness; to relax"
     },
     {
      "word": "HATCH",
-     "clue": "Emerge from an egg",
-     "link": "C"
+     "clue": "Chick does this out of its shell",
+     "link": "C",
+     "plain": "Emerge from an egg"
     },
     {
      "word": "DREAM",
-     "clue": "Imagine while asleep",
-     "link": "A"
+     "clue": "Nightly movie in your head",
+     "link": "A",
+     "plain": "Imagine while asleep"
     },
     {
      "word": "TEMPLE",
-     "clue": "Side of your forehead",
-     "link": "M"
+     "clue": "Place where your glasses' arms rest",
+     "link": "M",
+     "plain": "Side of your forehead"
     },
     {
      "word": "PERFUME",
-     "clue": "Fragrance dabbed on the wrist",
-     "link": "P"
+     "clue": "Eau de toilette, for one",
+     "link": "P",
+     "plain": "Fragrance dabbed on the wrist"
     },
     {
      "word": "JELLYFISH",
-     "clue": "Stinging, bell-shaped sea drifter",
-     "link": "F"
+     "clue": "Spineless sea drifter that pulses",
+     "link": "F",
+     "plain": "Stinging, bell-shaped sea drifter"
     },
     {
      "word": "SLIPPERY",
-     "clue": "Hard to grip, like wet soap",
-     "link": "I"
+     "clue": "Like ice or a wet bar of soap",
+     "link": "I",
+     "plain": "Hard to grip, like wet soap"
     },
     {
      "word": "MANAGER",
-     "clue": "Boss of a team or store",
-     "link": "R"
+     "clue": "Boss in a dugout, or at the store",
+     "link": "R",
+     "plain": "Boss of a team or store"
     },
     {
      "word": "RUBBER",
-     "clue": "Stretchy tire material",
-     "link": "E"
+     "clue": "Material of eraser and tires",
+     "link": "E",
+     "plain": "Stretchy tire material"
     }
    ]
   },
@@ -9381,47 +9894,56 @@ const POOLS = {
    "words": [
     {
      "word": "MERMAID",
-     "clue": "Ariel, half girl half fish"
+     "clue": "Half woman, half fish of legend",
+     "plain": "Ariel, half girl half fish"
     },
     {
      "word": "DRILL",
-     "clue": "Dentist's whirring tool",
-     "link": "D"
+     "clue": "Fire ___ at school, or dentist's whir",
+     "link": "D",
+     "plain": "Dentist's whirring tool"
     },
     {
      "word": "POISON",
-     "clue": "Toxic stuff in a skull-marked bottle",
-     "link": "I"
+     "clue": "___ ivy",
+     "link": "I",
+     "plain": "Toxic stuff in a skull-marked bottle"
     },
     {
      "word": "CROWN",
-     "clue": "King's headgear",
-     "link": "N"
+     "clue": "Tooth cap or a royal topper",
+     "link": "N",
+     "plain": "King's headgear"
     },
     {
      "word": "HOIST",
-     "clue": "Raise with a rope",
-     "link": "O"
+     "clue": "Raise a flag up the pole",
+     "link": "O",
+     "plain": "Raise with a rope"
     },
     {
      "word": "FABULOUS",
-     "clue": "Marvelous, darling",
-     "link": "S"
+     "clue": "Totally amazing, darling",
+     "link": "S",
+     "plain": "Marvelous, darling"
     },
     {
      "word": "QUACK",
-     "clue": "Duck's call",
-     "link": "A"
+     "clue": "Fake doctor, or Donald's sound",
+     "link": "A",
+     "plain": "Duck's call"
     },
     {
      "word": "UNWRAP",
-     "clue": "Tear open a gift",
-     "link": "U"
+     "clue": "Tear open on Christmas morning",
+     "link": "U",
+     "plain": "Tear open a gift"
     },
     {
      "word": "EMPIRE",
-     "clue": "Vast realm ruled by an emperor",
-     "link": "R"
+     "clue": "Star Wars' evil galactic regime",
+     "link": "R",
+     "plain": "Vast realm ruled by an emperor"
     }
    ]
   },
@@ -9433,47 +9955,56 @@ const POOLS = {
    "words": [
     {
      "word": "GREEN",
-     "clue": "Color of grass"
+     "clue": "Envy's color",
+     "plain": "Color of grass"
     },
     {
      "word": "GRAPE",
-     "clue": "Raisin before drying",
-     "link": "G"
+     "clue": "Fruit that becomes wine or raisins",
+     "link": "G",
+     "plain": "Raisin before drying"
     },
     {
      "word": "ACORN",
-     "clue": "Oak tree seed",
-     "link": "A"
+     "clue": "Oak tree's tiny beginning",
+     "link": "A",
+     "plain": "Oak tree seed"
     },
     {
      "word": "BURDEN",
-     "clue": "Heavy load to carry",
-     "link": "R"
+     "clue": "Weight on one's shoulders, figuratively",
+     "link": "R",
+     "plain": "Heavy load to carry"
     },
     {
      "word": "INCIDENT",
-     "clue": "Event on a police report",
-     "link": "D"
+     "clue": "Mishap logged in a report",
+     "link": "D",
+     "plain": "Event on a police report"
     },
     {
      "word": "SCONE",
-     "clue": "Crumbly English tea biscuit",
-     "link": "E"
+     "clue": "Clotted cream's partner at tea",
+     "link": "E",
+     "plain": "Crumbly English tea biscuit"
     },
     {
      "word": "DONKEY",
-     "clue": "Eeyore, for one",
-     "link": "N"
+     "clue": "Shrek's talkative sidekick",
+     "link": "N",
+     "plain": "Eeyore, for one"
     },
     {
      "word": "RIPPLE",
-     "clue": "Small wave from a dropped pebble",
-     "link": "E"
+     "clue": "Pebble's mark on a pond",
+     "link": "E",
+     "plain": "Small wave from a dropped pebble"
     },
     {
      "word": "EXPERT",
-     "clue": "Authority with special knowledge",
-     "link": "R"
+     "clue": "Someone with ten thousand hours of practice",
+     "link": "R",
+     "plain": "Authority with special knowledge"
     }
    ]
   },
@@ -9485,47 +10016,56 @@ const POOLS = {
    "words": [
     {
      "word": "COCONUT",
-     "clue": "Hairy tropical shell with milk"
+     "clue": "Pina colada's creamy tropical base",
+     "plain": "Hairy tropical shell with milk"
     },
     {
      "word": "MANGO",
-     "clue": "Orange tropical fruit with big pit",
-     "link": "N"
+     "clue": "Juicy tropical fruit with a flat pit",
+     "link": "N",
+     "plain": "Orange tropical fruit with big pit"
     },
     {
      "word": "IVORY",
-     "clue": "Elephant tusk material",
-     "link": "O"
+     "clue": "Piano keys were once made of this",
+     "link": "O",
+     "plain": "Elephant tusk material"
     },
     {
      "word": "DIVIDE",
-     "clue": "Split into equal parts",
-     "link": "V"
+     "clue": "Do what long division does",
+     "link": "V",
+     "plain": "Split into equal parts"
     },
     {
      "word": "FLAME",
-     "clue": "Fire's dancing tongue",
-     "link": "E"
+     "clue": "Old ___ you used to date",
+     "link": "E",
+     "plain": "Fire's dancing tongue"
     },
     {
      "word": "EMBRACE",
-     "clue": "Hug",
-     "link": "M"
+     "clue": "Big hug, or accept wholeheartedly",
+     "link": "M",
+     "plain": "Hug"
     },
     {
      "word": "MUMBLE",
-     "clue": "Speak unclearly under your breath",
-     "link": "B"
+     "clue": "Speak so that nobody catches your words",
+     "link": "B",
+     "plain": "Speak unclearly under your breath"
     },
     {
      "word": "BRACE",
-     "clue": "Dental wire; prepare for impact",
-     "link": "E"
+     "clue": "Get ready for a bumpy landing",
+     "link": "E",
+     "plain": "Dental wire; prepare for impact"
     },
     {
      "word": "CELERY",
-     "clue": "Crunchy stalk in Bloody Marys",
-     "link": "R"
+     "clue": "Ants on a log's crunchy base",
+     "link": "R",
+     "plain": "Crunchy stalk in Bloody Marys"
     }
    ]
   }

@@ -2,7 +2,7 @@
   "use strict";
   const PREFS = "meanderings-prefs", STATS = "meanderings-stats", KEYV = "meanderings-v3";
   const WORD_POINTS = 100, WORD_FLOOR = 10;
-  const BONUS_LETTERS = 8, BONUS_PER = 25, BONUS_MISS = 15, BONUS_MIN = 25;
+  const BONUS_LETTERS = 8, BONUS_MISS = 15;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Difficulty rules. `keep`: a miss leaves correctly placed letters (green). `delay` (seconds before a clue
@@ -12,7 +12,7 @@
   const DIFFS = {
     easy:   { label: "Easy",   keep: true,  miss: 8,  reveal: 10, blind: false, delay: 0 },
     medium: { label: "Medium", keep: true,  miss: 10, reveal: 12, blind: false, delay: 0 },
-    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: false, delay: 0 },
+    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: false, delay: 0, noHints: true },
   };
   // Given letters: the first word of a chain starts with some letters filled in (easy 2, medium 1, hard 0).
   // Starts with puzzle #2 (Nov 5, 2026) so today's already-played puzzle is unchanged; random chains always use it.
@@ -38,11 +38,12 @@
   function layout(words) {
     const rows = [];
     words.forEach((e, i) => {
-      if (i === 0) { rows.push({ ...e, off: 0, linkIdx: -1, linkLen: 0 }); return; }
+      if (i === 0) { rows.push({ ...e, off: 0, linkIdx: -1, linkLen: 0, goldLen: 0 }); return; }
       const prev = rows[i - 1];
       const pi = prev.word.indexOf(e.link), ni = e.word.indexOf(e.link);
       if (pi < 0 || ni < 0) throw new Error(`Bad link "${e.link}" for ${e.word}`);
-      rows.push({ ...e, off: prev.off + pi - ni, linkIdx: ni, linkLen: e.link.length });
+      // goldLen = how many shared letters are pre-filled gold. River rules (puzzle #2 on): just the first one.
+      rows.push({ ...e, off: prev.off + pi - ni, linkIdx: ni, linkLen: e.link.length, goldLen: newRules() ? 1 : e.link.length });
     });
     const min = Math.min(...rows.map(r => r.off));
     rows.forEach(r => (r.off -= min));
@@ -66,6 +67,7 @@
   let view = { kind: "puzzle", day: today.day };           // or { kind: "random" }
   let chain = null, rows = [], span = 1, MAX_SCORE = 0, st = fresh();
   let guess = [], locked = [], typed = "", bPrefix = 0, sel = -1;
+  let plainShown = false; // this word's plain clue has been bought (Hard v2)
   let shake = false, dance = false, busy = false, finale = false, celebrate = false;
   let rowStart = Date.now(), lastProgress = Date.now(), clueEl = null, runToken = 0, lastRandom = -1;
   const cfg = () => DIFFS[diff];
@@ -75,6 +77,13 @@
   // Blind starts at word 2: the first word has no shared letter to go on, so it shows its boxes and clue up front.
   const blindNow = () => cfg().blind && !done() && !busy && st.cur > 0;
   const givenOn = () => view.kind === "random" || view.day >= GIVEN_FROM_DAY;
+  // Hard v2 (puzzle #2 onward, and random chains): no hints of any kind. Words carry a tricky `clue` and an easier
+  // `plain` clue that the player can buy. Puzzle #1 (already published) keeps hints and its original clues.
+  const HARD_V2_FROM_DAY = 1;
+  const newRules = () => view.kind === "random" || view.day >= HARD_V2_FROM_DAY;
+  const bonusPer = () => (newRules() ? 40 : 25);   // points per still-hidden river letter (also the minimum)
+  const hintsOn = () => !(cfg().noHints && newRules());
+  const plainAvail = () => !done() && !!rows[st.cur] && !!rows[st.cur].plain && newRules();
   const givenIdx = w => (GIVEN[diff] >= 2 ? [0, w.length - 1] : GIVEN[diff] === 1 ? [0] : []);
 
   const storeKey = (k, v = view) => `${KEYV}:${v.kind === "random" ? "random" : dateFor(v.day)}:${k}`;
@@ -82,7 +91,7 @@
   // under the new key (the state for the new puzzle is loaded by setup()).
   function savePrefs() { try { localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {} }
   function save() {
-    st.row = done() ? null : { cur: st.cur, guess, locked, typed, bPrefix };
+    st.row = done() ? null : { cur: st.cur, guess, locked, typed, bPrefix, plain: plainShown };
     try { localStorage.setItem(storeKey(diff), JSON.stringify(st)); } catch (e) {}
     savePrefs();
   }
@@ -100,7 +109,7 @@
     } else st.idx = mod(view.day, pool.length);
     chain = pool[st.idx % pool.length];
     ({ rows, span } = layout(chain.words));
-    MAX_SCORE = rows.reduce((s, _, i) => s + WORD_POINTS * mult(i), 0) + BONUS_PER * BONUS_LETTERS;
+    MAX_SCORE = rows.reduce((s, _, i) => s + WORD_POINTS * mult(i), 0) + bonusPer() * BONUS_LETTERS;
     updateNav();
     $("scoreNote").textContent =
       `Each word is worth 100 points before the combo multiplier. On ${cfg().label}, a miss costs ${cfg().miss} and ` +
@@ -108,6 +117,7 @@
       `Clean words (no miss, no reveal) build a combo: ×1.25, ×1.5 … up to ×3. Any slip resets it.` +
       (cfg().keep ? "" : " Misses don't tell you which letters were right.") +
       (cfg().delay ? " Each clue after the first appears a few seconds into the word." : "") +
+      (cfg().noHints && newRules() ? ` Hard has no hints: trickier clues, and a "Plain clue" button (−${cfg().reveal} points) if you're stuck.` : "") +
       (GIVEN[diff] && givenOn() ? ` The first word starts with ${GIVEN[diff]} letter${GIVEN[diff] > 1 ? "s" : ""} filled in (blue).` : "");
     startRow(true); size(); render(); updateTabs();
     if (view.kind === "random") save();
@@ -115,12 +125,12 @@
 
   function startRow(restore) {
     lastProgress = rowStart = Date.now();
-    sel = -1; typed = ""; bPrefix = 0;
+    sel = -1; typed = ""; bPrefix = 0; plainShown = false;
     if (done()) { guess = []; locked = []; return; }
     const r = rows[st.cur];
     guess = Array(r.word.length).fill("");
     locked = Array(r.word.length).fill(false);
-    for (let k = 0; k < r.linkLen; k++) {
+    for (let k = 0; k < r.goldLen; k++) {
       guess[r.linkIdx + k] = r.word[r.linkIdx + k];
       locked[r.linkIdx + k] = "link";
     }
@@ -131,6 +141,7 @@
         guess = sv.guess.slice(); locked = sv.locked.slice();
       }
       if (typeof sv.typed === "string") { typed = sv.typed; bPrefix = sv.bPrefix || 0; }
+      plainShown = !!sv.plain;
     }
   }
 
@@ -195,8 +206,8 @@
         // Blind row: only the shared (gold) letters, in their column. The answer is typed in the strip below.
         entry.classList.add("blind");
         tiles.style.marginLeft = `calc(${pitch} * ${r.off + Math.max(r.linkIdx, 0)})`;
-        if (r.linkLen) {
-          for (let k = 0; k < r.linkLen; k++) {
+        if (r.goldLen) {
+          for (let k = 0; k < r.goldLen; k++) {
             const t = el("div", "tile link"); t.textContent = r.word[r.linkIdx + k]; tiles.append(t);
           }
         } else { const t = el("div", "tile empty"); t.textContent = "?"; tiles.append(t); }
@@ -214,7 +225,7 @@
             else if (locked[j] === "hint") t.classList.add("hint");
             else if (locked[j]) t.classList.add("good");
             else if (j === nextEmpty) t.classList.add("cursor");
-            if (!locked[j] && !busy) {
+            if (!locked[j] && !busy && hintsOn()) {
               t.classList.add("tap");
               if (j === sel) t.classList.add("pick");
               t.onclick = () => { sel = sel === j ? -1 : j; render(); };
@@ -223,7 +234,7 @@
             t.textContent = r.word[j];
             t.classList.add("solved");
             const lg = (st.log || [])[i];
-            if (j >= r.linkIdx && j < r.linkIdx + r.linkLen) t.classList.add("link");
+            if (j >= r.linkIdx && j < r.linkIdx + r.goldLen) t.classList.add("link");
             else if (lg && lg.given && lg.given[j]) t.classList.add("given");
             else if (lg && lg.rev && lg.rev[j] === "h") t.classList.add("hint");     // keep hint/auto colors after solving
             else if (lg && lg.rev && lg.rev[j] === "a") t.classList.add("auto");
@@ -244,6 +255,9 @@
         clueEl = { clue, cs, text: r.clue };
       } else cs.textContent = r.clue;
       entry.append(tiles, clue);
+      if (active && plainShown && r.plain) {
+        const pc = el("div", "plainclue"); pc.textContent = `Plain clue: ${r.plain}`; entry.append(pc);
+      }
 
       if (active && blind) {
         const strip = el("div", "strip");
@@ -256,17 +270,26 @@
       }
       if (active && !busy) {
         const hw = el("div", "hintwrap");
-        const hb = el("button", "btn");
-        hb.textContent = !blind && sel >= 0 ? "Reveal this letter" : "Hint";
-        const kbd = el("span", "kbd"); kbd.textContent = "?"; hb.append(kbd);   // keyboard shortcut (hidden on touch)
-        hb.onclick = () => { reveal("hint"); hb.blur(); };
-        hw.append(hb);
-        if (blind || sel < 0) {
-          const tip = el("div", "hinttip");
-          tip.textContent = blind ? "Reveals the next letter of the word" : "Tap a box (or use ← →) to choose which letter to reveal";
-          hw.append(tip);
+        if (hintsOn()) {
+          const hb = el("button", "btn");
+          hb.textContent = !blind && sel >= 0 ? "Reveal this letter" : "Hint";
+          const kbd = el("span", "kbd"); kbd.textContent = "?"; hb.append(kbd);   // keyboard shortcut (hidden on touch)
+          hb.onclick = () => { reveal("hint"); hb.blur(); };
+          hw.append(hb);
+          if (blind || sel < 0) {
+            const tip = el("div", "hinttip");
+            tip.textContent = blind ? "Reveals the next letter of the word" : "Tap a box (or use ← →) to choose which letter to reveal";
+            hw.append(tip);
+          }
+        } else if (plainAvail() && !plainShown) {
+          const pb = el("button", "btn");
+          pb.textContent = "Plain clue";
+          const kbd = el("span", "kbd"); kbd.textContent = "?"; pb.append(kbd);
+          pb.onclick = () => { showPlain(); pb.blur(); };
+          hw.append(pb);
+          const tip = el("div", "hinttip"); tip.textContent = `Shows an easier clue (−${cfg().reveal} points)`; hw.append(tip);
         }
-        entry.append(hw);
+        if (hw.childNodes.length) entry.append(hw);
       }
       board.append(entry);
       if (active) activeEntry = entry;
@@ -317,7 +340,7 @@
   function drawMeander() {
     const old0 = $("meander"); if (old0) old0.remove();
     const entries = [...board.querySelectorAll(".entry")];
-    if (!done() || !entries.length) return;
+    if (!entries.length || (!done() && !newRules())) return;
     const br = board.getBoundingClientRect();
     const ctr = t => { const q = t.getBoundingClientRect(); return [q.left - br.left + q.width / 2, q.top - br.top + q.height / 2]; };
     const avg = list => { const c = list.map(ctr); return [c.reduce((s, p) => s + p[0], 0) / c.length, c[0][1]]; };
@@ -328,13 +351,13 @@
       const blindRow = en.classList.contains("blind");
       const entry = blindRow || (i === 0 && !r.linkLen) ? avg(tiles)
         : i === 0 ? ctr(tiles[0])
-        : avg(tiles.slice(r.linkIdx, r.linkIdx + r.linkLen));
+        : avg(tiles.slice(r.linkIdx, r.linkIdx + r.goldLen));
       P.push(entry);
       if (blindRow) return;
       const nxt = rows[i + 1];
       if (i + 1 < entries.length && nxt) {
         const pi = r.word.indexOf(nxt.link);
-        P.push([avg(tiles.slice(pi, pi + nxt.linkLen))[0], entry[1]]);
+        P.push([avg(tiles.slice(pi, pi + nxt.goldLen))[0], entry[1]]);
       } else if (done()) P.push(ctr(tiles[tiles.length - 1]));
     });
     const Q = P.filter((p, i) => i === 0 || Math.hypot(p[0] - P[i - 1][0], p[1] - P[i - 1][1]) > 0.5);
@@ -347,7 +370,8 @@
     svg.setAttribute("width", board.scrollWidth); svg.setAttribute("height", board.scrollHeight);
     const path = document.createElementNS(NS, "path");
     path.setAttribute("d", roundedPath(Q, cell * 0.45));
-    path.setAttribute("stroke-width", Math.max(3, cell * 0.3));
+    path.setAttribute("stroke-width", done() ? Math.max(3, cell * 0.3) : Math.max(2, cell * 0.1));
+    if (!done()) path.classList.add("stream");
     svg.append(path);
     board.prepend(svg);
     if (celebrate) {
@@ -365,7 +389,7 @@
       const lg = (st.log || [])[i] || { rev: [], miss: 0 };
       const cells = [];
       for (let j = 0; j < r.word.length; j++) {
-        const link = j >= r.linkIdx && j < r.linkIdx + r.linkLen;
+        const link = j >= r.linkIdx && j < r.linkIdx + r.goldLen;
         cells.push(link ? "y" : lg.given && lg.given[j] ? "b" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
       }
       return { pad: r.off, padR: span - r.off - r.word.length, cells, miss: lg.miss || 0, hinted: (lg.rev || []).some(x => x) };
@@ -378,7 +402,7 @@
   const pct = () => Math.round((st.score / MAX_SCORE) * 100);
   function extrasLine() {
     const x = [];
-    if (st.bonus.done) x.push(`🎁 +${st.bonus.pts}`);
+    if (st.bonus.done) x.push(`${newRules() ? "🌊" : "🎁"} +${st.bonus.pts}`);
     if (st.bestCombo >= 3) x.push(`🔥 ${st.bestCombo} clean in a row`);
     return x.join(" · ");
   }
@@ -431,7 +455,7 @@
     };
     s.append(h, big, p);
     if (!st.bonus.done) {
-      const b = el("div", "legend"); b.textContent = "🎁 Bonus still open: tap 🎁 above (25+ points)"; s.append(b);
+      const b = el("div", "legend"); b.textContent = newRules() ? `🌊 River word still open: guess it above (${bonusPer()}+ points)` : "🎁 Bonus still open: tap 🎁 above (25+ points)"; s.append(b);
     }
     s.append(gridEl(), legend, copy, again);
     return s;
@@ -498,7 +522,7 @@
     st.log[st.cur] = blindNow()
       ? { rev: Array.from(r.word, (_, k) => (k < bPrefix ? "h" : "")), miss: st.wMiss }
       : { rev: locked.map(l => (l === "hint" ? "h" : l === "auto" ? "a" : "")), miss: st.wMiss,
-          given: locked.map(l => l === "given") };
+          given: locked.map(l => l === "given"), plain: plainShown };
     const clean = st.wMiss === 0 && st.wRev === 0;
     const m = mult(st.combo);
     const base = Math.max(WORD_FLOOR, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
@@ -515,7 +539,7 @@
     guess = Array.from(r.word);
     const lg = st.log[st.cur];
     locked = guess.map((_, k) =>
-      k >= r.linkIdx && k < r.linkIdx + r.linkLen ? "link"
+      k >= r.linkIdx && k < r.linkIdx + r.goldLen ? "link"
       : lg.given && lg.given[k] ? "given"
       : lg.rev[k] === "h" ? "hint" : lg.rev[k] === "a" ? "auto" : "good");
     render();
@@ -532,7 +556,7 @@
 
   // Keyboard selection: ← → move the selected box among the open ones; Hint then reveals that box.
   function moveSel(dir) {
-    if (blocked() || blindNow()) return;
+    if (blocked() || blindNow() || !hintsOn()) return;
     const open = locked.map((l, j) => (l ? -1 : j)).filter(j => j >= 0);
     if (!open.length) return;
     let i = open.indexOf(sel);
@@ -544,8 +568,14 @@
 
   // Reveal one letter. kind: "hint" (button) or "auto" (timer). Both cost points and break the combo.
   const canReveal = () => (blindNow() ? bPrefix < rows[st.cur].word.length : locked.some(l => !l));
+  // Hard v2: buy the plain clue. Costs like a reveal and breaks the combo.
+  function showPlain() {
+    if (blocked() || !plainAvail() || plainShown) return;
+    plainShown = true; st.hints++; st.wRev++; lastProgress = Date.now();
+    FX.reveal(); flash(`Plain clue shown (−${cfg().reveal})`); save(); render();
+  }
   function reveal(kind) {
-    if (blocked() || !canReveal()) return;
+    if (blocked() || !canReveal() || !hintsOn()) return;
     const w = rows[st.cur].word;
     if (blindNow()) {
       let p = bPrefix;
@@ -576,7 +606,7 @@
       }
     }
     const t = $("timer"), secs = prefs.autoSecs;
-    if (!secs || done() || busy || !canReveal()) { t.textContent = ""; return; }
+    if (!secs || done() || busy || !hintsOn() || !canReveal()) { t.textContent = ""; return; }
     const left = secs - (Date.now() - lastProgress) / 1000;
     if (left <= 0) { reveal("auto"); flash("Auto-revealed a letter"); return; }
     t.textContent = `Next letter in ${Math.ceil(left)}s`;
@@ -586,9 +616,16 @@
 
   // ---- bonus puzzle: first gold letter of each row spells a hidden word ----
   const lettersShown = () => Math.min(done() ? rows.length - 1 : st.cur, BONUS_LETTERS);
-  const bonusWorth = () => Math.max(BONUS_MIN, BONUS_PER * (BONUS_LETTERS - lettersShown()) - BONUS_MISS * st.bonus.miss);
+  const bonusWorth = () => Math.max(bonusPer(), bonusPer() * (BONUS_LETTERS - lettersShown()) - BONUS_MISS * st.bonus.miss);
   function renderBonus() {
     const answer = chain.bonus.answer, n = lettersShown();
+    // River rules: the word is the headline, so its panel is always open (no 🎁 toggle).
+    const river = newRules();
+    if (river) $("bonus").hidden = false;
+    $("bonusBtn").hidden = river;
+    document.querySelector(".bonus-title").innerHTML = river
+      ? "🌊 The <b>gold letters</b>, top to bottom, spell a hidden word. Guess it early for more."
+      : "🎁 Bonus: the <b>first gold letter</b> of each row, top to bottom, spells a word";
     $("bonusClue").textContent = chain.bonus.clue;
     const wrap = $("bonusLetters"); wrap.innerHTML = "";
     for (let k = 0; k < BONUS_LETTERS; k++) {
@@ -611,7 +648,7 @@
     if (g === chain.bonus.answer) {
       const pts = bonusWorth();
       st.bonus.done = true; st.bonus.pts = pts; st.score += pts;
-      FX.bonus(); FX.confetti(70); flash(`🎁 Bonus! +${pts}`);
+      FX.bonus(); FX.confetti(70); flash(newRules() ? `🌊 River word! +${pts}` : `🎁 Bonus! +${pts}`);
       input.value = ""; save(); render();
     } else {
       st.bonus.miss++; FX.miss(); flash("Not the bonus word"); input.select(); save(); renderBonus();
@@ -727,7 +764,7 @@
     if (/^[a-zA-Z]$/.test(e.key)) type(e.key);
     else if (e.key === "Backspace") back();
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); moveSel(e.key === "ArrowLeft" ? -1 : 1); }
-    else if (e.key === "?" || e.key === "/") { e.preventDefault(); reveal("hint"); }
+    else if (e.key === "?" || e.key === "/") { e.preventDefault(); if (hintsOn()) reveal("hint"); else showPlain(); }
     else if (e.key === "Enter") { e.preventDefault(); submit(); }
   });
   window.addEventListener("resize", () => { size(); drawMeander(); });

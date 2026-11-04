@@ -41,9 +41,20 @@ for (const d of Object.keys(LINKLEN)) {
       if (usedWord.has(w)) fail(tag, "word", w, "already used in", usedWord.get(w));
       usedWord.set(w, tag);
       const c = e.clue;
+      // Hard chains 2+ carry a tough `clue` (<= 9 words) plus a plain fallback (<= 6 words); everything else is <= 6.
+      const tough = d === "hard" && ci > 0;
+      if (tough && (typeof e.plain !== "string" || !e.plain.trim())) fail(tag, w, "hard chain needs a plain clue");
+      if (!tough && e.plain) fail(tag, w, "unexpected plain clue");
+      if (tough && e.plain) {
+        if (nwords(e.plain) > 6) fail(tag, w, "plain clue > 6 words:", e.plain);
+        if (e.plain.toUpperCase().includes(w)) fail(tag, w, "plain clue contains answer:", e.plain);
+        const pk = e.plain.trim().toLowerCase();
+        if (seenClues.has(pk)) fail(tag, w, "duplicate plain clue:", e.plain, "(also", seenClues.get(pk) + ")");
+        seenClues.set(pk, tag + " " + w + " (plain)");
+      }
       if (typeof c !== "string" || !c.trim()) fail(tag, w, "missing clue");
       else {
-        if (nwords(c) > 6) fail(tag, w, "clue > 6 words:", c);
+        if (nwords(c) > (tough ? 9 : 6)) fail(tag, w, "clue too long:", c);
         if (c.toUpperCase().includes(w)) fail(tag, w, "clue contains answer:", c);
         const k = c.trim().toLowerCase();
         if (seenClues.has(k)) fail(tag, w, "duplicate clue:", c, "(also", seenClues.get(k) + ")");
