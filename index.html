@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meanderings</title>
+<style>
+  :root {
+    --bg: #faf7f2; --fg: #222; --box: #fff; --line: #cfc8bb; --muted: #7a7468;
+    --accent: #c8553d; --link: #e8b93c; --good: #4c9a5f; --key: #e4ded2;
+    --cell: 44px; --gap: 6px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16171a; --fg: #eee; --box: #23252a; --line: #3b3e45; --muted: #9a9a9a; --key: #2f3239; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header { text-align: center; padding: 14px 16px 4px; }
+  h1 { margin: 0; font-size: 26px; letter-spacing: .08em; text-transform: uppercase; }
+  .sub { margin: 4px auto 0; color: var(--muted); font-size: 13px; max-width: 460px; }
+  .bar { display: flex; justify-content: center; gap: 14px; align-items: center;
+    margin: 10px 0 14px; font-size: 13px; color: var(--muted); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .btn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
+  main { padding: 0 16px 280px; }
+  #board { margin: 0 auto; }
+  .entry { margin-bottom: 14px; }
+  .tiles { display: flex; gap: var(--gap); width: max-content; }
+  .tile { width: var(--cell); height: var(--cell); display: grid; place-items: center;
+    border: 2px solid var(--line); background: var(--box); border-radius: 6px;
+    font-weight: 700; font-size: calc(var(--cell) * .5); text-transform: uppercase; }
+  .tile.cursor { border-color: var(--accent); }
+  .tile.solved { border-color: var(--fg); }
+  .tile.link { background: var(--link); border-color: var(--link); color: #222; }
+  .tile.good { background: var(--good); border-color: var(--good); color: #fff; }
+  .clue { text-align: center; color: var(--muted); font-style: italic; font-size: 14px; margin-top: 5px; }
+  .entry.active .clue { color: var(--fg); font-size: 16px; }
+  .shake .tile:not(.link):not(.good) { animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  .summary { text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
+  .summary h2 { margin: 0 0 6px; }
+  .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
+  footer { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg);
+    border-top: 1px solid var(--line); padding: 6px 6px calc(8px + env(safe-area-inset-bottom)); }
+  #msg { min-height: 20px; text-align: center; font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  #kb { max-width: 520px; margin: 0 auto; }
+  .krow { display: flex; justify-content: center; gap: 5px; margin-bottom: 5px; }
+  .key { flex: 1; max-width: 44px; height: 46px; border: 0; border-radius: 6px; background: var(--key);
+    font-weight: 600; font-size: 15px; padding: 0; }
+  .key.wide { max-width: 66px; font-size: 13px; }
+  .key:active { filter: brightness(.9); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Meanderings</h1>
+  <p class="sub">Guess each word from its clue. The next word shares letters with the one above — they're filled in and lined up for you.</p>
+  <div class="bar">
+    <span id="progress"></span>
+    <span id="stats"></span>
+    <button class="btn" id="hint">Hint</button>
+  </div>
+</header>
+<main><div id="board"></div></main>
+<footer>
+  <div id="msg"></div>
+  <div id="kb"></div>
+</footer>
+<script src="words.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
