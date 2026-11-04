@@ -279,9 +279,11 @@
     const L = P[P.length - 1];
     return d + ` L${L[0]},${L[1]}`;
   }
+  // The line is the finale: it's only drawn once the chain is complete (mid-game it looked like a glitch).
   function drawMeander() {
+    const old0 = $("meander"); if (old0) old0.remove();
     const entries = [...board.querySelectorAll(".entry")];
-    if (!entries.length) return;
+    if (!done() || !entries.length) return;
     const br = board.getBoundingClientRect();
     const ctr = t => { const q = t.getBoundingClientRect(); return [q.left - br.left + q.width / 2, q.top - br.top + q.height / 2]; };
     const avg = list => { const c = list.map(ctr); return [c.reduce((s, p) => s + p[0], 0) / c.length, c[0][1]]; };
