@@ -1,6 +1,9 @@
 (() => {
   "use strict";
-  const PREFS = "meanderings-prefs", STATS = "meanderings-stats", KEYV = "meanderings-v3";
+  // /meanderings/test/ sets window.MEANDERINGS_TEST: it plays TOMORROW's puzzle and keeps its own saves and stats
+  // (localStorage is shared across paths on the same origin, so its keys get a "t-" prefix).
+  const TEST = !!window.MEANDERINGS_TEST, NS = TEST ? "t-" : "";
+  const PREFS = NS + "meanderings-prefs", STATS = NS + "meanderings-stats", KEYV = NS + "meanderings-v3";
   const WORD_POINTS = 100, WORD_FLOOR = 10;
   const BONUS_LETTERS = 8, BONUS_MISS = 15;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -28,7 +31,7 @@
     const q = new URLSearchParams(location.search).get("date");
     let y, m, d;
     if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) { [y, m, d] = q.split("-").map(Number); m--; }
-    else { const n = new Date(); y = n.getFullYear(); m = n.getMonth(); d = n.getDate(); }
+    else { const n = new Date(); y = n.getFullYear(); m = n.getMonth(); d = n.getDate() + (TEST ? 1 : 0); }
     return { day: Math.round((Date.UTC(y, m, d) - EPOCH) / 864e5) };
   })();
   today.date = dateFor(today.day);
@@ -777,6 +780,12 @@
       if (m && m[1] < cut) localStorage.removeItem(k);
     });
   } catch (e) {}
+
+  if (TEST) {
+    const b = el("div", "testbar");
+    b.textContent = `TEST MODE · puzzle #${today.day + 1} (${today.date}) · saves and stats here are separate from the real game · add ?date=YYYY-MM-DD to try another day`;
+    document.body.prepend(b);
+  }
 
   setup();
 })();

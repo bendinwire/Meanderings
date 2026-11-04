@@ -7,6 +7,15 @@ set -euo pipefail
 HOST="${HOST:-dock}"   # ssh alias for dockeruser@thelatebar.com, the box that runs nginx-proxy
 cd "$(dirname "$0")"
 
+# /meanderings/test/: generated copy of the page that plays tomorrow's puzzle with separate saves (same code, same puzzles).
+mkdir -p test
+sed -e 's#href="assets/#href="../assets/#g' \
+    -e 's#<script src="words.js">#<script>window.MEANDERINGS_TEST = true;</script><script src="../words.js">#' \
+    -e 's#<script src="fx.js">#<script src="../fx.js">#' \
+    -e 's#<script src="game.js">#<script src="../game.js">#' \
+    -e 's#<title>Meanderings</title>#<title>Meanderings (test)</title><meta name="robots" content="noindex">#' \
+    index.html > test/index.html
+
 echo "▶ Uploading…"
 rsync -az --delete --exclude '.git' --exclude 'validate.js' --exclude 'README.md' --exclude 'deploy.sh' --exclude 'content' \
   ./ "$HOST:/tmp/meanderings-web/"
