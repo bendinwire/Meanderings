@@ -1,21 +1,32 @@
-// node validate.js [path]   (default ./words.js)
-// Validates a Meanderings pools file: { easy:[{bonus:{answer,clue}, words:[{word,clue,link?}]}], medium, hard }.
-// Exits non-zero on any failure; prints one summary line per chain.
+// node validate.js [path]                      validate a pools file (default ./words.js)
+// node validate.js --pool <diff> <pool.js>     validate words.js with its <diff> pool REPLACED by the array of chains
+//                                               exported by <pool.js> (module.exports = [...]); all three pools are
+//                                               checked together, so cross-difficulty repeats are caught
+// Nothing may repeat anywhere: no word, no bonus answer, no clue, in any difficulty. One grandfathered exception:
+// the day-1 puzzles were already published, so a bonus answer may repeat between two index-0 chains.
+// Pools file shape: { easy:[chain], medium:[chain], hard:[chain] }, chain = { bonus:{answer,clue}, words:[{word,clue,link?}] }.
+// Exits non-zero on any failure; prints one summary line per chain (or only failures with --quiet).
 const path = require("path");
-const file = path.resolve(process.argv[2] || "./words.js");
-const P = require(file);
+const args = process.argv.slice(2);
+const quiet = args.includes("--quiet");
+const rest = args.filter(a => a !== "--quiet");
+let P, only = null;
+if (rest[0] === "--pool") {
+  const base = require(path.resolve("./words.js"));
+  only = rest[1];
+  P = { ...base, [only]: require(path.resolve(rest[2])) };   // all three pools are still checked so nothing repeats across difficulties
+} else P = require(path.resolve(rest[0] || "./words.js"));
+
 const LINKLEN = { easy: 3, medium: 2, hard: 1 }, MAXSPAN = 15;
 const count = (s, sub) => { let n = 0, i = -1; while ((i = s.indexOf(sub, i + 1)) >= 0) n++; return n; };
 const nwords = s => s.trim().split(/\s+/).filter(Boolean).length;
 let bad = 0;
 const fail = (...a) => { console.log("FAIL", ...a); bad++; };
-const seenClues = new Map();
+const seenClues = new Map(), usedWord = new Map(), usedBonus = new Map();   // global: nothing repeats anywhere, in any difficulty
 
 for (const d of Object.keys(LINKLEN)) {
   const pool = P[d];
-  if (!Array.isArray(pool)) { fail(d, "missing pool"); continue; }
-  if (pool.length !== 7) fail(d, "expected 7 chains, got", pool.length);
-  const usedWords = new Map(), usedBonus = new Set();
+  if (!Array.isArray(pool) || pool.length < 7) { fail(d, "pool missing or has fewer than 7 chains"); continue; }
   pool.forEach((ch, ci) => {
     const tag = `${d}#${ci + 1}`;
     const words = ch.words || [], b = ch.bonus || {};
@@ -27,8 +38,8 @@ for (const d of Object.keys(LINKLEN)) {
       if (!/^[A-Z]+$/.test(w || "")) fail(tag, "bad word", w);
       else if (w.length < 4 || w.length > 12) fail(tag, "length out of 4-12:", w);
       if (seen.has(w)) fail(tag, "repeat in chain:", w); seen.add(w);
-      if (usedWords.has(w)) fail(tag, "word reused across chains:", w, "(also", usedWords.get(w) + ")");
-      usedWords.set(w, tag);
+      if (usedWord.has(w)) fail(tag, "word", w, "already used in", usedWord.get(w));
+      usedWord.set(w, tag);
       const c = e.clue;
       if (typeof c !== "string" || !c.trim()) fail(tag, w, "missing clue");
       else {
@@ -59,12 +70,14 @@ for (const d of Object.keys(LINKLEN)) {
     if (span > MAXSPAN) fail(tag, "span", span, "> ", MAXSPAN);
     if (!/^[A-Z]{8}$/.test(b.answer || "")) fail(tag, "bonus not 8 letters A-Z:", b.answer);
     else if (b.answer !== letters) fail(tag, "bonus", b.answer, "!= link letters", letters);
-    if (usedBonus.has(b.answer)) fail(tag, "duplicate bonus in difficulty:", b.answer); usedBonus.add(b.answer);
+    if (usedBonus.has(b.answer) && !(ci === 0 && usedBonus.get(b.answer).ci === 0)) fail(tag, "bonus", b.answer, "already used in", usedBonus.get(b.answer).tag);
+    usedBonus.set(b.answer, { tag, ci });
     if (!b.clue || nwords(b.clue) > 8) fail(tag, "bonus clue missing or > 8 words");
     else if (b.clue.toUpperCase().includes(b.answer)) fail(tag, "bonus clue contains answer");
     if (words.some(e => e.word === b.answer)) fail(tag, "bonus answer is also a chain word");
-    console.log(`${tag} span ${span} deltas ${deltas.join(" ")} bonus ${b.answer}`);
+    if (!quiet) console.log(`${tag} span ${span} deltas ${deltas.join(" ")} bonus ${b.answer}`);
   });
+  console.log(`${d}: ${pool.length} chains checked`);
 }
 console.log(bad ? `FAILED (${bad})` : "all ok");
 process.exit(bad ? 1 : 0);
