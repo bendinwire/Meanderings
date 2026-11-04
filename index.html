@@ -40,6 +40,8 @@
   #meander path.done { stroke: var(--link); opacity: .85; filter: drop-shadow(0 0 4px var(--link)); }
   @keyframes flow { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
   .entry { margin-bottom: 14px; position: relative; z-index: 1; }
+  /* Text under a row is pinned to the screen width, so it stays readable when a wide board is panned. */
+  .clue, .hintwrap, .strip, .blindtag { position: sticky; left: 16px; width: calc(100vw - 32px); max-width: 100%; }
   .clue span { background: var(--bg); padding: 0 8px; position: relative; }
   .clue.pending { opacity: .6; }
   .tiles { display: flex; gap: var(--gap); width: max-content; }
@@ -127,7 +129,7 @@
   .stat-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
   .stat-tbl th, .stat-tbl td { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--line); }
   .stat-tbl th:first-child, .stat-tbl td:first-child { text-align: left; }
-  .summary { position: sticky; left: 0; width: calc(100vw - 32px); max-width: 100%; text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
+  .summary { position: sticky; left: 16px; width: calc(100vw - 32px); max-width: 100%; text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
   .summary h2 { margin: 0 0 6px; }
   .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
   footer { position: fixed; z-index: 20; left: 0; right: 0; bottom: 0; background: var(--bg);
