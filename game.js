@@ -380,7 +380,7 @@
     if (st.bestCombo >= 3) extras.push(`🔥 ${st.bestCombo} clean in a row`);
     const lines = gridRows().map(g =>
       "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + (g.miss ? " " + missText(g.miss) : ""));
-    return `${head}${extras.length ? "\n" + extras.join(" · ") : ""}\n\n${lines.join("\n")}\n\nTry it: ${location.origin + location.pathname}`;
+    return `${head}${extras.length ? "\n" + extras.join(" · ") : ""}\n\n${lines.join("\n")}\n\n${location.origin + location.pathname}`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
