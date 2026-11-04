@@ -13,6 +13,9 @@
     medium: { label: "Medium", keep: true,  miss: 10, reveal: 12, blind: false, delay: 0 },
     hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: true,  delay: 8 },
   };
+  // Given letters: the first word of a chain starts with some letters filled in (easy 2, medium 1, hard 0).
+  // Starts with puzzle #2 (Nov 5, 2026) so today's already-played puzzle is unchanged; random chains always use it.
+  const GIVEN = { easy: 2, medium: 1, hard: 0 }, GIVEN_FROM_DAY = 1;
   // Combo: each consecutive clean word (no miss, no reveal) raises the multiplier; any slip resets it.
   const mult = c => Math.min(3, 1 + 0.25 * c);
   const fmt = n => Math.round(n).toLocaleString("en-US");
@@ -69,6 +72,8 @@
   const done = () => st.cur >= rows.length;
   const reveals = () => st.hints + st.auto;
   const blindNow = () => cfg().blind && !done() && !busy;
+  const givenOn = () => view.kind === "random" || view.day >= GIVEN_FROM_DAY;
+  const givenIdx = w => (GIVEN[diff] >= 2 ? [0, w.length - 1] : GIVEN[diff] === 1 ? [0] : []);
 
   const storeKey = (k, v = view) => `${KEYV}:${v.kind === "random" ? "random" : dateFor(v.day)}:${k}`;
   // Prefs and game state are saved separately: changing `diff` or `view` must never write the old state
@@ -100,7 +105,8 @@
       `every revealed letter (hint or auto) costs ${cfg().reveal}; a solved word is always worth at least ${WORD_FLOOR}. ` +
       `Clean words (no miss, no reveal) build a combo: ×1.25, ×1.5 … up to ×3. Any slip resets it.` +
       (cfg().keep ? "" : " Misses don't tell you which letters were right.") +
-      (cfg().blind ? " Hard is blind: no letter count, and the clue arrives after a few seconds." : "");
+      (cfg().blind ? " Hard is blind: no letter count, and the clue arrives after a few seconds." : "") +
+      (GIVEN[diff] && givenOn() ? ` The first word starts with ${GIVEN[diff]} letter${GIVEN[diff] > 1 ? "s" : ""} filled in (blue).` : "");
     startRow(true); size(); render(); updateTabs();
     if (view.kind === "random") save();
   }
@@ -116,6 +122,7 @@
       guess[r.linkIdx + k] = r.word[r.linkIdx + k];
       locked[r.linkIdx + k] = "link";
     }
+    if (st.cur === 0 && givenOn()) givenIdx(r.word).forEach(j => { guess[j] = r.word[j]; locked[j] = "given"; });
     const sv = st.row;
     if (restore && sv && sv.cur === st.cur) {
       if (sv.guess?.length === r.word.length && sv.locked?.length === r.word.length) {
@@ -199,6 +206,7 @@
             t.textContent = guess[j] || "";
             if (locked[j] === "link") t.classList.add("link");
             else if (locked[j] === "auto") t.classList.add("auto");
+            else if (locked[j] === "given") t.classList.add("given");
             else if (locked[j]) t.classList.add("good");
             else if (j === nextEmpty) t.classList.add("cursor");
             if (!locked[j] && !busy) {
@@ -325,14 +333,14 @@
 
   // ---- share grid: the meander shape, one block per letter ----
   // g = solved yourself, y = shared (free), r = hint, o = auto-reveal, plus a trailing X per miss.
-  const EMOJI = { g: "🟩", y: "🟨", r: "🟥", o: "🟧" };
+  const EMOJI = { g: "🟩", y: "🟨", b: "🟦", r: "🟥", o: "🟧" };
   function gridRows() {
     return rows.map((r, i) => {
       const lg = (st.log || [])[i] || { rev: [], miss: 0 };
       const cells = [];
       for (let j = 0; j < r.word.length; j++) {
         const link = j >= r.linkIdx && j < r.linkIdx + r.linkLen;
-        cells.push(link ? "y" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
+        cells.push(link ? "y" : lg.given && lg.given[j] ? "b" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
       }
       return { pad: r.off, padR: span - r.off - r.word.length, cells, miss: lg.miss || 0 };
     });
@@ -371,7 +379,7 @@
     p.textContent = `${cfg().label} · ${pl(st.wrong, "miss", "misses")} · ${pl(st.hints, "hint", "hints")} · ` +
       `${pl(st.auto, "auto-reveal", "auto-reveals")} · best combo ${st.bestCombo}`;
     const legend = el("div", "legend");
-    legend.textContent = "🟩 solved · 🟨 shared · 🟥 hint · 🟧 auto · ❌ miss";
+    legend.textContent = "🟩 solved · 🟨 shared · 🟦 given · 🟥 hint · 🟧 auto · ❌ miss";
     const copy = el("button", "btn"); copy.textContent = "Copy result";
     copy.onclick = async () => {
       const text = gridText();
@@ -451,7 +459,8 @@
     st.log = st.log || [];
     st.log[st.cur] = blindNow()
       ? { rev: Array.from(r.word, (_, k) => (k < bPrefix ? "h" : "")), miss: st.wMiss }
-      : { rev: locked.map(l => (l === "hint" ? "h" : l === "auto" ? "a" : "")), miss: st.wMiss };
+      : { rev: locked.map(l => (l === "hint" ? "h" : l === "auto" ? "a" : "")), miss: st.wMiss,
+          given: locked.map(l => l === "given") };
     const clean = st.wMiss === 0 && st.wRev === 0;
     const m = mult(st.combo);
     const base = Math.max(WORD_FLOOR, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
