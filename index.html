@@ -66,6 +66,7 @@
   .seg { background: none; border: 0; padding: 6px 16px; font-size: 14px; border-right: 1px solid var(--line); }
   .seg:last-child { border-right: 0; }
   .seg.on { background: var(--fg); color: var(--bg); font-weight: 700; }
+  .tile.hint { background: #d64541; border-color: #d64541; color: #fff; }
   .tile.given { background: #5aa9e6; border-color: #5aa9e6; color: #10202e; }
   .tile.auto { background: var(--auto); border-color: var(--auto); color: #fff; }
   #timer { text-align: center; font-size: 12px; color: var(--auto); min-height: 16px; margin: -8px 0 6px; }
@@ -85,9 +86,9 @@
   .sx { margin-left: 6px; font-size: 13px; line-height: 1; }
   .legend { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
   .summary .big { font-size: 34px; font-weight: 800; margin: 4px 0; }
-  .shake .tile:not(.link):not(.good):not(.auto) { animation: shake .35s; }
+  .shake .tile:not(.link):not(.good):not(.auto):not(.hint):not(.given) { animation: shake .35s; }
   /* the letter dance: a staggered wave of hops, tiles flipping green */
-  .dance .tile:not(.link) { background: var(--good); border-color: var(--good); color: #fff; }
+  .dance .tile:not(.link):not(.hint):not(.auto):not(.given) { background: var(--good); border-color: var(--good); color: #fff; }
   .dance .tile { animation: hop .65s ease-in-out both; animation-delay: calc(var(--r, 0) * 200ms + var(--i) * 70ms); }
   @keyframes hop {
     0%   { transform: translateY(0) rotate(0); }

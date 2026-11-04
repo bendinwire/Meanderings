@@ -209,6 +209,7 @@
             if (locked[j] === "link") t.classList.add("link");
             else if (locked[j] === "auto") t.classList.add("auto");
             else if (locked[j] === "given") t.classList.add("given");
+            else if (locked[j] === "hint") t.classList.add("hint");
             else if (locked[j]) t.classList.add("good");
             else if (j === nextEmpty) t.classList.add("cursor");
             if (!locked[j] && !busy) {
@@ -219,7 +220,11 @@
           } else {
             t.textContent = r.word[j];
             t.classList.add("solved");
+            const lg = (st.log || [])[i];
             if (j >= r.linkIdx && j < r.linkIdx + r.linkLen) t.classList.add("link");
+            else if (lg && lg.given && lg.given[j]) t.classList.add("given");
+            else if (lg && lg.rev && lg.rev[j] === "h") t.classList.add("hint");     // keep hint/auto colors after solving
+            else if (lg && lg.rev && lg.rev[j] === "a") t.classList.add("auto");
           }
           tiles.append(t);
         }
@@ -478,7 +483,11 @@
     busy = true; dance = true;
     // Show the whole word during the dance, even in blind mode.
     guess = Array.from(r.word);
-    locked = guess.map((_, k) => (k >= r.linkIdx && k < r.linkIdx + r.linkLen ? "link" : "good"));
+    const lg = st.log[st.cur];
+    locked = guess.map((_, k) =>
+      k >= r.linkIdx && k < r.linkIdx + r.linkLen ? "link"
+      : lg.given && lg.given[k] ? "given"
+      : lg.rev[k] === "h" ? "hint" : lg.rev[k] === "a" ? "auto" : "good");
     render();
     const token = ++runToken;
     const wait = reduceMotion ? 250 : 650 + r.word.length * 70 + 150;
