@@ -159,13 +159,15 @@
     save(); view = v; flash(""); setup(); window.scrollTo(0, 0);
   }
 
-  // ---- sizing: shrink tiles so the full width of the chain fits ----
+  // ---- sizing: fit the chain's full width if tiles can stay comfortable; otherwise keep them tappable
+  // (MIN_CELL) and let the board pan sideways, centered on the row you're solving ----
+  const MIN_CELL = 30;
   function size() {
     const avail = Math.min(window.innerWidth - 32, 760);
     let gap = 6;
     let cell = Math.floor((avail - (span - 1) * gap) / span);
-    if (cell < 26) { gap = 3; cell = Math.floor((avail - (span - 1) * gap) / span); }
-    cell = Math.max(18, Math.min(52, cell));
+    if (cell < MIN_CELL) { gap = 4; cell = MIN_CELL; }
+    cell = Math.min(52, cell);
     const s = document.documentElement.style;
     s.setProperty("--cell", cell + "px");
     s.setProperty("--gap", gap + "px");
@@ -279,7 +281,23 @@
     finale = false;
     drawMeander();
     renderBonus();
-    (activeEntry || board.lastElementChild)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    const focus = activeEntry || board.lastElementChild;
+    keepVisible(focus);
+    centerActive(activeEntry);
+  }
+  // Scroll the page just enough that the row (and its Hint button) sits above the fixed keyboard.
+  function keepVisible(node) {
+    if (!node) return;
+    const f = document.querySelector("footer").getBoundingClientRect().top, r = node.getBoundingClientRect();
+    const behavior = "auto";   // instant: a new row has just appeared, a glide would lag behind it
+    if (r.bottom > f - 12) window.scrollBy({ top: r.bottom - f + 12, behavior });
+    else if (r.top < 8) window.scrollBy({ top: r.top - 8, behavior });
+  }
+  function centerActive(entry) {
+    const main = document.querySelector("main");
+    if (!entry || main.scrollWidth <= main.clientWidth) return;
+    const t = entry.querySelector(".tiles").getBoundingClientRect(), m = main.getBoundingClientRect();
+    main.scrollTo({ left: main.scrollLeft + (t.left + t.width / 2) - (m.left + m.width / 2), behavior: "auto" });
   }
 
   // ---- the literal meander: a line snaking through the shared letters of the whole chain ----

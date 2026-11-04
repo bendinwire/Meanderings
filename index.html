@@ -31,7 +31,7 @@
     margin: 10px 0 14px; font-size: 13px; color: var(--muted); }
   button { font: inherit; color: inherit; cursor: pointer; }
   .btn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
-  main { padding: 0 16px 280px; }
+  main { padding: 0 16px 280px; overflow-x: auto; }
   #board { margin: 0 auto; position: relative; }
   #meander { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 0; overflow: visible; }
   #meander path { fill: none; stroke: var(--line); stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
@@ -127,7 +127,7 @@
   .stat-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
   .stat-tbl th, .stat-tbl td { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--line); }
   .stat-tbl th:first-child, .stat-tbl td:first-child { text-align: left; }
-  .summary { text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
+  .summary { position: sticky; left: 0; width: calc(100vw - 32px); max-width: 100%; text-align: center; padding: 18px; border: 2px solid var(--line); border-radius: 10px; margin-top: 8px; }
   .summary h2 { margin: 0 0 6px; }
   .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
   footer { position: fixed; z-index: 20; left: 0; right: 0; bottom: 0; background: var(--bg);
