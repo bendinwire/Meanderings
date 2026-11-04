@@ -388,7 +388,7 @@
     const head = `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)`;
     const extras = extrasLine();
     const lines = gridRows().map(g =>
-      "\u3000".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + " " + rowMark(g));   // U+3000: invisible, emoji-width indent keeps the shape
+      g.cells.map(c => EMOJI[c]).join("") + " " + rowMark(g));   // left-aligned: indenting with spaces never lines up across apps
     return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n${url()}`;
   }
   function gridEl() {
