@@ -1,14 +1,14 @@
 (() => {
   "use strict";
   const PREFS = "meanderings-prefs";
-  const WORD_POINTS = 100;
+  const WORD_POINTS = 100, WORD_FLOOR = 10; // a solved word never scores less than the floor
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Difficulty rules. `keep`: a miss leaves the correctly placed letters (green) in place.
   const DIFFS = {
-    easy:   { label: "Easy",   keep: true,  miss: 10, reveal: 15 },
-    medium: { label: "Medium", keep: true,  miss: 15, reveal: 20 },
-    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 25 },
+    easy:   { label: "Easy",   keep: true,  miss: 8,  reveal: 10 },
+    medium: { label: "Medium", keep: true,  miss: 10, reveal: 12 },
+    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15 },
   };
 
   // ---- today's puzzle: the chain for each difficulty rotates daily (?date=YYYY-MM-DD to preview) ----
@@ -70,7 +70,7 @@
     $("puzzle").textContent = `Puzzle #${today.day + 1} · ${cfg().label}`;
     $("scoreNote").textContent =
       `Each word is worth 100 points. On ${cfg().label}, a miss costs ${cfg().miss} and every revealed letter ` +
-      `(hint or auto) costs ${cfg().reveal}.` +
+      `(hint or auto) costs ${cfg().reveal}. A solved word always scores at least ${WORD_FLOOR}.` +
       (cfg().keep ? "" : " Misses don't tell you which letters were right.");
     startRow(); size(); render(); updateTabs();
   }
@@ -231,7 +231,7 @@
 
   // Correct line: award points, do the letter dance, then move to the next word.
   function solved(r) {
-    const points = Math.max(0, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
+    const points = Math.max(WORD_FLOOR, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
     st.score += points;
     flash(`+${points}`);
     busy = true; dance = true;
