@@ -388,7 +388,7 @@
     const head = `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)`;
     const extras = extrasLine();
     const lines = gridRows().map(g =>
-      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + " " + rowMark(g));
+      "\u3000".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + " " + rowMark(g));   // U+3000: invisible, emoji-width indent keeps the shape
     return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\n\n${url()}`;
   }
   function gridEl() {
