@@ -1,0 +1,16 @@
+module.exports = [
+[2,"Family connection",["Pull from peril","Gown-sewing tailor","Class period of instruction","Without a single defect","Boat dragging a fishing net","Kitchen sieve for pasta","Woody evergreen seed case","Cash and coins","Lawyer"]],
+[7,"Method of tackling a problem",["Where cows and chickens roam","Spotted African cat","Glitter and shine","Meaty slab at a cookout","Manual worker","Elbow-to-wrist part","Pleasing attractiveness","Rolling seat for mobility","Spinning paper toy on a stick"]],
+[11,"Planes and helicopters",["Secretly wreck on purpose","Practice game","Tomato-shaped orange fruit","Joined-up handwriting","Free of errors","Shake rapidly, like a phone","Full of thanks","Lovely to look at","Give a good reason for"]],
+[14,"Out at sea, away from land",["Cowboy footwear","Small hill at a mountain's base","Shoeless","Ottoman for tired feet","Infielder between second and third","Lucky U-shaped iron","Tiny fish with a curled tail","Baby's room","Graveyard"]],
+[15,"Flight of steps",["Arcade game handle","Simple country style","Working by itself","Frilly corsage flower","Helping on a plate","When fighting is going on","Nuts, bolts and tools","Wine grapes' farm","Knitter's thread; a tall tale"]],
+[24,"From birth to death",["Small lute-like string instrument","Big passenger plane","Coffee's stimulant","Hurt someone's feelings","Make believe","Shine wetly","Fine fog","Christmas kissing plant","Place you grew up"]],
+[26,"Approved by authority",["Leap; tied up","Where rides and prize pigs gather","Not just","Strong trust","Iron-shaping craftsman","Sinking trap in jungle movies","Playground game with a rubber ball","Wooden hammer","Handout flyer"]],
+[29,"Wrongdoer",["Second in command in the cockpit","Sub's viewing tube","Joint below the hand","Error","Entry fee","Country","Sea cow of Florida","Move away","Train's engine"]],
+[32,"Person on the road",["Pocket number cruncher","Claimed land area","Annoy","Charm completely","Raise up","Distance between wave peaks","Loan out","Pal","Flat grassland of the Midwest"]],
+[44,"Careful and wary",["Applaud with your hands","Timeless masterpiece","Promise confidently","Sofas, desks and beds","Wind-farm spinner","Stretch luxury car","Kids' backyard hideout","Floating home","Unopened flower"]],
+[48,"Organized push for a goal",["Shriek","Dairy product factory","Change slightly for the better","Rental unit in a high-rise","Leave","Plump game bird","Squirm restlessly","Gold lump","Cozy"]],
+[49,"Blaze out of control in the forest",["Tall narrow building","Meadow bloom nobody planted","Confuse","Burn without flame","Flat fish; struggle","Grow well","Clear wood finish","Study","Winter cover for ears"]],
+[60,"Hurry in disorder",["Spanish party","Wild West horse-drawn carriage","Slicker for wet days","Stairway support bar","Easily noticed site","Smooth polished stone","Stir until combined","Gift for something","Thin glowing wire in a bulb"]],
+[61,"Final; resulting later",["Jean fabric","Vacation keepsake","Come up with something new","Item in a ledger or contest","Kitchen food closet","Chickens and turkeys","Grow crops","Draw pictures for a book","Deliciously rich"]],
+];
