@@ -1,0 +1,420 @@
+[
+ {
+  "bonus": {
+   "answer": "PARADISE",
+   "clue": "Heavenly place; bird-of-___ flower"
+  },
+  "words": [
+   {
+    "word": "DEPARTMENT",
+    "clue": "Store section, like shoes or toys"
+   },
+   {
+    "word": "APRIL",
+    "clue": "Month after March",
+    "link": "P"
+   },
+   {
+    "word": "CHAIR",
+    "clue": "Seat with four legs",
+    "link": "A"
+   },
+   {
+    "word": "STAR",
+    "clue": "Twinkler in the night sky",
+    "link": "R"
+   },
+   {
+    "word": "LAVENDER",
+    "clue": "Purple flower with a calming scent",
+    "link": "A"
+   },
+   {
+    "word": "MARIGOLD",
+    "clue": "Orange or yellow garden flower",
+    "link": "D"
+   },
+   {
+    "word": "SKILL",
+    "clue": "Ability honed through practice",
+    "link": "I"
+   },
+   {
+    "word": "SOLDIER",
+    "clue": "Army enlisted fighter",
+    "link": "S"
+   },
+   {
+    "word": "SHINGLE",
+    "clue": "Overlapping roof tile",
+    "link": "E"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "EXPLORER",
+   "clue": "Magellan, for one"
+  },
+  "words": [
+   {
+    "word": "APPLE",
+    "clue": "Granny Smith, or the Big one in New York",
+    "plain": "Red fruit that keeps doctors away"
+   },
+   {
+    "word": "EXPAND",
+    "clue": "Swell up, or grow beyond bounds",
+    "link": "E",
+    "plain": "Get larger"
+   },
+   {
+    "word": "EXPERIENCE",
+    "clue": "What a job candidate needs but cannot fake",
+    "link": "X",
+    "plain": "Time on the job"
+   },
+   {
+    "word": "PIXEL",
+    "clue": "Tiny screen dot in a digital photo",
+    "link": "P",
+    "plain": "Smallest picture element on a screen"
+   },
+   {
+    "word": "MAGNOLIA",
+    "clue": "Southern tree with big, fragrant white blooms",
+    "link": "L",
+    "plain": "Southern tree with large white flowers"
+   },
+   {
+    "word": "ORPHAN",
+    "clue": "Oliver Twist, before the workhouse found him",
+    "link": "O",
+    "plain": "Child without parents"
+   },
+   {
+    "word": "INSURANCE",
+    "clue": "Payout after a fender bender",
+    "link": "R",
+    "plain": "Coverage against loss or damage"
+   },
+   {
+    "word": "CAPTURE",
+    "clue": "Seize the moment, or snap a photo",
+    "link": "E",
+    "plain": "Take prisoner, or record"
+   },
+   {
+    "word": "WEATHER",
+    "clue": "Forecaster's topic, sunny or stormy",
+    "link": "R",
+    "plain": "Sunny, rainy, or snowy conditions"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "BIRTHDAY",
+   "clue": "Candles on a cake mark this"
+  },
+  "words": [
+   {
+    "word": "BIKE",
+    "clue": "Two-wheeler with pedals and a bell",
+    "plain": "Pedal vehicle with two wheels"
+   },
+   {
+    "word": "TAXICAB",
+    "clue": "Yellow ride hailed in Manhattan",
+    "link": "B",
+    "plain": "Cab you hail on the street"
+   },
+   {
+    "word": "SQUIRT",
+    "clue": "Water pistol's burst, or a child's wriggle",
+    "link": "I",
+    "plain": "Spray a small stream"
+   },
+   {
+    "word": "METRONOME",
+    "clue": "Piano teacher's ticking timekeeper",
+    "link": "R",
+    "plain": "Musician's ticking timekeeper"
+   },
+   {
+    "word": "DROUGHT",
+    "clue": "Long dry spell that withers crops",
+    "link": "T",
+    "plain": "Lack of rain for months"
+   },
+   {
+    "word": "SCHEDULE",
+    "clue": "Planner's grid of times and events",
+    "link": "H",
+    "plain": "Timetable of events"
+   },
+   {
+    "word": "ROADRUNNER",
+    "clue": "Bird that beep-beeped past a coyote",
+    "link": "D",
+    "plain": "Cartoon bird that outruns a coyote"
+   },
+   {
+    "word": "DOORWAY",
+    "clue": "Entrance whose swinging panel meets the frame",
+    "link": "A",
+    "plain": "Entry into a room"
+   },
+   {
+    "word": "HUMIDITY",
+    "clue": "Muggy air's measurement on a weather report",
+    "link": "Y",
+    "plain": "Moisture in the air"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SEASHELL",
+   "clue": "Hold it to your ear for waves"
+  },
+  "words": [
+   {
+    "word": "WINDSHIELD",
+    "clue": "Front glass that wipers clear",
+    "plain": "Front glass of a car"
+   },
+   {
+    "word": "THERMOS",
+    "clue": "Where soup stays hot till lunch",
+    "link": "S",
+    "plain": "Insulated flask for hot drinks"
+   },
+   {
+    "word": "NORTHEAST",
+    "clue": "Direction between north and east",
+    "link": "E",
+    "plain": "Compass point between north and east"
+   },
+   {
+    "word": "ADVERTISE",
+    "clue": "Promote a product on billboards",
+    "link": "A",
+    "plain": "Promote through commercials"
+   },
+   {
+    "word": "WAREHOUSE",
+    "clue": "Big building where goods wait to ship",
+    "link": "S",
+    "plain": "Big storage building for goods"
+   },
+   {
+    "word": "PHRASE",
+    "clue": "Words grouped without a full sentence",
+    "link": "H",
+    "plain": "Group of words, not a sentence"
+   },
+   {
+    "word": "BUGLE",
+    "clue": "Brass horn that wakes soldiers at dawn",
+    "link": "E",
+    "plain": "Military wake-up horn"
+   },
+   {
+    "word": "GRANOLA",
+    "clue": "Crunchy oat breakfast with nuts and honey",
+    "link": "L",
+    "plain": "Crunchy oat cereal with nuts"
+   },
+   {
+    "word": "NOBLE",
+    "clue": "Of high birth, or a gas that won't react",
+    "link": "L",
+    "plain": "Aristocratic, or a type of gas"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "PLEASURE",
+   "clue": "Opposite of pain"
+  },
+  "words": [
+   {
+    "word": "SPARROW",
+    "clue": "Small brown songbird at the feeder",
+    "plain": "Small brown bird"
+   },
+   {
+    "word": "DOLPHIN",
+    "clue": "Clicking, squeaking sea swimmer",
+    "link": "P",
+    "plain": "Friendly sea mammal"
+   },
+   {
+    "word": "CORNMEAL",
+    "clue": "Ground maize, mixed for muffins or mush",
+    "link": "L",
+    "plain": "Ground corn for baking"
+   },
+   {
+    "word": "GEAR",
+    "clue": "Cleats and pads, or a car's shifter",
+    "link": "E",
+    "plain": "Equipment, or a car's transmission part"
+   },
+   {
+    "word": "CASE",
+    "clue": "Detective's puzzle, or a glasses holder",
+    "link": "A",
+    "plain": "Detective's puzzle to solve"
+   },
+   {
+    "word": "OUTSIDE",
+    "clue": "Where recess happens, away from walls",
+    "link": "S",
+    "plain": "Not indoors"
+   },
+   {
+    "word": "NUCLEAR",
+    "clue": "Kind of power or family, like a reactor",
+    "link": "U",
+    "plain": "Of the atom"
+   },
+   {
+    "word": "BUTTERMILK",
+    "clue": "Tangy drink left over from churning",
+    "link": "R",
+    "plain": "Tangy drink after churning cream"
+   },
+   {
+    "word": "ZERO",
+    "clue": "Nothing at all, on a scoreboard",
+    "link": "E",
+    "plain": "Nothing, as a number"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "TERRIBLE",
+   "clue": "Awful, dreadful, just plain bad"
+  },
+  "words": [
+   {
+    "word": "TOUR",
+    "clue": "Round trip for a sightseer",
+    "plain": "Sightseeing journey"
+   },
+   {
+    "word": "CORRECT",
+    "clue": "Right on the test, not wrong",
+    "link": "T",
+    "plain": "Free of mistakes"
+   },
+   {
+    "word": "MICROWAVE",
+    "clue": "Kitchen oven that heats leftovers in seconds",
+    "link": "E",
+    "plain": "Fast kitchen oven for popcorn"
+   },
+   {
+    "word": "SORE",
+    "clue": "Tender, as a bruise or throat",
+    "link": "R",
+    "plain": "Painful to the touch"
+   },
+   {
+    "word": "TRIP",
+    "clue": "Short journey, or a stumble over a curb",
+    "link": "R",
+    "plain": "Short journey, or to stumble"
+   },
+   {
+    "word": "BRIEF",
+    "clue": "Short and to the point, like a legal summary",
+    "link": "I",
+    "plain": "Short, or a lawyer's summary"
+   },
+   {
+    "word": "GERBIL",
+    "clue": "Small pet that runs on a wheel",
+    "link": "B",
+    "plain": "Small rodent pet, like a hamster"
+   },
+   {
+    "word": "TODDLER",
+    "clue": "Child learning to walk, unsteadily",
+    "link": "L",
+    "plain": "Small child just learning to walk"
+   },
+   {
+    "word": "STYLE",
+    "clue": "Fashion sense, or how an author writes",
+    "link": "E",
+    "plain": "Fashionable look, or writing manner"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "CONCRETE",
+   "clue": "Sidewalk material, or not abstract"
+  },
+  "words": [
+   {
+    "word": "CUDDLE",
+    "clue": "Snuggle up close, as with a teddy bear",
+    "plain": "Snuggle"
+   },
+   {
+    "word": "CLOWN",
+    "clue": "Circus performer in a red nose",
+    "link": "C",
+    "plain": "Bozo, for one"
+   },
+   {
+    "word": "THRONE",
+    "clue": "Seat of power, literally",
+    "link": "O",
+    "plain": "A king's chair"
+   },
+   {
+    "word": "BACKBONE",
+    "clue": "Spine that holds you upright, or toughness",
+    "link": "N",
+    "plain": "Spine, or main support"
+   },
+   {
+    "word": "SCORE",
+    "clue": "Result of a game, or a film's music",
+    "link": "C",
+    "plain": "Game tally, or a film's music"
+   },
+   {
+    "word": "PARSLEY",
+    "clue": "Herb served with fish, curly or flat",
+    "link": "R",
+    "plain": "Green herb, curly or flat"
+   },
+   {
+    "word": "DIRTBIKE",
+    "clue": "Trail bike with knobby tires, off-road",
+    "link": "E",
+    "plain": "Off-road cycle"
+   },
+   {
+    "word": "CUTE",
+    "clue": "Adorable, in a puppy sort of way",
+    "link": "T",
+    "plain": "Adorable"
+   },
+   {
+    "word": "STAKE",
+    "clue": "Wooden pointed post, or a wager in poker",
+    "link": "E",
+    "plain": "Wager, or pointed wooden pole"
+   }
+  ]
+ }
+]

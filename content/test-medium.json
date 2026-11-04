@@ -1,0 +1,366 @@
+[
+ {
+  "bonus": {
+   "answer": "HOSPITAL",
+   "clue": "Where the sick get treated"
+  },
+  "words": [
+   {
+    "word": "SHANTY",
+    "clue": "Ramshackle little hut"
+   },
+   {
+    "word": "HARMONY",
+    "clue": "Pleasing blend of musical notes",
+    "link": "HA"
+   },
+   {
+    "word": "STALLION",
+    "clue": "Uncastrated male horse",
+    "link": "ON"
+   },
+   {
+    "word": "STEEPLE",
+    "clue": "Pointed tower atop a building",
+    "link": "ST"
+   },
+   {
+    "word": "PLAID",
+    "clue": "Tartan-style crisscross pattern",
+    "link": "PL"
+   },
+   {
+    "word": "WIDTH",
+    "clue": "Measurement across, side to side",
+    "link": "ID"
+   },
+   {
+    "word": "BREATH",
+    "clue": "Air taken in and out",
+    "link": "TH"
+   },
+   {
+    "word": "LATHE",
+    "clue": "Machine for turning wood",
+    "link": "AT"
+   },
+   {
+    "word": "ESCALATOR",
+    "clue": "Moving staircase at the mall",
+    "link": "LA"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "FREEZING",
+   "clue": "Below thirty-two degrees, on a thermometer"
+  },
+  "words": [
+   {
+    "word": "GOLDFISH",
+    "clue": "Pet bowl swimmer"
+   },
+   {
+    "word": "FIREMAN",
+    "clue": "Hose-wielding emergency responder",
+    "link": "FI"
+   },
+   {
+    "word": "REPEL",
+    "clue": "Drive back; ward off",
+    "link": "RE"
+   },
+   {
+    "word": "SNORKEL",
+    "clue": "Breathing tube for swimmers",
+    "link": "EL"
+   },
+   {
+    "word": "GAZELLE",
+    "clue": "Graceful African grazer",
+    "link": "EL"
+   },
+   {
+    "word": "EMPHASIZE",
+    "clue": "Stress; give special weight",
+    "link": "ZE"
+   },
+   {
+    "word": "ORGANIZE",
+    "clue": "Arrange in neat order",
+    "link": "IZ"
+   },
+   {
+    "word": "TONIGHT",
+    "clue": "This evening",
+    "link": "NI"
+   },
+   {
+    "word": "THOROUGH",
+    "clue": "Complete and careful",
+    "link": "GH"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "AUDIENCE",
+   "clue": "Crowd watching a show"
+  },
+  "words": [
+   {
+    "word": "GARLIC",
+    "clue": "Pungent bulb in Italian cooking"
+   },
+   {
+    "word": "QUARTET",
+    "clue": "Four-piece musical group",
+    "link": "AR"
+   },
+   {
+    "word": "PERSUADE",
+    "clue": "Win over with argument",
+    "link": "UA"
+   },
+   {
+    "word": "DECLINE",
+    "clue": "Fall in value; say no politely",
+    "link": "DE"
+   },
+   {
+    "word": "LEGGINGS",
+    "clue": "Stretchy pants worn with tunics",
+    "link": "IN"
+   },
+   {
+    "word": "WINEGLASS",
+    "clue": "Stemmed glass for a drink",
+    "link": "EG"
+   },
+   {
+    "word": "RECLINE",
+    "clue": "Lean back in a chair",
+    "link": "NE"
+   },
+   {
+    "word": "CLEVER",
+    "clue": "Quick-witted; smart",
+    "link": "CL"
+   },
+   {
+    "word": "FERRET",
+    "clue": "Weasel relative kept as pet",
+    "link": "ER"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "ABSOLUTE",
+   "clue": "Total; without any exception"
+  },
+  "words": [
+   {
+    "word": "FOREMAN",
+    "clue": "Crew chief on a worksite"
+   },
+   {
+    "word": "HANDLEBAR",
+    "clue": "Cyclist's steering grip",
+    "link": "AN"
+   },
+   {
+    "word": "FASTBALL",
+    "clue": "Pitcher's quick heater",
+    "link": "BA"
+   },
+   {
+    "word": "COSTUME",
+    "clue": "Halloween outfit",
+    "link": "ST"
+   },
+   {
+    "word": "LACROSSE",
+    "clue": "Sport played with netted sticks",
+    "link": "OS"
+   },
+   {
+    "word": "FLASHBULB",
+    "clue": "Old camera light",
+    "link": "LA"
+   },
+   {
+    "word": "CULTURE",
+    "clue": "Customs and arts of a society",
+    "link": "UL"
+   },
+   {
+    "word": "RETURN",
+    "clue": "Come back; give back",
+    "link": "TU"
+   },
+   {
+    "word": "SEETHE",
+    "clue": "Boil with anger",
+    "link": "ET"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "FRACTION",
+   "clue": "A small part of the whole"
+  },
+  "words": [
+   {
+    "word": "FISHNET",
+    "clue": "Mesh stocking pattern"
+   },
+   {
+    "word": "FIREBALL",
+    "clue": "Blazing sphere of flame",
+    "link": "FI"
+   },
+   {
+    "word": "REALIZE",
+    "clue": "Come to understand fully",
+    "link": "RE"
+   },
+   {
+    "word": "CATALOG",
+    "clue": "Product listing sent to shoppers",
+    "link": "AL"
+   },
+   {
+    "word": "IDENTICAL",
+    "clue": "Exactly alike, as twins",
+    "link": "CA"
+   },
+   {
+    "word": "RETIRE",
+    "clue": "Leave work for good",
+    "link": "TI"
+   },
+   {
+    "word": "IRONING",
+    "clue": "Pressing clothes chore",
+    "link": "IR"
+   },
+   {
+    "word": "OPINION",
+    "clue": "Personal view on a matter",
+    "link": "ON"
+   },
+   {
+    "word": "JACKKNIFE",
+    "clue": "Pocket blade that folds",
+    "link": "NI"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "GIGANTIC",
+   "clue": "Truly enormous in size"
+  },
+  "words": [
+   {
+    "word": "ANGER",
+    "clue": "Fury; rage"
+   },
+   {
+    "word": "DRAWBRIDGE",
+    "clue": "Castle entrance that lifts up",
+    "link": "GE"
+   },
+   {
+    "word": "GUIDE",
+    "clue": "Lead the way; show around",
+    "link": "ID"
+   },
+   {
+    "word": "IGUANA",
+    "clue": "Green reptile kept as a pet",
+    "link": "GU"
+   },
+   {
+    "word": "INSTANCE",
+    "clue": "Single example; occurrence",
+    "link": "AN"
+   },
+   {
+    "word": "DISTANCE",
+    "clue": "How far apart two points are",
+    "link": "NC"
+   },
+   {
+    "word": "STARLIGHT",
+    "clue": "Soft glow from the night sky",
+    "link": "TA"
+   },
+   {
+    "word": "CARDIGAN",
+    "clue": "Buttoned wool sweater",
+    "link": "IG"
+   },
+   {
+    "word": "BIRDCAGE",
+    "clue": "Home for a parakeet",
+    "link": "CA"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "BACKPACK",
+   "clue": "Student's bag on the shoulders"
+  },
+  "words": [
+   {
+    "word": "SOAPBOX",
+    "clue": "Stump speaker's makeshift stage"
+   },
+   {
+    "word": "GAZEBO",
+    "clue": "Garden pavilion with open sides",
+    "link": "BO"
+   },
+   {
+    "word": "CRAZY",
+    "clue": "Loony; out of one's mind",
+    "link": "AZ"
+   },
+   {
+    "word": "NUTCRACKER",
+    "clue": "Holiday ballet's walnut breaker",
+    "link": "CR"
+   },
+   {
+    "word": "INNKEEPER",
+    "clue": "Hotel proprietor of old",
+    "link": "KE"
+   },
+   {
+    "word": "CARPET",
+    "clue": "Floor covering, wall to wall",
+    "link": "PE"
+   },
+   {
+    "word": "SCARF",
+    "clue": "Winter neck wrap",
+    "link": "AR"
+   },
+   {
+    "word": "SHORTCAKE",
+    "clue": "Strawberry dessert on biscuit",
+    "link": "CA"
+   },
+   {
+    "word": "CRICKET",
+    "clue": "Chirping bug or bat-and-ball sport",
+    "link": "KE"
+   }
+  ]
+ }
+]

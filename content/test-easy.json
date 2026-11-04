@@ -1,0 +1,366 @@
+[
+ {
+  "bonus": {
+   "answer": "ALLIANCE",
+   "clue": "Partnership between groups or nations"
+  },
+  "words": [
+   {
+    "word": "BACKSEAT",
+    "clue": "Rear seat of a car"
+   },
+   {
+    "word": "LINEBACKER",
+    "clue": "Defense player who tackles",
+    "link": "ACK"
+   },
+   {
+    "word": "BLINDFOLD",
+    "clue": "Cloth worn over the eyes",
+    "link": "LIN"
+   },
+   {
+    "word": "LINE",
+    "clue": "Queue of waiting people",
+    "link": "LIN"
+   },
+   {
+    "word": "PINEAPPLE",
+    "clue": "Tropical fruit with spiky skin",
+    "link": "INE"
+   },
+   {
+    "word": "APPLIANCE",
+    "clue": "Kitchen machine like a toaster",
+    "link": "APP"
+   },
+   {
+    "word": "SCIENCE",
+    "clue": "Study of nature and experiments",
+    "link": "NCE"
+   },
+   {
+    "word": "CONCIERGE",
+    "clue": "Hotel staff who helps guests",
+    "link": "CIE"
+   },
+   {
+    "word": "EMERGE",
+    "clue": "Come out into view",
+    "link": "ERG"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "PARTNERS",
+   "clue": "Teammates working together"
+  },
+  "words": [
+   {
+    "word": "STEPLADDER",
+    "clue": "Tall folding stairs for painting"
+   },
+   {
+    "word": "MARKETPLACE",
+    "clue": "Outdoor place for buying and selling",
+    "link": "PLA"
+   },
+   {
+    "word": "GRACE",
+    "clue": "Reward for a job well done",
+    "link": "ACE"
+   },
+   {
+    "word": "TERRACE",
+    "clue": "Large building along a street",
+    "link": "RAC"
+   },
+   {
+    "word": "PRINTER",
+    "clue": "Office machine that makes copies",
+    "link": "TER"
+   },
+   {
+    "word": "INTEND",
+    "clue": "Plan to stop by on purpose",
+    "link": "NTE"
+   },
+   {
+    "word": "TRENDY",
+    "clue": "Fashionable and current",
+    "link": "END"
+   },
+   {
+    "word": "SURRENDER",
+    "clue": "Give up and hand over",
+    "link": "REN"
+   },
+   {
+    "word": "MEASURE",
+    "clue": "Find the size of something",
+    "link": "SUR"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "FOOTBALL",
+   "clue": "Game played with a pigskin"
+  },
+  "words": [
+   {
+    "word": "FIERCE",
+    "clue": "Wild and aggressive"
+   },
+   {
+    "word": "OUTFIELD",
+    "clue": "Grassy area beyond the infield",
+    "link": "FIE"
+   },
+   {
+    "word": "DUGOUT",
+    "clue": "Shelter where baseball players sit",
+    "link": "OUT"
+   },
+   {
+    "word": "OUTBOARD",
+    "clue": "Boat motor mounted on the stern",
+    "link": "OUT"
+   },
+   {
+    "word": "TEXTBOOK",
+    "clue": "Book used in a class",
+    "link": "TBO"
+   },
+   {
+    "word": "CABOOSE",
+    "clue": "Last car on a freight train",
+    "link": "BOO"
+   },
+   {
+    "word": "LABOR",
+    "clue": "Hard work or toil",
+    "link": "ABO"
+   },
+   {
+    "word": "AVAILABLE",
+    "clue": "Open for use; obtainable",
+    "link": "LAB"
+   },
+   {
+    "word": "LABEL",
+    "clue": "Tag on clothing or a jar",
+    "link": "LAB"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "MARCHING",
+   "clue": "Walking in step like soldiers"
+  },
+  "words": [
+   {
+    "word": "MAROON",
+    "clue": "Dark reddish-brown color"
+   },
+   {
+    "word": "MARCH",
+    "clue": "Third month of the year",
+    "link": "MAR"
+   },
+   {
+    "word": "RESEARCH",
+    "clue": "Investigate in depth",
+    "link": "ARC"
+   },
+   {
+    "word": "ORCHID",
+    "clue": "Purple or orange flower",
+    "link": "RCH"
+   },
+   {
+    "word": "CHILD",
+    "clue": "Young boy or girl",
+    "link": "CHI"
+   },
+   {
+    "word": "CHINCHILLA",
+    "clue": "Fluffy gray pet rodent",
+    "link": "HIL"
+   },
+   {
+    "word": "WINDMILL",
+    "clue": "Spinning wind turbine",
+    "link": "ILL"
+   },
+   {
+    "word": "GRANDMOTHER",
+    "clue": "Mom's mother",
+    "link": "NDM"
+   },
+   {
+    "word": "DIAGRAM",
+    "clue": "Chart or sketch explaining something",
+    "link": "GRA"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "FOOTSTEP",
+   "clue": "Sound made when walking"
+  },
+  "words": [
+   {
+    "word": "FAITHFUL",
+    "clue": "Loyal and true to a friend"
+   },
+   {
+    "word": "BOUNTIFUL",
+    "clue": "Plentiful and generous",
+    "link": "FUL"
+   },
+   {
+    "word": "COUNTDOWN",
+    "clue": "Counting backward to liftoff",
+    "link": "OUN"
+   },
+   {
+    "word": "TOWN",
+    "clue": "Small community, bigger than a village",
+    "link": "OWN"
+   },
+   {
+    "word": "STOWAWAY",
+    "clue": "Hidden traveler on a ship",
+    "link": "TOW"
+   },
+   {
+    "word": "COBBLESTONE",
+    "clue": "Rough road paved with rounded rocks",
+    "link": "STO"
+   },
+   {
+    "word": "GRAVESTONE",
+    "clue": "Marker over a grave",
+    "link": "TON"
+   },
+   {
+    "word": "PRIEST",
+    "clue": "Religious leader in a church",
+    "link": "EST"
+   },
+   {
+    "word": "SPRINT",
+    "clue": "Run quickly for a short distance",
+    "link": "PRI"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "CONCERNS",
+   "clue": "Things that make you worry"
+  },
+  "words": [
+   {
+    "word": "NACHOS",
+    "clue": "Crunchy chips with melted cheese"
+   },
+   {
+    "word": "PONCHO",
+    "clue": "Rain cape pulled over head",
+    "link": "CHO"
+   },
+   {
+    "word": "ONCE",
+    "clue": "A single time",
+    "link": "ONC"
+   },
+   {
+    "word": "COMMENCE",
+    "clue": "Begin or start",
+    "link": "NCE"
+   },
+   {
+    "word": "INTERCOM",
+    "clue": "Two-way speaker at a front door",
+    "link": "COM"
+   },
+   {
+    "word": "WATERCRESS",
+    "clue": "Leafy green for salad or soup",
+    "link": "ERC"
+   },
+   {
+    "word": "PRESENCE",
+    "clue": "Being here right now",
+    "link": "RES"
+   },
+   {
+    "word": "SILENCE",
+    "clue": "Total quiet",
+    "link": "NCE"
+   },
+   {
+    "word": "UTENSIL",
+    "clue": "Fork, spoon or knife",
+    "link": "SIL"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SUPERIOR",
+   "clue": "Better than the others"
+  },
+  "words": [
+   {
+    "word": "BASEBOARD",
+    "clue": "Trim along the wall bottom"
+   },
+   {
+    "word": "GOOSEBUMP",
+    "clue": "Skin prickle from the cold",
+    "link": "SEB"
+   },
+   {
+    "word": "BUMPER",
+    "clue": "Car guard against collisions",
+    "link": "UMP"
+   },
+   {
+    "word": "PERMIT",
+    "clue": "Allow or give permission",
+    "link": "PER"
+   },
+   {
+    "word": "PEPPERMINT",
+    "clue": "Spicy candy cane flavor",
+    "link": "ERM"
+   },
+   {
+    "word": "TERMITE",
+    "clue": "Wood-eating insect",
+    "link": "RMI"
+   },
+   {
+    "word": "FAVORITE",
+    "clue": "Most liked; preferred",
+    "link": "ITE"
+   },
+   {
+    "word": "AUDITORIUM",
+    "clue": "Big hall for concerts or lectures",
+    "link": "ORI"
+   },
+   {
+    "word": "AQUARIUM",
+    "clue": "Glass tank for fish",
+    "link": "RIU"
+   }
+  ]
+ }
+]
