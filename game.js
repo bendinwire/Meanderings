@@ -5,14 +5,14 @@
   const BONUS_LETTERS = 8, BONUS_PER = 25, BONUS_MISS = 15, BONUS_MIN = 25;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Difficulty rules. `keep`: a miss leaves correctly placed letters (green). `delay`: seconds before the clue
-  // appears (not on word 1). `blind` (hide the box count, type the whole word) is implemented but off: with the
-  // length hidden, one gold letter plus a clue fits almost any word, which isn't solvable. Link length (3/2/1 letters)
+  // Difficulty rules. `keep`: a miss leaves correctly placed letters (green). `delay` (seconds before a clue
+  // appears) and `blind` (hide the box count, type the whole word) are implemented but off: playtesting showed
+  // they make Hard unsolvable. The clue and the box count should always be visible. Link length (3/2/1 letters)
   // is part of the puzzle data in words.js.
   const DIFFS = {
     easy:   { label: "Easy",   keep: true,  miss: 8,  reveal: 10, blind: false, delay: 0 },
     medium: { label: "Medium", keep: true,  miss: 10, reveal: 12, blind: false, delay: 0 },
-    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: false, delay: 8 },
+    hard:   { label: "Hard",   keep: false, miss: 15, reveal: 15, blind: false, delay: 0 },
   };
   // Given letters: the first word of a chain starts with some letters filled in (easy 2, medium 1, hard 0).
   // Starts with puzzle #2 (Nov 5, 2026) so today's already-played puzzle is unchanged; random chains always use it.
