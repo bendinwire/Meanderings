@@ -142,13 +142,20 @@
       const clue = el("div", "clue");
       clue.textContent = r.clue;
       entry.append(tiles, clue);
+      if (active && !busy) {
+        const hw = el("div", "hintwrap");
+        const hb = el("button", "btn");
+        hb.textContent = "Hint";
+        hb.onclick = () => { reveal("hint"); hb.blur(); };
+        hw.append(hb);
+        entry.append(hw);
+      }
       board.append(entry);
       if (active) activeEntry = entry;
     }
     if (done()) board.append(summary());
     $("progress").textContent = done() ? "Complete" : `Word ${st.cur + 1} of ${rows.length}`;
     $("stats").textContent = `Score ${st.score} · ${st.wrong} miss${st.wrong === 1 ? "" : "es"} · ${reveals()} reveal${reveals() === 1 ? "" : "s"}`;
-    $("hint").disabled = done();
     (activeEntry || board.lastElementChild)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
 
@@ -288,7 +295,6 @@
     if (k === "enter") submit(); else if (k === "back") back(); else type(k);
     b.blur();
   });
-  $("hint").addEventListener("click", e => { reveal("hint"); e.currentTarget.blur(); });
   document.addEventListener("keydown", e => {
     if (e.target.tagName === "SELECT") return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;

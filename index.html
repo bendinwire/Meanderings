@@ -35,6 +35,8 @@
   .tile.link { background: var(--link); border-color: var(--link); color: #222; }
   .tile.good { background: var(--good); border-color: var(--good); color: #fff; }
   .clue { text-align: center; color: var(--muted); font-style: italic; font-size: 14px; margin-top: 5px; }
+  .hintwrap { text-align: center; margin-top: 8px; }
+  .hintwrap .btn { padding: 5px 16px; font-size: 14px; }
   .entry.active .clue { color: var(--fg); font-size: 16px; }
   #puzzle { margin-top: 8px; font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
   .tabs { display: inline-flex; margin: 8px 0 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
@@ -95,7 +97,6 @@
   <div class="bar">
     <span id="progress"></span>
     <span id="stats"></span>
-    <button class="btn" id="hint">Hint</button>
     <button class="btn" id="settingsBtn" aria-label="Settings" title="Settings">⚙</button>
   </div>
   <div id="timer"></div>
