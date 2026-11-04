@@ -54,6 +54,14 @@
   #settings p { margin: 6px 0 0; color: var(--muted); }
   #settings select { font: inherit; color: inherit; background: var(--box); border: 1px solid var(--line);
     border-radius: 6px; padding: 2px 6px; margin-left: 4px; }
+  .sgrid { display: inline-flex; flex-direction: column; gap: 3px; margin: 12px 0 6px; text-align: left; }
+  .srow { display: flex; gap: 3px; align-items: center; }
+  .sb { width: var(--sb, 18px); height: var(--sb, 18px); border-radius: 3px; display: block; }
+  .sb.g { background: var(--good); } .sb.y { background: var(--link); }
+  .sb.r { background: #d64541; }     .sb.o { background: var(--auto); }
+  .sb.k { background: var(--line); opacity: .3; }
+  .sx { margin-left: 6px; font-size: 13px; line-height: 1; }
+  .legend { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
   .summary .big { font-size: 34px; font-weight: 800; margin: 4px 0; }
   .shake .tile:not(.link):not(.good):not(.auto) { animation: shake .35s; }
   /* the letter dance: a staggered wave of hops, tiles flipping green */
@@ -73,6 +81,9 @@
   .summary .btn { margin: 8px 4px 0; padding: 6px 14px; }
   footer { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg);
     border-top: 1px solid var(--line); padding: 6px 6px calc(8px + env(safe-area-inset-bottom)); }
+  .finished #kb { display: none; }
+  .finished footer { border-top: 0; background: transparent; pointer-events: none; }
+  .finished main { padding-bottom: 60px; }
   #msg { position: fixed; left: 50%; top: 38%; transform: translateX(-50%); z-index: 10;
     max-width: calc(100vw - 32px); text-align: center; font-size: 20px; font-weight: 700;
     padding: 14px 26px; border-radius: 14px; background: var(--fg); color: var(--bg);

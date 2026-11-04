@@ -46,7 +46,7 @@
 
   // ---- state ----
   // wMiss / wRev are the misses and revealed letters on the current word (they set its points).
-  const fresh = () => ({ cur: 0, guesses: 0, wrong: 0, hints: 0, auto: 0, score: 0, wMiss: 0, wRev: 0 });
+  const fresh = () => ({ cur: 0, guesses: 0, wrong: 0, hints: 0, auto: 0, score: 0, wMiss: 0, wRev: 0, log: [] });
   const load = key => { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } };
   let prefs = { autoSecs: 0, diff: "easy", ...(load(PREFS) || {}) };
   if (!DIFFS[prefs.diff]) prefs.diff = "easy";
@@ -172,9 +172,44 @@
       if (active) activeEntry = entry;
     }
     if (done()) board.append(summary());
+    document.body.classList.toggle("finished", done());
     $("progress").textContent = done() ? "Complete" : `Word ${st.cur + 1} of ${rows.length}`;
     $("stats").textContent = `Score ${st.score} · ${st.wrong} miss${st.wrong === 1 ? "" : "es"} · ${reveals()} reveal${reveals() === 1 ? "" : "s"}`;
     (activeEntry || board.lastElementChild)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  // ---- share grid: the meander shape, one block per letter ----
+  // g = solved yourself, y = shared (free), r = hint, o = auto-reveal, plus a trailing X per miss.
+  const EMOJI = { g: "🟩", y: "🟨", r: "🟥", o: "🟧" };
+  function gridRows() {
+    return rows.map((r, i) => {
+      const lg = (st.log || [])[i] || { rev: [], miss: 0 };
+      const cells = [];
+      for (let j = 0; j < r.word.length; j++) {
+        const link = j >= r.linkIdx && j < r.linkIdx + r.linkLen;
+        cells.push(link ? "y" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
+      }
+      return { pad: r.off, cells, miss: lg.miss || 0 };
+    });
+  }
+  const missText = n => (n > 4 ? `❌×${n}` : "❌".repeat(n));
+  function gridText() {
+    const head = `Meanderings #${today.day + 1} · ${cfg().label} · ${st.score}/${MAX_SCORE}`;
+    const lines = gridRows().map(g =>
+      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + missText(g.miss) : ""));
+    return `${head}\n\n${lines.join("\n")}\n\nTry it: ${location.origin + location.pathname}`;
+  }
+  function gridEl() {
+    const wrap = el("div", "sgrid");
+    wrap.style.setProperty("--sb", Math.max(10, Math.min(18, Math.floor((window.innerWidth - 100) / span))) + "px");
+    gridRows().forEach(g => {
+      const line = el("div", "srow");
+      line.append(...Array.from({ length: g.pad }, () => el("span", "sb k")));
+      g.cells.forEach(c => line.append(el("span", "sb " + c)));
+      if (g.miss) { const x = el("span", "sx"); x.textContent = missText(g.miss); line.append(x); }
+      wrap.append(line);
+    });
+    return wrap;
   }
 
   function summary() {
@@ -182,16 +217,18 @@
     const h = el("h2"); h.textContent = "Chain complete!";
     const big = el("div", "big"); big.textContent = `${st.score} / ${MAX_SCORE}`;
     const p = el("div");
-    p.textContent = `${cfg().label} · ${st.wrong} misses · ${st.hints} hints · ${st.auto} auto-reveals`;
+    const pl = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+    p.textContent = `${cfg().label} · ${pl(st.wrong, "miss", "misses")} · ${pl(st.hints, "hint", "hints")} · ${pl(st.auto, "auto-reveal", "auto-reveals")}`;
     const copy = el("button", "btn"); copy.textContent = "Copy result";
     copy.onclick = async () => {
-      const url = location.origin + location.pathname;
-      const text = `Meanderings #${today.day + 1} (${cfg().label}) — ${rows.length} words, ${st.wrong} misses, ${reveals()} reveals, ${st.score}/${MAX_SCORE}\nTry it: ${url}`;
+      const text = gridText();
       try { await navigator.clipboard.writeText(text); flash("Copied"); } catch (e) { flash(text); }
     };
     const again = el("button", "btn"); again.textContent = "Play again";
     again.onclick = () => { st = fresh(); startRow(); save(); flash(""); render(); updateTabs(); window.scrollTo(0, 0); };
-    s.append(h, big, p, copy, again);
+    const legend = el("div", "legend");
+    legend.textContent = "🟩 solved · 🟨 shared · 🟥 hint · 🟧 auto · ❌ miss";
+    s.append(h, big, p, gridEl(), legend, copy, again);
     return s;
   }
 
@@ -237,6 +274,8 @@
 
   // Correct line: award points, do the letter dance, then move to the next word.
   function solved(r) {
+    st.log = st.log || [];
+    st.log[st.cur] = { rev: locked.map(l => (l === "hint" ? "h" : l === "auto" ? "a" : "")), miss: st.wMiss };
     const points = Math.max(WORD_FLOOR, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
     st.score += points;
     flash(`+${points}`);
@@ -261,7 +300,7 @@
     if (j < 0) return;
     sel = -1;
     guess[j] = rows[st.cur].word[j];
-    locked[j] = kind === "auto" ? "auto" : "good";
+    locked[j] = kind === "auto" ? "auto" : "hint";
     if (kind === "auto") st.auto++; else st.hints++;
     st.wRev++;
     lastProgress = Date.now();
