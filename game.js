@@ -189,14 +189,14 @@
         const link = j >= r.linkIdx && j < r.linkIdx + r.linkLen;
         cells.push(link ? "y" : lg.rev[j] === "h" ? "r" : lg.rev[j] === "a" ? "o" : "g");
       }
-      return { pad: r.off, cells, miss: lg.miss || 0 };
+      return { pad: r.off, padR: span - r.off - r.word.length, cells, miss: lg.miss || 0 };
     });
   }
   const missText = n => (n > 4 ? `❌×${n}` : "❌".repeat(n));
   function gridText() {
     const head = `Meanderings #${today.day + 1} · ${cfg().label} · ${st.score}/${MAX_SCORE}`;
     const lines = gridRows().map(g =>
-      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + missText(g.miss) : ""));
+      "⬛".repeat(g.pad) + g.cells.map(c => EMOJI[c]).join("") + "⬛".repeat(g.padR) + (g.miss ? " " + missText(g.miss) : ""));
     return `${head}\n\n${lines.join("\n")}\n\nTry it: ${location.origin + location.pathname}`;
   }
   function gridEl() {
@@ -206,6 +206,7 @@
       const line = el("div", "srow");
       line.append(...Array.from({ length: g.pad }, () => el("span", "sb k")));
       g.cells.forEach(c => line.append(el("span", "sb " + c)));
+      line.append(...Array.from({ length: g.padR }, () => el("span", "sb k")));
       if (g.miss) { const x = el("span", "sx"); x.textContent = missText(g.miss); line.append(x); }
       wrap.append(line);
     });
