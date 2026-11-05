@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Meanderings</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
@@ -21,6 +21,9 @@
     :root { --bg: #16171a; --fg: #eee; --box: #23252a; --line: #3b3e45; --muted: #9a9a9a; --key: #2f3239; }
   }
   * { box-sizing: border-box; }
+  /* Locked down: no sideways scrolling, no pinch/double-tap zoom (rapid taps on the on-screen keyboard used to zoom the page). */
+  html, body { overflow-x: hidden; overscroll-behavior-x: none; touch-action: pan-y; -webkit-text-size-adjust: 100%; }
+  button, .tile { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; background: var(--bg); color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   .testbar { background: #d64541; color: #fff; text-align: center; font-size: 12px; padding: 6px 12px; }
@@ -32,7 +35,7 @@
     margin: 10px 0 14px; font-size: 13px; color: var(--muted); }
   button { font: inherit; color: inherit; cursor: pointer; }
   .btn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
-  main { padding: 0 16px 280px; overflow-x: auto; }
+  main { padding: 0 16px 280px; overflow-x: hidden; touch-action: pan-y; }   /* the game scrolls it itself to center the active row */
   #board { margin: 0 auto; position: relative; }
   #meander { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 0; overflow: visible; }
   #meander path { fill: none; stroke: var(--line); stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
@@ -59,7 +62,7 @@
   .tile.pick { outline: 3px dashed var(--accent); outline-offset: 2px; }
   .hinttip { margin-top: 4px; font-size: 12px; color: var(--muted); }
   .plainclue { text-align: center; font-size: 13px; color: var(--muted); margin-top: 4px; position: sticky; left: 16px; width: calc(100vw - 32px); max-width: 100%; }
-  .hintwrap { text-align: center; margin-top: 8px; }
+  .hintwrap { text-align: left; margin-top: 8px; }   /* far from the ENTER key on the right */
   .hintwrap .btn { padding: 5px 16px; font-size: 14px; }
   .kbd { font-size: 11px; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-left: 8px; color: var(--muted); }
   @media (hover: none) { .kbd { display: none; } }
@@ -79,7 +82,7 @@
     border-radius: 8px; font-size: 13px; }
   #settings[hidden] { display: none; }
   #settings p { margin: 6px 0 0; color: var(--muted); }
-  #settings select { font: inherit; color: inherit; background: var(--box); border: 1px solid var(--line);
+  #settings select { font-size: 16px; font: inherit; font-size: 16px; color: inherit; background: var(--box); border: 1px solid var(--line);
     border-radius: 6px; padding: 2px 6px; margin-left: 4px; }
   .sgrid { display: inline-flex; flex-direction: column; gap: 3px; margin: 12px 0 6px; text-align: left; }
   .srow { display: flex; gap: 3px; align-items: center; }
@@ -148,7 +151,8 @@
   .krow { display: flex; justify-content: center; gap: 5px; margin-bottom: 5px; }
   .key { flex: 1; max-width: 44px; height: 46px; border: 0; border-radius: 6px; background: var(--key);
     font-weight: 600; font-size: 15px; padding: 0; }
-  .key.wide { max-width: 66px; font-size: 13px; }
+  .key.wide { flex: 2.6; max-width: 112px; font-size: 13px; }
+  .key.enter { background: var(--good); color: #fff; font-weight: 700; letter-spacing: .04em; }
   .key:active { filter: brightness(.9); }
 </style>
 </head>

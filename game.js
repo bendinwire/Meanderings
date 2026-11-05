@@ -176,14 +176,19 @@
     save(); view = v; flash(""); setup(); window.scrollTo(0, 0);
   }
 
-  // ---- sizing: fit the chain's full width if tiles can stay comfortable; otherwise keep them tappable
-  // (MIN_CELL) and let the board pan sideways, centered on the row you're solving ----
-  const MIN_CELL = 30;
+  // ---- sizing: fit the chain's full width if tiles can stay comfortable. Otherwise the board is wider than the
+  // screen but NOT hand-scrollable (horizontal scrolling is locked); it re-centers itself on the row you're
+  // solving, so tiles are sized to make sure the longest single word always fits the screen. ----
+  const MIN_CELL = 30, MAX_PAN_CELL = 34;
   function size() {
     const avail = Math.min(window.innerWidth - 32, 760);
     let gap = 6;
     let cell = Math.floor((avail - (span - 1) * gap) / span);
-    if (cell < MIN_CELL) { gap = 4; cell = MIN_CELL; }
+    if (cell < MIN_CELL) {
+      gap = 4;
+      const longest = Math.max(...rows.map(r => r.word.length));
+      cell = Math.max(18, Math.min(MAX_PAN_CELL, Math.floor((avail - (longest - 1) * gap) / longest)));
+    }
     cell = Math.min(52, cell);
     const s = document.documentElement.style;
     s.setProperty("--cell", cell + "px");
@@ -776,13 +781,13 @@
   const KEYS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
   KEYS.forEach((letters, ri) => {
     const row = el("div", "krow");
-    if (ri === 2) row.append(key("ENTER", "enter", true));
     for (const c of letters) row.append(key(c, c));
-    if (ri === 2) row.append(key("⌫", "back", true));
+    if (ri === 1) row.append(key("⌫", "back"));              // backspace ends the middle row
+    if (ri === 2) row.append(key("ENTER", "enter", true));   // ENTER: big, green, far right (away from the Hint button)
     kb.append(row);
   });
   function key(label, k, wide) {
-    const b = el("button", "key" + (wide ? " wide" : ""));
+    const b = el("button", "key" + (wide ? " wide" : "") + (k === "enter" ? " enter" : ""));
     b.textContent = label; b.dataset.k = k;
     return b;
   }
