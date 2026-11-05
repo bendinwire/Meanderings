@@ -23,7 +23,7 @@
   };
   // Given letters: the first word of a chain starts with some letters filled in (easy 2, medium 1, hard 0).
   // Starts with puzzle #2 (Nov 5, 2026) so today's already-played puzzle is unchanged; random chains always use it.
-  const GIVEN = { easy: 2, medium: 1, hard: 0 }, GIVEN_FROM_DAY = 1;
+  const GIVEN = { easy: 2, medium: 1, hard: 0 }, GIVEN_FROM_DAY = 1, GIVEN_LAST_DAY = 1;   // given (blue) letters retired after puzzle #2 (Nov 5, 2026); never in theme or random chains
   // Combo: each consecutive clean word (no miss, no reveal) raises the multiplier; any slip resets it.
   const mult = c => Math.min(3, 1 + 0.25 * c);
   const fmt = n => Math.round(n).toLocaleString("en-US");
@@ -86,7 +86,7 @@
   const reveals = () => st.hints + st.auto;
   // Blind starts at word 2: the first word has no shared letter to go on, so it shows its boxes and clue up front.
   const blindNow = () => cfg().blind && !done() && !busy && st.cur > 0;
-  const givenOn = () => view.kind === "random" || view.day >= GIVEN_FROM_DAY;
+  const givenOn = () => !THEMED && view.kind === "puzzle" && view.day >= GIVEN_FROM_DAY && view.day <= GIVEN_LAST_DAY;
   // Hard v2 (puzzle #2 onward, and random chains): no hints of any kind. Words carry a tricky `clue` and an easier
   // `plain` clue that the player can buy. Puzzle #1 (already published) keeps hints and its original clues.
   const HARD_V2_FROM_DAY = 1;
