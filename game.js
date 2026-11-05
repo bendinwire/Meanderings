@@ -402,14 +402,16 @@
         t.style.setProperty("--i", j);
         if (rs.done) {
           t.textContent = r.word[j]; t.classList.add("solved");
-          if ((i > 0 && j === r.linkIdx) || j === outSlot(i)) t.classList.add("link");
+          if (i > 0 && j === r.linkIdx) t.classList.add("link");     // one solid gold tile per link: the lower row's, so the gold letters read down the board as the theme
           else if (lg && lg.given && lg.given[j]) t.classList.add("given");
           else if (lg && lg.rev && lg.rev[j] === "h") t.classList.add("hint");
           else if (lg && lg.rev && lg.rev[j] === "a") t.classList.add("auto");
         } else {
           const g = rs.guess || [], l = rs.locked || [];
           t.textContent = g[j] || "";
-          if (l[j] === "link") t.classList.add("link");
+          // The shared letter is solid gold in the lower row (the river letter) and a pale "echo" in the upper row.
+          if (i > 0 && j === r.linkIdx && linkKnown(i - 1)) t.classList.add("link");
+          else if (j === outSlot(i) && linkKnown(i)) t.classList.add("echo");
           else if (l[j] === "auto") t.classList.add("auto");
           else if (l[j] === "given") t.classList.add("given");
           else if (l[j] === "hint") t.classList.add("hint");
