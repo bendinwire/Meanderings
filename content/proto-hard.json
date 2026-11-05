@@ -1,0 +1,307 @@
+[
+ {
+  "bonus": {
+   "answer": "NAVIGATE",
+   "clue": "Find your way across sea or land"
+  },
+  "words": [
+   {
+    "word": "HELMSMAN",
+    "clue": "He holds the wheel while the captain barks orders",
+    "plain": "Person steering a ship"
+   },
+   {
+    "word": "HEADWIND",
+    "clue": "Gust that slows a plane without touching it",
+    "link": "N",
+    "plain": "Wind blowing against you"
+   },
+   {
+    "word": "VOYAGER",
+    "clue": "Probe that left the solar system, or a seafarer",
+    "link": "A",
+    "plain": "Long-journey traveler"
+   },
+   {
+    "word": "ARRIVE",
+    "clue": "Reach the end of a trip, or succeed",
+    "link": "V",
+    "plain": "Reach your destination"
+   },
+   {
+    "word": "TRIANGULATE",
+    "clue": "Fix a position using two known points and angles",
+    "link": "I",
+    "plain": "Locate using three points"
+   },
+   {
+    "word": "HEADING",
+    "clue": "Direction of travel, in degrees",
+    "link": "G",
+    "plain": "Direction you're pointed"
+   },
+   {
+    "word": "WAYPOINT",
+    "clue": "Stop marked on a route, GPS style",
+    "link": "A",
+    "plain": "Marked stop along a route"
+   },
+   {
+    "word": "TILLER",
+    "clue": "Lever swung to steer a small boat",
+    "link": "T",
+    "plain": "Boat's steering handle"
+   },
+   {
+    "word": "DIVIDERS",
+    "clue": "Two-legged tool that steps off distances on charts",
+    "link": "E",
+    "plain": "Compass-like measuring tool"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SCULPTOR",
+   "clue": "Artist who carves stone or shapes clay"
+  },
+  "words": [
+   {
+    "word": "BUST",
+    "clue": "Head-and-shoulders likeness, or a failure",
+    "plain": "Statue of head and shoulders"
+   },
+   {
+    "word": "SCRAPE",
+    "clue": "Remove surface with a blade, or a minor wound",
+    "link": "S",
+    "plain": "Rub off with a blade"
+   },
+   {
+    "word": "CONTOUR",
+    "clue": "Outline that gives form to a figure",
+    "link": "C",
+    "plain": "Outline of a shape"
+   },
+   {
+    "word": "COLOSSUS",
+    "clue": "Rhodes statue, or any giant of the type",
+    "link": "U",
+    "plain": "Giant statue"
+   },
+   {
+    "word": "PLINTH",
+    "clue": "Squared base under a column or statue",
+    "link": "L",
+    "plain": "Block a statue stands on"
+   },
+   {
+    "word": "PEDESTAL",
+    "clue": "Where a statue stands; don't put people on it",
+    "link": "P",
+    "plain": "Stand for a statue"
+   },
+   {
+    "word": "POINT",
+    "clue": "Tip of a chisel, or the gist",
+    "link": "T",
+    "plain": "Sharp tip"
+   },
+   {
+    "word": "BRONZE",
+    "clue": "Copper-tin alloy poured into molds, third on podium",
+    "link": "O",
+    "plain": "Metal for casting statues"
+   },
+   {
+    "word": "TEXTURE",
+    "clue": "Surface quality the fingertips judge",
+    "link": "R",
+    "plain": "How a surface feels"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "VINEYARD",
+   "clue": "Where grapes for wine are grown"
+  },
+  "words": [
+   {
+    "word": "VALLEY",
+    "clue": "Napa or Sonoma, geographically",
+    "plain": "Low land between hills"
+   },
+   {
+    "word": "VINTAGE",
+    "clue": "Year of the harvest, or classic",
+    "link": "V",
+    "plain": "Wine's harvest year"
+   },
+   {
+    "word": "SEDIMENT",
+    "clue": "What settles at the bottom of an old bottle",
+    "link": "I",
+    "plain": "Dregs in a bottle"
+   },
+   {
+    "word": "ENOLOGY",
+    "clue": "Scientific study of winemaking",
+    "link": "N",
+    "plain": "Science of wine"
+   },
+   {
+    "word": "BERRY",
+    "clue": "Fruit botanically including the grape",
+    "link": "E",
+    "plain": "Small round fruit"
+   },
+   {
+    "word": "YEAST",
+    "clue": "Microbe that turns grape sugar into alcohol",
+    "link": "Y",
+    "plain": "Fungus that ferments sugar"
+   },
+   {
+    "word": "RACK",
+    "clue": "Frame holding bottles on their sides",
+    "link": "A",
+    "plain": "Bottle-holding frame"
+   },
+   {
+    "word": "BORDEAUX",
+    "clue": "French region famed for its clarets",
+    "link": "R",
+    "plain": "Famous French wine region"
+   },
+   {
+    "word": "FORTIFIED",
+    "clue": "Wine like port, strengthened with brandy",
+    "link": "D",
+    "plain": "Boosted with extra alcohol"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "TYPEFACE",
+   "clue": "Design of letters, like Times or Helvetica"
+  },
+  "words": [
+   {
+    "word": "WEIGHT",
+    "clue": "Thickness of the strokes: light, regular, bold",
+    "plain": "Boldness of a font"
+   },
+   {
+    "word": "TYPO",
+    "clue": "A slip of the finger, caught by proofreaders",
+    "link": "T",
+    "plain": "Keyboard spelling mistake"
+   },
+   {
+    "word": "TYPESET",
+    "clue": "Arrange text for printing, once with metal blocks",
+    "link": "Y",
+    "plain": "Arrange text for print"
+   },
+   {
+    "word": "ELLIPSIS",
+    "clue": "Three dots that trail off",
+    "link": "P",
+    "plain": "Three-dot punctuation"
+   },
+   {
+    "word": "SERIFS",
+    "clue": "Tiny feet on Times New Roman's letters",
+    "link": "E",
+    "plain": "Small strokes on letter ends"
+   },
+   {
+    "word": "FORMAT",
+    "clue": "Layout of a page, or to wipe a drive",
+    "link": "F",
+    "plain": "Arrange a document's look"
+   },
+   {
+    "word": "CAPS",
+    "clue": "Capitals, as in SHOUTING online",
+    "link": "A",
+    "plain": "Capital letters"
+   },
+   {
+    "word": "MONOSPACE",
+    "clue": "Type where every letter takes equal width",
+    "link": "C",
+    "plain": "Equal-width font"
+   },
+   {
+    "word": "HEAVY",
+    "clue": "Thick and dark, beyond bold",
+    "link": "E",
+    "plain": "Very bold"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "PHARMACY",
+   "clue": "Where prescriptions are filled"
+  },
+  "words": [
+   {
+    "word": "PLACEBO",
+    "clue": "Sugar pill that works through belief",
+    "plain": "Fake pill in a trial"
+   },
+   {
+    "word": "PATCH",
+    "clue": "Transdermal delivery, stuck on skin",
+    "link": "P",
+    "plain": "Medicated skin sticker"
+   },
+   {
+    "word": "SACHET",
+    "clue": "Single-serve foil packet of powder",
+    "link": "H",
+    "plain": "Small packet of powder"
+   },
+   {
+    "word": "CORDIAL",
+    "clue": "Friendly in manner, or a sweet syrup drink",
+    "link": "A",
+    "plain": "Warm and friendly"
+   },
+   {
+    "word": "REMEDY",
+    "clue": "Cure for what ails you",
+    "link": "R",
+    "plain": "Cure for an illness"
+   },
+   {
+    "word": "VITAMIN",
+    "clue": "Essential nutrient, lettered A through K",
+    "link": "M",
+    "plain": "Daily supplement like C"
+   },
+   {
+    "word": "SCALE",
+    "clue": "Weighing device for measuring doses of powder",
+    "link": "A",
+    "plain": "Weighing device"
+   },
+   {
+    "word": "APOTHECARY",
+    "clue": "Old-fashioned druggist, from Greek for storehouse",
+    "link": "C",
+    "plain": "Old-time druggist"
+   },
+   {
+    "word": "SYRUP",
+    "clue": "Thick sweet liquid carrying cough medicine",
+    "link": "Y",
+    "plain": "Thick liquid medicine"
+   }
+  ]
+ }
+]

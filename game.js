@@ -3,6 +3,9 @@
   // /meanderings/test/ sets window.MEANDERINGS_TEST: it plays TOMORROW's puzzle and keeps its own saves and stats
   // (localStorage is shared across paths on the same origin, so its keys get a "t-" prefix).
   const TEST = !!window.MEANDERINGS_TEST, NS = TEST ? "t-" : "";
+  // Theme chains (prototype, test page only for now): all nine words relate to one theme word, which the gold letters spell.
+  const THEMED = TEST;
+  if (THEMED) { const sub = document.querySelector(".sub"); if (sub) sub.textContent = "Guess each word from its clue. Neighbors share a letter, lined up for you. All nine words belong to one hidden theme."; }
   const PREFS = NS + "meanderings-prefs", STATS = NS + "meanderings-stats", KEYV = NS + "meanderings-v3";
   const WORD_POINTS = 100, WORD_FLOOR = 10;
   const BONUS_LETTERS = 8, BONUS_MISS = 15;
@@ -638,7 +641,8 @@
     if (river) $("bonus").hidden = false;
     $("bonusBtn").hidden = river;
     document.querySelector(".bonus-title").innerHTML = river
-      ? "🌊 The <b>gold letters</b>, top to bottom, spell a hidden word. Guess it early for more."
+      ? (THEMED ? "🧩 All nine words share one <b>theme</b>. The gold letters spell it. Guess it early for more."
+                : "🌊 The <b>gold letters</b>, top to bottom, spell a hidden word. Guess it early for more.")
       : "🎁 Bonus: the <b>first gold letter</b> of each row, top to bottom, spells a word";
     $("bonusClue").textContent = chain.bonus.clue;
     const wrap = $("bonusLetters"); wrap.innerHTML = "";
@@ -657,7 +661,7 @@
     $("bonusBtn").textContent = st.bonus.done ? "🎁✓" : "🎁";
     $("bonusNote").textContent = st.bonus.done
       ? `Solved! +${st.bonus.pts}`
-      : (riverFocus ? "Typing in the river — tap the board or press Esc to go back to the word. " : "Tap the river to type in it. ") +
+      : (THEMED ? (riverFocus ? "Typing the theme — tap the board or press Esc to go back to the word. " : "Tap here to type the theme. ") : riverFocus ? "Typing in the river — tap the board or press Esc to go back to the word. " : "Tap the river to type in it. ") +
         `Worth ${bonusWorth()} now; each wrong guess costs ${BONUS_MISS}.`;
   }
   function riverType(ch) {
@@ -681,11 +685,11 @@
       const pts = bonusWorth();
       st.bonus.done = true; st.bonus.pts = pts; st.score += pts;
       riverFocus = false; riverTyped.fill("");
-      FX.bonus(); FX.confetti(70); flash(newRules() ? `🌊 River word! +${pts}` : `🎁 Bonus! +${pts}`);
+      FX.bonus(); FX.confetti(70); flash(newRules() ? (THEMED ? `🧩 Theme found! +${pts}` : `🌊 River word! +${pts}`) : `🎁 Bonus! +${pts}`);
       save(); render();
     } else {
       st.bonus.miss++; riverTyped.fill("");
-      FX.miss(); flash("Not the river word"); save(); renderBonus();
+      FX.miss(); flash(THEMED ? "Not the theme" : "Not the river word"); save(); renderBonus();
     }
   }
   $("bonusBtn").addEventListener("click", e => { $("bonus").hidden = !$("bonus").hidden; e.currentTarget.blur(); });

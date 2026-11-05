@@ -1,0 +1,262 @@
+[
+ {
+  "bonus": {
+   "answer": "PAINTING",
+   "clue": "Art made with brush and pigment"
+  },
+  "words": [
+   {
+    "word": "MASTERPIECE",
+    "clue": "An artist's greatest work"
+   },
+   {
+    "word": "IMPASTO",
+    "clue": "Thick, textured paint technique",
+    "link": "P"
+   },
+   {
+    "word": "SIENNA",
+    "clue": "Burnt earth tone",
+    "link": "A"
+   },
+   {
+    "word": "GRADIENT",
+    "clue": "Smooth blend between two colors",
+    "link": "I"
+   },
+   {
+    "word": "TONE",
+    "clue": "Color quality, light or dark",
+    "link": "N"
+   },
+   {
+    "word": "STILL",
+    "clue": "Motionless, like a bowl of fruit",
+    "link": "T"
+   },
+   {
+    "word": "RENOIR",
+    "clue": "Impressionist who painted dancers and boaters",
+    "link": "I"
+   },
+   {
+    "word": "INDIGO",
+    "clue": "Deep blue dye",
+    "link": "N"
+   },
+   {
+    "word": "GOYA",
+    "clue": "Spanish court painter of 'Black Paintings'",
+    "link": "G"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "HARDWARE",
+   "clue": "Tools and fasteners, or computer parts"
+  },
+  "words": [
+   {
+    "word": "SHIM",
+    "clue": "Thin wedge used to fill gaps"
+   },
+   {
+    "word": "HAMMER",
+    "clue": "Tool for driving nails",
+    "link": "H"
+   },
+   {
+    "word": "SPANNER",
+    "clue": "British wrench",
+    "link": "A"
+   },
+   {
+    "word": "SANDER",
+    "clue": "Power tool that smooths wood",
+    "link": "R"
+   },
+   {
+    "word": "SCREWDRIVER",
+    "clue": "Fastener turner; also a cocktail",
+    "link": "D"
+   },
+   {
+    "word": "AWL",
+    "clue": "Pointed tool for making holes",
+    "link": "W"
+   },
+   {
+    "word": "RATCHET",
+    "clue": "Socket handle that clicks",
+    "link": "A"
+   },
+   {
+    "word": "LUMBER",
+    "clue": "Cut wood for building",
+    "link": "R"
+   },
+   {
+    "word": "DOWEL",
+    "clue": "Wooden peg joining two pieces",
+    "link": "E"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "RAILROAD",
+   "clue": "Network of steel tracks and depots"
+  },
+  "words": [
+   {
+    "word": "FREIGHT",
+    "clue": "Goods shipped by rail"
+   },
+   {
+    "word": "TANKER",
+    "clue": "Car or ship carrying liquids",
+    "link": "R"
+   },
+   {
+    "word": "TRAIN",
+    "clue": "Choo-choo; also to practice",
+    "link": "A"
+   },
+   {
+    "word": "RAILS",
+    "clue": "Parallel steel bars wheels roll on",
+    "link": "I"
+   },
+   {
+    "word": "TURNTABLE",
+    "clue": "Rotating platform for turning locomotives",
+    "link": "L"
+   },
+   {
+    "word": "CROSSING",
+    "clue": "Where road meets tracks, with gates",
+    "link": "R"
+   },
+   {
+    "word": "LOCAL",
+    "clue": "Service that stops everywhere",
+    "link": "O"
+   },
+   {
+    "word": "DISPATCH",
+    "clue": "Send out; a controller's job",
+    "link": "A"
+   },
+   {
+    "word": "DEPOT",
+    "clue": "Small station",
+    "link": "D"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "MUSICIAN",
+   "clue": "Plays an instrument for a living"
+  },
+  "words": [
+   {
+    "word": "TEMPO",
+    "clue": "Speed of a piece"
+   },
+   {
+    "word": "MOUTHPIECE",
+    "clue": "Horn part your lips touch",
+    "link": "M"
+   },
+   {
+    "word": "DRUMS",
+    "clue": "Kit played with sticks",
+    "link": "U"
+   },
+   {
+    "word": "LYRICS",
+    "clue": "Words of a song",
+    "link": "S"
+   },
+   {
+    "word": "PICK",
+    "clue": "Plastic plectrum for guitar",
+    "link": "I"
+   },
+   {
+    "word": "CHOIR",
+    "clue": "Group of singers in church",
+    "link": "C"
+   },
+   {
+    "word": "ACCORDION",
+    "clue": "Squeezebox with keys and buttons",
+    "link": "I"
+   },
+   {
+    "word": "SAXOPHONE",
+    "clue": "Curved jazz horn with a reed",
+    "link": "A"
+   },
+   {
+    "word": "TUNER",
+    "clue": "Device that checks pitch",
+    "link": "N"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "GARDENER",
+   "clue": "Person who tends flowers and veggies"
+  },
+  "words": [
+   {
+    "word": "GRAVEL",
+    "clue": "Small stones for a path"
+   },
+   {
+    "word": "WATERING",
+    "clue": "Giving plants a drink",
+    "link": "G"
+   },
+   {
+    "word": "RAKE",
+    "clue": "Tool for gathering leaves",
+    "link": "A"
+   },
+   {
+    "word": "ORCHID",
+    "clue": "Showy tropical flower",
+    "link": "R"
+   },
+   {
+    "word": "SPADE",
+    "clue": "Digging tool; also a card suit",
+    "link": "D"
+   },
+   {
+    "word": "MANURE",
+    "clue": "Natural fertilizer from farm animals",
+    "link": "E"
+   },
+   {
+    "word": "PLANTER",
+    "clue": "Pot or box for flowers",
+    "link": "N"
+   },
+   {
+    "word": "LOPPERS",
+    "clue": "Long-handled branch cutters",
+    "link": "E"
+   },
+   {
+    "word": "ROW",
+    "clue": "Line of crops",
+    "link": "R"
+   }
+  ]
+ }
+]

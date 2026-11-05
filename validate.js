@@ -8,8 +8,8 @@
 // Exits non-zero on any failure; prints one summary line per chain (or only failures with --quiet).
 const path = require("path");
 const args = process.argv.slice(2);
-const quiet = args.includes("--quiet");
-const rest = args.filter(a => a !== "--quiet");
+const quiet = args.includes("--quiet"), V2 = args.includes("--v2");   // --v2: theme chains (1-letter links at every difficulty, 3+ letter words, any pool size >= 5)
+const rest = args.filter(a => a !== "--quiet" && a !== "--v2");
 let P, only = null;
 if (rest[0] === "--pool") {
   const base = require(path.resolve("./words.js"));
@@ -17,16 +17,20 @@ if (rest[0] === "--pool") {
   P = { ...base, [only]: require(path.resolve(rest[2])) };   // all three pools are still checked so nothing repeats across difficulties
 } else P = require(path.resolve(rest[0] || "./words.js"));
 
-const LINKLEN = { easy: 3, medium: 2, hard: 1 }, MAXSPAN = 15;
+const LINKLEN = V2 ? { easy: 1, medium: 1, hard: 1 } : { easy: 3, medium: 2, hard: 1 }, MAXSPAN = 15, MINWORD = V2 ? 3 : 4, MINPOOL = V2 ? 5 : 7;
 const count = (s, sub) => { let n = 0, i = -1; while ((i = s.indexOf(sub, i + 1)) >= 0) n++; return n; };
 const nwords = s => s.trim().split(/\s+/).filter(Boolean).length;
 let bad = 0;
 const fail = (...a) => { console.log("FAIL", ...a); bad++; };
 const seenClues = new Map(), usedWord = new Map(), usedBonus = new Map();   // global: nothing repeats anywhere, in any difficulty
+if (V2) {   // prototype chains must not reuse anything already published in words.js
+  const B = require(path.resolve("./words.js"));
+  for (const d in B) B[d].forEach((ch, i) => { ch.words.forEach(e => { usedWord.set(e.word, "words.js " + d + "#" + (i + 1)); seenClues.set(e.clue.trim().toLowerCase(), "words.js"); if (e.plain) seenClues.set(e.plain.trim().toLowerCase(), "words.js"); }); usedBonus.set(ch.bonus.answer, { tag: "words.js " + d + "#" + (i + 1), ci: 99 }); seenClues.set(ch.bonus.clue.trim().toLowerCase(), "words.js"); });
+}
 
 for (const d of Object.keys(LINKLEN)) {
   const pool = P[d];
-  if (!Array.isArray(pool) || pool.length < 7) { fail(d, "pool missing or has fewer than 7 chains"); continue; }
+  if (!Array.isArray(pool) || pool.length < MINPOOL) { fail(d, "pool missing or has too few chains"); continue; }
   pool.forEach((ch, ci) => {
     const tag = `${d}#${ci + 1}`;
     const words = ch.words || [], b = ch.bonus || {};
@@ -36,13 +40,13 @@ for (const d of Object.keys(LINKLEN)) {
     words.forEach((e, i) => {
       const w = e.word;
       if (!/^[A-Z]+$/.test(w || "")) fail(tag, "bad word", w);
-      else if (w.length < 4 || w.length > 12) fail(tag, "length out of 4-12:", w);
+      else if (w.length < MINWORD || w.length > 12) fail(tag, "length out of range:", w);
       if (seen.has(w)) fail(tag, "repeat in chain:", w); seen.add(w);
       if (usedWord.has(w)) fail(tag, "word", w, "already used in", usedWord.get(w));
       usedWord.set(w, tag);
       const c = e.clue;
       // Hard chains 2+ carry a tough `clue` (<= 9 words) plus a plain fallback (<= 6 words); everything else is <= 6.
-      const tough = d === "hard" && ci > 0;
+      const tough = d === "hard" && (V2 || ci > 0);
       if (tough && (typeof e.plain !== "string" || !e.plain.trim())) fail(tag, w, "hard chain needs a plain clue");
       if (!tough && e.plain) fail(tag, w, "unexpected plain clue");
       if (tough && e.plain) {
@@ -81,7 +85,8 @@ for (const d of Object.keys(LINKLEN)) {
     if (span > MAXSPAN) fail(tag, "span", span, "> ", MAXSPAN);
     if (!/^[A-Z]{8}$/.test(b.answer || "")) fail(tag, "bonus not 8 letters A-Z:", b.answer);
     else if (b.answer !== letters) fail(tag, "bonus", b.answer, "!= link letters", letters);
-    if (usedBonus.has(b.answer) && !(ci === 0 && usedBonus.get(b.answer).ci === 0)) fail(tag, "bonus", b.answer, "already used in", usedBonus.get(b.answer).tag);
+    if (V2 && usedBonus.has(b.answer) && usedBonus.get(b.answer).ci === 99) console.log("WARN", tag, "theme", b.answer, "is also a bonus answer in", usedBonus.get(b.answer).tag, "(that future chain gets replaced when themes go live)");
+else if (usedBonus.has(b.answer) && !(ci === 0 && usedBonus.get(b.answer).ci === 0)) fail(tag, "bonus", b.answer, "already used in", usedBonus.get(b.answer).tag);
     usedBonus.set(b.answer, { tag, ci });
     if (!b.clue || nwords(b.clue) > 8) fail(tag, "bonus clue missing or > 8 words");
     else if (b.clue.toUpperCase().includes(b.answer)) fail(tag, "bonus clue contains answer");

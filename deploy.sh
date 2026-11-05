@@ -11,14 +11,14 @@ cd "$(dirname "$0")"
 # fake puzzles from test-words.js, so testing never spoils a real day).
 mkdir -p test
 sed -e 's#href="assets/#href="../assets/#g' \
-    -e 's#<script src="words.js">#<script>window.MEANDERINGS_TEST = true;</script><script src="../test-words.js">#' \
+    -e 's#<script src="words.js">#<script>window.MEANDERINGS_TEST = true;</script><script src="../proto-words.js">#' \
     -e 's#<script src="fx.js">#<script src="../fx.js">#' \
     -e 's#<script src="game.js">#<script src="../game.js">#' \
     -e 's#<title>Meanderings</title>#<title>Meanderings (test)</title><meta name="robots" content="noindex">#' \
     index.html > test/index.html
 
 echo "▶ Uploading…"
-rsync -az --delete --exclude '.git' --exclude 'validate.js' --exclude 'README.md' --exclude 'deploy.sh' --exclude 'content' \
+rsync -az --delete --exclude '.git' --exclude 'validate.js' --exclude 'README.md' --exclude 'deploy.sh' --exclude 'content' --exclude 'test-words.js' \
   ./ "$HOST:/tmp/meanderings-web/"
 
 echo "▶ Installing into the nginx html volume…"

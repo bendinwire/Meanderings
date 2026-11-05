@@ -1,0 +1,262 @@
+[
+ {
+  "bonus": {
+   "answer": "BASEBALL",
+   "clue": "Game with bats, bases and a diamond"
+  },
+  "words": [
+   {
+    "word": "CURVEBALL",
+    "clue": "Pitch that bends in flight"
+   },
+   {
+    "word": "BLEACHERS",
+    "clue": "Cheap stadium seats without backs",
+    "link": "B"
+   },
+   {
+    "word": "STADIUM",
+    "clue": "Big arena for games",
+    "link": "A"
+   },
+   {
+    "word": "STRETCH",
+    "clue": "Seventh-inning ritual; also, to elongate",
+    "link": "S"
+   },
+   {
+    "word": "DOUBLE",
+    "clue": "Two-base hit",
+    "link": "E"
+   },
+   {
+    "word": "BATTERY",
+    "clue": "Pitcher and catcher together",
+    "link": "B"
+   },
+   {
+    "word": "CLEANUP",
+    "clue": "Batting spot for the big slugger",
+    "link": "A"
+   },
+   {
+    "word": "OUTFIELD",
+    "clue": "Where center and right play",
+    "link": "L"
+   },
+   {
+    "word": "PLATE",
+    "clue": "Where runs score; also a dish",
+    "link": "L"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SEASHORE",
+   "clue": "Where the land meets the ocean"
+  },
+  "words": [
+   {
+    "word": "FLIPPERS",
+    "clue": "Swimmer's foot fins"
+   },
+   {
+    "word": "SEAL",
+    "clue": "Barking marine mammal",
+    "link": "S"
+   },
+   {
+    "word": "WAVE",
+    "clue": "Ocean swell; a friendly greeting",
+    "link": "E"
+   },
+   {
+    "word": "SURFBOARD",
+    "clue": "Ride the waves on this",
+    "link": "A"
+   },
+   {
+    "word": "SHRIMP",
+    "clue": "Small pink seafood",
+    "link": "S"
+   },
+   {
+    "word": "DOLPHIN",
+    "clue": "Clever, clicking sea mammal",
+    "link": "H"
+   },
+   {
+    "word": "OTTER",
+    "clue": "Playful swimmer, floats on its back",
+    "link": "O"
+   },
+   {
+    "word": "PIER",
+    "clue": "Dock jutting into the water",
+    "link": "R"
+   },
+   {
+    "word": "MUSSEL",
+    "clue": "Dark-shelled shellfish",
+    "link": "E"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "HOSPITAL",
+   "clue": "Place where patients are treated"
+  },
+  "words": [
+   {
+    "word": "CRUTCH",
+    "clue": "Walking aid for a broken leg"
+   },
+   {
+    "word": "SHOT",
+    "clue": "Vaccine jab",
+    "link": "H"
+   },
+   {
+    "word": "GLOVES",
+    "clue": "Latex hand protection",
+    "link": "O"
+   },
+   {
+    "word": "SPLINT",
+    "clue": "Support for a broken finger",
+    "link": "S"
+   },
+   {
+    "word": "DRIP",
+    "clue": "IV fluid line",
+    "link": "P"
+   },
+   {
+    "word": "RESIDENT",
+    "clue": "Doctor in training",
+    "link": "I"
+   },
+   {
+    "word": "CAST",
+    "clue": "Plaster wrap on a broken arm",
+    "link": "T"
+   },
+   {
+    "word": "VITALS",
+    "clue": "Temperature and blood pressure readings",
+    "link": "A"
+   },
+   {
+    "word": "PULSE",
+    "clue": "Wrist beat the nurse counts",
+    "link": "L"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "AIRPLANE",
+   "clue": "Flying machine with wings"
+  },
+  "words": [
+   {
+    "word": "TAKEOFF",
+    "clue": "Start of a flight, going up"
+   },
+   {
+    "word": "LANDING",
+    "clue": "End of a flight, coming down",
+    "link": "A"
+   },
+   {
+    "word": "AILERON",
+    "clue": "Hinged wing flap for rolling",
+    "link": "I"
+   },
+   {
+    "word": "HELICOPTER",
+    "clue": "Whirlybird with spinning blades",
+    "link": "R"
+   },
+   {
+    "word": "FLAP",
+    "clue": "Wing section lowered for slow flight",
+    "link": "P"
+   },
+   {
+    "word": "LAYOVER",
+    "clue": "Wait between connecting flights",
+    "link": "L"
+   },
+   {
+    "word": "RUNWAY",
+    "clue": "Strip where jets speed up",
+    "link": "A"
+   },
+   {
+    "word": "AIRLINE",
+    "clue": "Delta or United, for example",
+    "link": "N"
+   },
+   {
+    "word": "STEWARD",
+    "clue": "Cabin attendant who serves drinks",
+    "link": "E"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SANDWICH",
+   "clue": "Lunch between two slices of bread"
+  },
+  "words": [
+   {
+    "word": "SKEWER",
+    "clue": "Stick for grilling kebabs"
+   },
+   {
+    "word": "SPREAD",
+    "clue": "Smear on bread, like butter",
+    "link": "S"
+   },
+   {
+    "word": "TUNA",
+    "clue": "Canned fish for salad",
+    "link": "A"
+   },
+   {
+    "word": "GRINDER",
+    "clue": "Long sub in New England",
+    "link": "N"
+   },
+   {
+    "word": "WEDGE",
+    "clue": "Thick triangular chunk",
+    "link": "D"
+   },
+   {
+    "word": "SWISS",
+    "clue": "Cheese with big holes",
+    "link": "W"
+   },
+   {
+    "word": "CIABATTA",
+    "clue": "Italian bread, flat and crusty",
+    "link": "I"
+   },
+   {
+    "word": "LUNCH",
+    "clue": "Midday meal",
+    "link": "C"
+   },
+   {
+    "word": "HERO",
+    "clue": "Big sub in New York",
+    "link": "H"
+   }
+  ]
+ }
+]
