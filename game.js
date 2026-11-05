@@ -435,6 +435,7 @@
       }
       if (active && !busy) {
         const hw = el("div", "hintwrap");
+        hw.style.marginLeft = `calc(${pitch} * ${r.off})`;   // under the row's own tiles, not stuck at the screen edge
         if (hintsOn()) {
           const hb = el("button", "btn");
           hb.textContent = sel >= 0 ? "Reveal this letter" : "Hint";
