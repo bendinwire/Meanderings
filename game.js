@@ -169,6 +169,7 @@
   }
   // Put the gold link letters into an unsolved row, moving any letters the player typed out of the way (kept in order).
   function syncRow(i) {
+    return;   // neighbors no longer receive the shared letters (kept as a hook)
     const rs = st.rs[i]; if (!rs || rs.done || !rs.guess) return;
     const r = rows[i], slots = [];
     if (i > 0 && linkKnown(i - 1)) slots.push(r.linkIdx);
@@ -187,7 +188,7 @@
       rs.guess = Array(r.word.length).fill(""); rs.locked = Array(r.word.length).fill(false);
       if (i === 0 && givenOn()) givenIdx(r.word).forEach(j => { rs.guess[j] = r.word[j]; rs.locked[j] = "given"; });
     }
-    syncRow(i);
+    rs.locked.forEach((l, j) => { if (l === "link") { rs.guess[j] = ""; rs.locked[j] = false; } });   // older saves prefilled neighbors
   }
   function loadRow(i) {
     st.cur = i; prepRow(i);
@@ -402,17 +403,16 @@
         t.style.setProperty("--i", j);
         if (rs.done) {
           t.textContent = r.word[j]; t.classList.add("solved");
-          if (i > 0 && j === r.linkIdx) t.classList.add("link");     // one solid gold tile per link: the lower row's, so the gold letters read down the board as the theme
+          // Solved rows show their shared letters gold: one solid gold tile per link (the lower row's when both are solved).
+          if ((i > 0 && j === r.linkIdx) || (j === outSlot(i) && i < rows.length - 1 && !st.rs[i + 1].done)) t.classList.add("link");
           else if (lg && lg.given && lg.given[j]) t.classList.add("given");
           else if (lg && lg.rev && lg.rev[j] === "h") t.classList.add("hint");
           else if (lg && lg.rev && lg.rev[j] === "a") t.classList.add("auto");
         } else {
           const g = rs.guess || [], l = rs.locked || [];
           t.textContent = g[j] || "";
-          // The shared letter is solid gold in the lower row (the river letter) and a pale "echo" in the upper row.
-          if (i > 0 && j === r.linkIdx && linkKnown(i - 1)) t.classList.add("link");
-          else if (j === outSlot(i) && linkKnown(i)) t.classList.add("echo");
-          else if (l[j] === "auto") t.classList.add("auto");
+          // Unsolved rows get no free letters: solving a word only reveals the shared letter in the word itself (and the theme wells).
+          if (l[j] === "auto") t.classList.add("auto");
           else if (l[j] === "given") t.classList.add("given");
           else if (l[j] === "hint") t.classList.add("hint");
           else if (l[j]) t.classList.add("good");
