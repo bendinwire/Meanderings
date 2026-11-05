@@ -64,6 +64,13 @@
   .plainclue { text-align: center; font-size: 13px; color: var(--muted); margin-top: 4px; position: sticky; left: 16px; width: calc(100vw - 32px); max-width: 100%; }
   .hintwrap { text-align: left; margin-top: 8px; }   /* far from the ENTER key on the right */
   .hintwrap .btn { padding: 5px 16px; font-size: 14px; }
+  /* free-solve (theme) mode: every row open, clue above its tiles */
+  .themed .entry { margin-bottom: 9px; }
+  .themed .clue { margin: 0 0 3px; font-size: 13px; }
+  .themed .entry.active .clue { font-size: 15px; }
+  .themed .entry.open:not(.active) .tiles { opacity: .78; }
+  .themed .entry.open:not(.active) .clue, .themed .entry.open:not(.active) .tile { cursor: pointer; }
+  .themed .entry.solvedrow .clue { opacity: .55; }
   .kbd { font-size: 11px; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-left: 8px; color: var(--muted); }
   @media (hover: none) { .kbd { display: none; } }
   .entry.active .clue { color: var(--fg); font-size: 16px; }

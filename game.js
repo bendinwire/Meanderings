@@ -5,7 +5,8 @@
   const TEST = !!window.MEANDERINGS_TEST, NS = TEST ? "t-" : "";
   // Theme chains (prototype, test page only for now): all nine words relate to one theme word, which the gold letters spell.
   const THEMED = TEST;
-  if (THEMED) { const sub = document.querySelector(".sub"); if (sub) sub.textContent = "Guess each word from its clue. Neighbors share a letter, lined up for you. All nine words belong to one hidden theme."; }
+  if (THEMED) document.body.classList.add("themed");
+  if (THEMED) { const sub = document.querySelector(".sub"); if (sub) sub.textContent = "All nine words are open: solve them in any order. Neighbors share a letter, and every word belongs to one hidden theme."; }
   const PREFS = NS + "meanderings-prefs", STATS = NS + "meanderings-stats", KEYV = NS + "meanderings-v3";
   const WORD_POINTS = 100, WORD_FLOOR = 10;
   const BONUS_LETTERS = 8, BONUS_MISS = 15;
@@ -64,7 +65,7 @@
   // ---- state ----
   const fresh = () => ({
     cur: 0, guesses: 0, wrong: 0, hints: 0, auto: 0, score: 0, wMiss: 0, wRev: 0,
-    combo: 0, bestCombo: 0, log: [], bonus: { done: false, pts: 0, miss: 0 }, runId: Date.now(),
+    combo: 0, bestCombo: 0, log: [], nDone: 0, rs: null, bonus: { done: false, pts: 0, miss: 0 }, runId: Date.now(),
   });
   let prefs = { autoSecs: 0, diff: "easy", sound: true, haptics: true, ...(load(PREFS) || {}) };
   if (!DIFFS[prefs.diff]) prefs.diff = "easy";
@@ -81,7 +82,7 @@
   let rowStart = Date.now(), lastProgress = Date.now(), clueEl = null, runToken = 0, lastRandom = -1;
   const cfg = () => DIFFS[diff];
   const isDaily = () => view.kind === "puzzle" && view.day === today.day;
-  const done = () => st.cur >= rows.length;
+  const done = () => (THEMED ? st.nDone >= rows.length : st.cur >= rows.length);
   const reveals = () => st.hints + st.auto;
   // Blind starts at word 2: the first word has no shared letter to go on, so it shows its boxes and clue up front.
   const blindNow = () => cfg().blind && !done() && !busy && st.cur > 0;
@@ -100,7 +101,8 @@
   // under the new key (the state for the new puzzle is loaded by setup()).
   function savePrefs() { try { localStorage.setItem(PREFS, JSON.stringify(prefs)); } catch (e) {} }
   function save() {
-    st.row = done() ? null : { cur: st.cur, guess, locked, typed, bPrefix, plain: plainShown };
+    if (THEMED) { stash(); st.row = null; }
+    else st.row = done() ? null : { cur: st.cur, guess, locked, typed, bPrefix, plain: plainShown };
     try { localStorage.setItem(storeKey(diff), JSON.stringify(st)); } catch (e) {}
     savePrefs();
   }
@@ -133,6 +135,7 @@
   }
 
   function startRow(restore) {
+    if (THEMED) { initFree(); return; }
     lastProgress = rowStart = Date.now();
     sel = -1; typed = ""; bPrefix = 0; plainShown = false;
     if (done()) { guess = []; locked = []; return; }
@@ -154,6 +157,63 @@
     }
   }
 
+
+  // ---- free-solve mode (THEMED): all nine rows are open at once, solve them in any order. Row state lives in st.rs[i];
+  // `guess` / `locked` are references to the selected row's arrays, so the normal typing code just works. A link letter
+  // becomes known (gold, in BOTH neighbors) as soon as either neighbor is solved. ----
+  const linkKnown = k => !!st.rs && k >= 0 && k < rows.length - 1 && (st.rs[k].done || st.rs[k + 1].done);
+  const outSlot = i => (i < rows.length - 1 ? rows[i].word.indexOf(rows[i + 1].link) : -1);
+  function stash() {
+    const rs = st.rs && st.rs[st.cur]; if (!rs) return;
+    rs.wMiss = st.wMiss; rs.wRev = st.wRev; rs.plain = plainShown;
+  }
+  // Put the gold link letters into an unsolved row, moving any letters the player typed out of the way (kept in order).
+  function syncRow(i) {
+    const rs = st.rs[i]; if (!rs || rs.done || !rs.guess) return;
+    const r = rows[i], slots = [];
+    if (i > 0 && linkKnown(i - 1)) slots.push(r.linkIdx);
+    if (i < rows.length - 1 && linkKnown(i)) slots.push(outSlot(i));
+    const need = slots.filter(j => rs.locked[j] !== "link");
+    if (!need.length) return;
+    const user = [];
+    rs.guess.forEach((c, j) => { if (c && !rs.locked[j]) { user.push(c); rs.guess[j] = ""; } });
+    need.forEach(j => { rs.guess[j] = r.word[j]; rs.locked[j] = rs.locked[j] === "given" ? "given" : "link"; });
+    for (const c of user) { const j = rs.guess.findIndex(x => !x); if (j >= 0) rs.guess[j] = c; }
+  }
+  function prepRow(i) {
+    const rs = st.rs[i], r = rows[i];
+    if (rs.done) return;
+    if (!rs.guess || rs.guess.length !== r.word.length) {
+      rs.guess = Array(r.word.length).fill(""); rs.locked = Array(r.word.length).fill(false);
+      if (i === 0 && givenOn()) givenIdx(r.word).forEach(j => { rs.guess[j] = r.word[j]; rs.locked[j] = "given"; });
+    }
+    syncRow(i);
+  }
+  function loadRow(i) {
+    st.cur = i; prepRow(i);
+    const rs = st.rs[i];
+    guess = rs.guess || []; locked = rs.locked || [];
+    st.wMiss = rs.wMiss || 0; st.wRev = rs.wRev || 0; plainShown = !!rs.plain;
+    sel = -1; typed = ""; bPrefix = 0; lastProgress = rowStart = Date.now();
+  }
+  function initFree() {
+    if (!Array.isArray(st.rs) || st.rs.length !== rows.length) {
+      st = { ...fresh(), idx: st.idx, runId: st.runId };
+      st.rs = rows.map(() => ({ done: false, guess: null, locked: null, wMiss: 0, wRev: 0, plain: false }));
+    }
+    rows.forEach((_, i) => prepRow(i));
+    st.nDone = st.rs.filter(x => x.done).length;
+    let c = Math.min(Math.max(st.cur || 0, 0), rows.length - 1);
+    if (st.rs[c].done) { const n = st.rs.findIndex(x => !x.done); c = n < 0 ? c : n; }
+    if (st.nDone >= rows.length) { guess = []; locked = []; st.cur = c; return; }
+    loadRow(c);
+  }
+  function selectRow(i) {
+    if (busy || done() || i === st.cur || st.rs[i].done) return;
+    stash(); riverFocus = false; loadRow(i); save(); render();
+  }
+  let danceRow = -1;
+
   // ---- top bar: puzzle navigation, tabs ----
   function updateNav() {
     const isRandom = view.kind === "random";
@@ -169,7 +229,7 @@
     document.querySelectorAll(".seg").forEach(b => {
       const k = b.dataset.d;
       const s = k === diff ? st : load(storeKey(k));
-      const fin = s && s.cur >= POOLS[k][0].words.length;
+      const fin = s && (THEMED ? (s.nDone || 0) >= POOLS[k][0].words.length : s.cur >= POOLS[k][0].words.length);
       b.textContent = DIFFS[k].label + (fin ? " ✓" : "");
       b.classList.toggle("on", k === diff);
     });
@@ -209,7 +269,8 @@
     const blind = blindNow();
     const last = Math.min(st.cur, rows.length - 1);
     let activeEntry = null;
-    for (let i = 0; i <= last; i++) {
+    if (THEMED) activeEntry = buildFree();
+    else for (let i = 0; i <= last; i++) {
       const r = rows[i];
       const active = i === st.cur;
       const entry = el("div", "entry" + (active ? " active" : ""));
@@ -310,7 +371,7 @@
     }
     if (done()) board.append(summary());
     document.body.classList.toggle("finished", done());
-    $("progress").textContent = done() ? "Complete" : `Word ${st.cur + 1} of ${rows.length}`;
+    $("progress").textContent = done() ? "Complete" : THEMED ? `${st.nDone} of ${rows.length} solved` : `Word ${st.cur + 1} of ${rows.length}`;
     const m = mult(st.combo);
     $("stats").innerHTML = `Score ${fmt(st.score)}` +
       (m > 1 && !done() ? ` · <span class="combo">🔥×${m}</span>` : "") +
@@ -321,6 +382,79 @@
     const focus = activeEntry || board.lastElementChild;
     keepVisible(focus);
     centerActive(activeEntry);
+  }
+
+  // Render every row: clue above, tiles below. The selected row is bright and owns the keyboard.
+  function buildFree() {
+    const pitch = "(var(--cell) + var(--gap))";
+    let activeEntry = null;
+    const nextEmpty = guess.findIndex(c => !c);
+    rows.forEach((r, i) => {
+      const rs = st.rs[i], active = !done() && i === st.cur && !rs.done;
+      const entry = el("div", "entry " + (rs.done ? "solvedrow" : "open") + (active ? " active" : ""));
+      entry.style.setProperty("--r", i);
+      const clue = el("div", "clue"), cs = el("span"); cs.textContent = r.clue; clue.append(cs);
+      const tiles = el("div", "tiles");
+      tiles.style.marginLeft = `calc(${pitch} * ${r.off})`;
+      const lg = (st.log || [])[i];
+      for (let j = 0; j < r.word.length; j++) {
+        const t = el("div", "tile");
+        t.style.setProperty("--i", j);
+        if (rs.done) {
+          t.textContent = r.word[j]; t.classList.add("solved");
+          if ((i > 0 && j === r.linkIdx) || j === outSlot(i)) t.classList.add("link");
+          else if (lg && lg.given && lg.given[j]) t.classList.add("given");
+          else if (lg && lg.rev && lg.rev[j] === "h") t.classList.add("hint");
+          else if (lg && lg.rev && lg.rev[j] === "a") t.classList.add("auto");
+        } else {
+          const g = rs.guess || [], l = rs.locked || [];
+          t.textContent = g[j] || "";
+          if (l[j] === "link") t.classList.add("link");
+          else if (l[j] === "auto") t.classList.add("auto");
+          else if (l[j] === "given") t.classList.add("given");
+          else if (l[j] === "hint") t.classList.add("hint");
+          else if (l[j]) t.classList.add("good");
+          else if (active && j === nextEmpty) t.classList.add("cursor");
+          if (active && !l[j] && !busy && hintsOn()) {
+            t.classList.add("tap");
+            if (j === sel) t.classList.add("pick");
+            t.onclick = () => { sel = sel === j ? -1 : j; render(); };
+          }
+          if (!active) t.onclick = () => selectRow(i);
+        }
+        tiles.append(t);
+      }
+      if (!rs.done && !active) clue.onclick = () => selectRow(i);
+      if (active && shake) { entry.classList.add("shake"); shake = false; }
+      if (i === danceRow || finale) entry.classList.add("dance");
+      entry.append(clue, tiles);
+      if (active && plainShown && r.plain) {
+        const pc = el("div", "plainclue"); pc.textContent = `Plain clue: ${r.plain}`; entry.append(pc);
+      }
+      if (active && !busy) {
+        const hw = el("div", "hintwrap");
+        if (hintsOn()) {
+          const hb = el("button", "btn");
+          hb.textContent = sel >= 0 ? "Reveal this letter" : "Hint";
+          const kbd = el("span", "kbd"); kbd.textContent = "?"; hb.append(kbd);
+          hb.onclick = () => { reveal("hint"); hb.blur(); };
+          hw.append(hb);
+          if (sel < 0) { const tip = el("div", "hinttip"); tip.textContent = "Tap a box (or use ← →) to choose which letter to reveal"; hw.append(tip); }
+        } else if (plainAvail() && !plainShown) {
+          const pb = el("button", "btn");
+          pb.textContent = "Plain clue";
+          const kbd = el("span", "kbd"); kbd.textContent = "?"; pb.append(kbd);
+          pb.onclick = () => { showPlain(); pb.blur(); };
+          hw.append(pb);
+          const tip = el("div", "hinttip"); tip.textContent = `Shows an easier clue (−${cfg().reveal} points)`; hw.append(tip);
+        }
+        if (hw.childNodes.length) entry.append(hw);
+      }
+      board.append(entry);
+      if (active) activeEntry = entry;
+    });
+    danceRow = -1;
+    return activeEntry;
   }
   // Scroll the page just enough that the row (and its Hint button) sits above the fixed keyboard.
   function keepVisible(node) {
@@ -352,6 +486,7 @@
   }
   // The line is the finale: it's only drawn once the chain is complete (mid-game it looked like a glitch).
   function drawMeander() {
+    if (THEMED) { drawMeanderFree(); return; }
     const old0 = $("meander"); if (old0) old0.remove();
     const entries = [...board.querySelectorAll(".entry")];
     if (!entries.length || (!done() && !newRules())) return;
@@ -384,6 +519,44 @@
     svg.setAttribute("width", board.scrollWidth); svg.setAttribute("height", board.scrollHeight);
     const path = document.createElementNS(NS, "path");
     path.setAttribute("d", roundedPath(Q, cell * 0.45));
+    path.setAttribute("stroke-width", done() ? Math.max(3, cell * 0.3) : Math.max(2, cell * 0.1));
+    if (!done()) path.classList.add("stream");
+    svg.append(path);
+    board.prepend(svg);
+    if (celebrate) {
+      const len = path.getTotalLength();
+      path.style.strokeDasharray = len; path.style.setProperty("--len", len);
+      path.classList.add("flow"); celebrate = false;
+    } else if (done()) path.classList.add("done");
+  }
+
+
+  // Free mode: the stream is drawn through every link that is known so far (either neighbor solved).
+  function drawMeanderFree() {
+    const old = $("meander"); if (old) old.remove();
+    const entries = [...board.querySelectorAll(".entry")];
+    if (entries.length !== rows.length) return;
+    const br = board.getBoundingClientRect();
+    const ctr = t => { const q = t.getBoundingClientRect(); return [q.left - br.left + q.width / 2, q.top - br.top + q.height / 2]; };
+    const tl = i => [...entries[i].querySelectorAll(".tiles .tile")];
+    const subs = []; let cur = [];
+    const flush = () => { if (cur.length > 1) subs.push(cur); cur = []; };
+    rows.forEach((r, i) => {
+      const inK = i > 0 && linkKnown(i - 1), outK = i < rows.length - 1 && linkKnown(i), t = tl(i);
+      if (inK) cur.push(ctr(t[r.linkIdx]));
+      else if (i === 0 && done()) { const c = t.map(ctr); cur.push([c.reduce((a, p) => a + p[0], 0) / c.length, c[0][1]]); }
+      if (outK) cur.push(ctr(t[outSlot(i)]));
+      else { if (i === rows.length - 1 && done()) cur.push(ctr(t[t.length - 1])); flush(); }
+    });
+    flush();
+    if (!subs.length) return;
+    const cell = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cell")) || 40;
+    const SV = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(SV, "svg");
+    svg.id = "meander";
+    svg.setAttribute("width", board.scrollWidth); svg.setAttribute("height", board.scrollHeight);
+    const path = document.createElementNS(SV, "path");
+    path.setAttribute("d", subs.map(P => roundedPath(P.filter((p, k) => k === 0 || Math.hypot(p[0] - P[k - 1][0], p[1] - P[k - 1][1]) > 0.5), cell * 0.45)).join(" "));
     path.setAttribute("stroke-width", done() ? Math.max(3, cell * 0.3) : Math.max(2, cell * 0.1));
     if (!done()) path.classList.add("stream");
     svg.append(path);
@@ -535,6 +708,7 @@
 
   // Correct line: score it (with combo), do the letter dance, then move on.
   function solved(r) {
+    if (THEMED) { solvedFree(r); return; }
     st.log = st.log || [];
     st.log[st.cur] = blindNow()
       ? { rev: Array.from(r.word, (_, k) => (k < bPrefix ? "h" : "")), miss: st.wMiss }
@@ -567,6 +741,43 @@
       st.cur++; st.wMiss = 0; st.wRev = 0;
       startRow(); busy = false; flash("");
       if (done()) { recordCompletion(); finale = true; celebrate = true; FX.finish(); }
+      save(); render(); updateTabs();
+    }, wait);
+  }
+
+
+  function solvedFree(r) {
+    const i = st.cur, rs = st.rs[i];
+    st.log = st.log || [];
+    st.log[i] = { rev: locked.map(l => (l === "hint" ? "h" : l === "auto" ? "a" : "")), miss: st.wMiss,
+                  given: locked.map(l => l === "given"), plain: plainShown };
+    const clean = st.wMiss === 0 && st.wRev === 0;
+    const m = mult(st.combo);
+    const base = Math.max(WORD_FLOOR, WORD_POINTS - cfg().miss * st.wMiss - cfg().reveal * st.wRev);
+    const pts = Math.round(base * m);
+    st.score += pts;
+    const comboBefore = st.combo;
+    st.combo = clean ? st.combo + 1 : 0;
+    st.bestCombo = Math.max(st.bestCombo, st.combo);
+    flash(m > 1 ? `+${pts}  (🔥×${m})` : `+${pts}`);
+    FX.good(comboBefore);
+    if (clean && [3, 5, 8].includes(st.combo)) FX.confetti(40 + st.combo * 8);
+    busy = true; danceRow = i; riverFocus = false;
+    rs.done = true; st.nDone++;
+    rs.guess = Array.from(r.word); rs.locked = rs.guess.map(() => "good");
+    syncRow(i - 1); syncRow(i + 1);          // the two shared letters are now known: gold in the neighbors too
+    render();
+    const token = ++runToken;
+    const wait = reduceMotion ? 250 : 650 + r.word.length * 70 + 150;
+    setTimeout(() => {
+      if (token !== runToken) return;
+      busy = false; flash("");
+      if (done()) { guess = []; locked = []; recordCompletion(); finale = true; celebrate = true; FX.finish(); }
+      else {
+        let n = st.rs.findIndex((x, k) => k > i && !x.done);
+        if (n < 0) n = st.rs.findIndex(x => !x.done);
+        loadRow(n);
+      }
       save(); render(); updateTabs();
     }, wait);
   }
@@ -632,7 +843,8 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) lastProgress = Date.now(); });
 
   // ---- bonus puzzle: first gold letter of each row spells a hidden word ----
-  const lettersShown = () => Math.min(done() ? rows.length - 1 : st.cur, BONUS_LETTERS);
+  const lettersShown = () => (THEMED ? Array.from({ length: BONUS_LETTERS }, (_, k) => k).filter(k => linkKnown(k)).length : Math.min(done() ? rows.length - 1 : st.cur, BONUS_LETTERS));
+  const known = k => (THEMED ? linkKnown(k) : k < lettersShown());
   const bonusWorth = () => Math.max(bonusPer(), bonusPer() * (BONUS_LETTERS - lettersShown()) - BONUS_MISS * st.bonus.miss);
   function renderBonus() {
     const answer = chain.bonus.answer, n = lettersShown();
@@ -647,11 +859,11 @@
     $("bonusClue").textContent = chain.bonus.clue;
     const wrap = $("bonusLetters"); wrap.innerHTML = "";
     let cursor = -1;
-    for (let k = n; k < BONUS_LETTERS && cursor < 0; k++) if (!riverTyped[k]) cursor = k;
+    for (let k = 0; k < BONUS_LETTERS && cursor < 0; k++) if (!known(k) && !riverTyped[k]) cursor = k;
     for (let k = 0; k < BONUS_LETTERS; k++) {
       const t = el("div", "tile rtile");
       if (st.bonus.done) { t.classList.add("good"); t.textContent = answer[k]; }
-      else if (k < n) { t.classList.add("link"); t.textContent = rows[k + 1].link[0]; }
+      else if (known(k)) { t.classList.add("link"); t.textContent = rows[k + 1].link[0]; }
       else { t.textContent = riverTyped[k]; if (riverFocus && k === cursor) t.classList.add("cursor"); }
       wrap.append(t);
     }
@@ -666,20 +878,22 @@
   }
   function riverType(ch) {
     if (st.bonus.done || busy) return;
-    for (let k = lettersShown(); k < BONUS_LETTERS; k++) {
+    for (let k = 0; k < BONUS_LETTERS; k++) {
+      if (known(k)) continue;
       if (!riverTyped[k]) { riverTyped[k] = ch.toUpperCase(); FX.tick(); renderBonus(); return; }
     }
   }
   function riverBack() {
     if (st.bonus.done || busy) return;
-    for (let k = BONUS_LETTERS - 1; k >= lettersShown(); k--) {
+    for (let k = BONUS_LETTERS - 1; k >= 0; k--) {
+      if (known(k)) continue;
       if (riverTyped[k]) { riverTyped[k] = ""; FX.back(); renderBonus(); return; }
     }
   }
   function submitRiver() {
     if (st.bonus.done || busy) return;
     const n = lettersShown();
-    const guess = Array.from({ length: BONUS_LETTERS }, (_, k) => (k < n ? rows[k + 1].link[0] : riverTyped[k]));
+    const guess = Array.from({ length: BONUS_LETTERS }, (_, k) => (known(k) ? rows[k + 1].link[0] : riverTyped[k]));
     if (guess.some(c => !c)) { flash("Fill all 8 letters first"); return; }
     if (guess.join("") === chain.bonus.answer) {
       const pts = bonusWorth();
