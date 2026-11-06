@@ -300,11 +300,10 @@
             else if (locked[j] === "given") t.classList.add("given");
             else if (locked[j] === "hint") t.classList.add("hint");
             else if (locked[j]) t.classList.add("good");
-            else if (j === nextEmpty) t.classList.add("cursor");
-            if (!locked[j] && !busy && hintsOn()) {
+            else if (j === (sel >= 0 ? sel : nextEmpty)) t.classList.add("cursor");
+            if (!locked[j] && !busy) {
               t.classList.add("tap");
-              if (j === sel) t.classList.add("pick");
-              t.onclick = () => { sel = sel === j ? -1 : j; render(); };
+              t.onclick = () => { sel = sel === j ? -1 : j; render(); };   // tap = put the cursor here
             }
           } else {
             t.textContent = r.word[j];
@@ -416,11 +415,10 @@
           else if (l[j] === "given") t.classList.add("given");
           else if (l[j] === "hint") t.classList.add("hint");
           else if (l[j]) t.classList.add("good");
-          else if (active && j === nextEmpty) t.classList.add("cursor");
-          if (active && !l[j] && !busy && hintsOn()) {
+          else if (active && j === (sel >= 0 ? sel : nextEmpty)) t.classList.add("cursor");
+          if (active && !l[j] && !busy) {
             t.classList.add("tap");
-            if (j === sel) t.classList.add("pick");
-            t.onclick = () => { sel = sel === j ? -1 : j; render(); };
+            t.onclick = () => { sel = sel === j ? -1 : j; render(); };   // tap = put the cursor here
           }
           if (!active) t.onclick = () => selectRow(i);
         }
@@ -793,12 +791,12 @@
 
   // Keyboard selection: ← → move the selected box among the open ones; Hint then reveals that box.
   function moveSel(dir) {
-    if (blocked() || blindNow() || !hintsOn()) return;
+    if (blocked() || blindNow()) return;
     const open = locked.map((l, j) => (l ? -1 : j)).filter(j => j >= 0);
     if (!open.length) return;
     let i = open.indexOf(sel);
-    if (i < 0) i = Math.max(0, open.indexOf(guess.findIndex(c => !c)));   // first press: start at the cursor
-    else i = Math.min(open.length - 1, Math.max(0, i + dir));
+    if (i < 0) i = Math.max(0, open.indexOf(guess.findIndex(c => !c)));   // no cursor yet: start from the auto cursor...
+    i = Math.min(open.length - 1, Math.max(0, i + dir));                  // ...and move on the very first press too
     sel = open[i];
     render();
   }
