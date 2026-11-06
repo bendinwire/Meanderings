@@ -442,7 +442,7 @@
           const kbd = el("span", "kbd"); kbd.textContent = "?"; hb.append(kbd);
           hb.onclick = () => { reveal("hint"); hb.blur(); };
           hw.append(hb);
-          if (sel < 0) { const tip = el("div", "hinttip"); tip.textContent = "Tap a box (or use ← →) to choose which letter to reveal"; hw.append(tip); }
+          if (sel < 0) { const tip = el("div", "hinttip"); tip.textContent = "Arrows: ← → move between letters, ↑ ↓ switch words. Tap a box to pick one."; hw.append(tip); }
         } else if (plainAvail() && !plainShown) {
           const pb = el("button", "btn");
           pb.textContent = "Plain clue";
@@ -667,9 +667,11 @@
       if (typed.length >= 14) return;
       typed += ch.toUpperCase();
     } else {
-      const j = guess.findIndex(c => !c);
+      // Typing writes at the cursor box when one is chosen (arrow keys / tap), else at the first empty box.
+      const j = sel >= 0 && !locked[sel] ? sel : guess.findIndex(c => !c);
       if (j < 0) return;
       guess[j] = ch.toUpperCase();
+      if (sel >= 0) { const nx = locked.findIndex((l, k) => k > j && !l); sel = nx; }   // cursor moves on (-1 = back to auto)
     }
     FX.tick(); save(); render();
   }
@@ -678,6 +680,9 @@
     if (blocked()) return;
     if (blindNow()) {
       if (typed.length > bPrefix) typed = typed.slice(0, -1);
+    } else if (sel >= 0 && !locked[sel]) {
+      if (guess[sel]) guess[sel] = "";
+      else { let k = sel - 1; while (k >= 0 && locked[k]) k--; if (k >= 0) { sel = k; guess[k] = ""; } }
     } else {
       for (let j = guess.length - 1; j >= 0; j--) {
         if (guess[j] && !locked[j]) { guess[j] = ""; break; }
@@ -706,6 +711,7 @@
       if (!cfg().keep) flash("Not quite — try again");
       else flash(kept ? `${kept} letter${kept > 1 ? "s" : ""} in the right spot — kept` : "No letters in the right spot");
     }
+    sel = -1;
     FX.miss(); shake = true; save(); render();
   }
 
@@ -795,6 +801,15 @@
     else i = Math.min(open.length - 1, Math.max(0, i + dir));
     sel = open[i];
     render();
+  }
+
+  // Up / Down (theme mode): jump to the previous / next unsolved word.
+  function moveRow(dir) {
+    if (!THEMED || blocked()) return;
+    const open = st.rs.map((x, i) => (x.done ? -1 : i)).filter(i => i >= 0);
+    if (open.length < 2) return;
+    const p = open.indexOf(st.cur);
+    selectRow(open[(p + dir + open.length) % open.length]);
   }
 
   // Reveal one letter. kind: "hint" (button) or "auto" (timer). Both cost points and break the combo.
@@ -1024,6 +1039,7 @@
     if (/^[a-zA-Z]$/.test(e.key)) type(e.key);
     else if (e.key === "Escape" && riverFocus) { riverFocus = false; renderBonus(); }
     else if (e.key === "Backspace") back();
+    else if ((e.key === "ArrowUp" || e.key === "ArrowDown") && THEMED) { e.preventDefault(); moveRow(e.key === "ArrowUp" ? -1 : 1); }
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); moveSel(e.key === "ArrowLeft" ? -1 : 1); }
     else if (e.key === "?" || e.key === "/") { e.preventDefault(); if (hintsOn()) reveal("hint"); else showPlain(); }
     else if (e.key === "Enter") { e.preventDefault(); submit(); }
