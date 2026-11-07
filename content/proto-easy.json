@@ -258,5 +258,265 @@
     "link": "H"
    }
   ]
+ },
+ {
+  "bonus": {
+   "answer": "DESSERTS",
+   "clue": "Sweet courses served after dinner"
+  },
+  "words": [
+   {
+    "word": "FUDGE",
+    "clue": "Rich chocolate candy square"
+   },
+   {
+    "word": "STRUDEL",
+    "clue": "Flaky apple pastry from Austria",
+    "link": "D"
+   },
+   {
+    "word": "POPSICLE",
+    "clue": "Frozen treat on a stick",
+    "link": "E"
+   },
+   {
+    "word": "BISCOTTI",
+    "clue": "Twice-baked Italian dunking cookie",
+    "link": "S"
+   },
+   {
+    "word": "SUNDAE",
+    "clue": "Ice cream with toppings and cherry",
+    "link": "S"
+   },
+   {
+    "word": "TRUFFLE",
+    "clue": "Chocolate bonbon, or a fungus",
+    "link": "E"
+   },
+   {
+    "word": "PARFAIT",
+    "clue": "Layered yogurt and fruit cup",
+    "link": "R"
+   },
+   {
+    "word": "SWEET",
+    "clue": "Sugary in taste",
+    "link": "T"
+   },
+   {
+    "word": "CUSTARD",
+    "clue": "Egg-and-milk pudding",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "CARTOONS",
+   "clue": "Animated shows for kids"
+  },
+  "words": [
+   {
+    "word": "MASCOT",
+    "clue": "Team's costumed cheering character"
+   },
+   {
+    "word": "CAPTION",
+    "clue": "Text under a comic panel",
+    "link": "C"
+   },
+   {
+    "word": "DRAWING",
+    "clue": "Hand-sketched image, frame by frame",
+    "link": "A"
+   },
+   {
+    "word": "SOUNDTRACK",
+    "clue": "Music playing behind the show",
+    "link": "R"
+   },
+   {
+    "word": "ANIMATION",
+    "clue": "Bringing drawings to life",
+    "link": "T"
+   },
+   {
+    "word": "DIALOGUE",
+    "clue": "Characters' spoken lines",
+    "link": "O"
+   },
+   {
+    "word": "SIMPSONS",
+    "clue": "Yellow family of Springfield",
+    "link": "O"
+   },
+   {
+    "word": "SCREEN",
+    "clue": "TV display",
+    "link": "N"
+   },
+   {
+    "word": "EPISODE",
+    "clue": "One installment of a series",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "COSTUMES",
+   "clue": "Dress-up outfits for Halloween"
+  },
+  "words": [
+   {
+    "word": "FACEPAINT",
+    "clue": "Colorful makeup on cheeks"
+   },
+   {
+    "word": "CLOWN",
+    "clue": "Big shoes and a red nose",
+    "link": "C"
+   },
+   {
+    "word": "BUTTONS",
+    "clue": "Round fasteners on a shirt",
+    "link": "O"
+   },
+   {
+    "word": "STAGE",
+    "clue": "Platform where actors perform",
+    "link": "S"
+   },
+   {
+    "word": "TUXEDO",
+    "clue": "Formal black-tie suit",
+    "link": "T"
+   },
+   {
+    "word": "MASQUERADE",
+    "clue": "Ball where guests hide faces",
+    "link": "U"
+   },
+   {
+    "word": "MAKEUP",
+    "clue": "Lipstick and eye shadow",
+    "link": "M"
+   },
+   {
+    "word": "SEQUIN",
+    "clue": "Shiny little disc sewn on",
+    "link": "E"
+   },
+   {
+    "word": "WINGS",
+    "clue": "Fairy's flying accessory",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "AIRPORTS",
+   "clue": "Places where planes take off and land"
+  },
+  "words": [
+   {
+    "word": "LUGGAGE",
+    "clue": "Suitcases and bags"
+   },
+   {
+    "word": "PAGING",
+    "clue": "Calling a name over the speaker",
+    "link": "A"
+   },
+   {
+    "word": "BOARDING",
+    "clue": "Getting on the plane",
+    "link": "I"
+   },
+   {
+    "word": "PASSENGER",
+    "clue": "Traveler on a flight",
+    "link": "R"
+   },
+   {
+    "word": "PILOT",
+    "clue": "Person who flies the jet",
+    "link": "P"
+   },
+   {
+    "word": "COUNTER",
+    "clue": "Check-in desk",
+    "link": "O"
+   },
+   {
+    "word": "PATROL",
+    "clue": "Guard's regular rounds",
+    "link": "R"
+   },
+   {
+    "word": "ESCORT",
+    "clue": "Accompany for safety",
+    "link": "T"
+   },
+   {
+    "word": "KIOSK",
+    "clue": "Self-serve check-in stand",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "MONSTERS",
+   "clue": "Scary creatures under the bed"
+  },
+  "words": [
+   {
+    "word": "MEDUSA",
+    "clue": "Snake-haired Greek gorgon"
+   },
+   {
+    "word": "PHANTOM",
+    "clue": "Ghostly spirit",
+    "link": "M"
+   },
+   {
+    "word": "DEMON",
+    "clue": "Evil spirit from below",
+    "link": "O"
+   },
+   {
+    "word": "HORNS",
+    "clue": "Pointed bumps on a bull's head",
+    "link": "N"
+   },
+   {
+    "word": "FRANKENSTEIN",
+    "clue": "Stitched-together creature of fiction",
+    "link": "S"
+   },
+   {
+    "word": "YETI",
+    "clue": "Abominable snowman",
+    "link": "T"
+   },
+   {
+    "word": "OGRE",
+    "clue": "Big, green fairy-tale brute",
+    "link": "E"
+   },
+   {
+    "word": "SCARE",
+    "clue": "Make someone jump",
+    "link": "R"
+   },
+   {
+    "word": "SLIME",
+    "clue": "Gooey green goo",
+    "link": "S"
+   }
+  ]
  }
 ]

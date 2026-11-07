@@ -303,5 +303,310 @@
     "plain": "Thick liquid medicine"
    }
   ]
+ },
+ {
+  "bonus": {
+   "answer": "MINERALS",
+   "clue": "Natural solids dug from the earth"
+  },
+  "words": [
+   {
+    "word": "TOURMALINE",
+    "clue": "Watermelon-colored gem with a black cousin",
+    "plain": "Pink-green gemstone"
+   },
+   {
+    "word": "HEMATITE",
+    "clue": "Iron oxide that streaks rusty red",
+    "link": "M",
+    "plain": "Red iron ore"
+   },
+   {
+    "word": "VEIN",
+    "clue": "Ore-filled crack in rock, or blood vessel",
+    "link": "I",
+    "plain": "Mineral seam in rock"
+   },
+   {
+    "word": "GARNET",
+    "clue": "January's red birthstone",
+    "link": "N",
+    "plain": "Deep red gemstone"
+   },
+   {
+    "word": "FLUORITE",
+    "clue": "Glows under UV, giving fluorescence its name",
+    "link": "E",
+    "plain": "Purple glowing mineral"
+   },
+   {
+    "word": "FELDSPAR",
+    "clue": "Most abundant mineral group in the crust",
+    "link": "R",
+    "plain": "Common crust mineral"
+   },
+   {
+    "word": "TALC",
+    "clue": "Softest on Mohs scale, baby powder base",
+    "link": "A",
+    "plain": "Soft powder mineral"
+   },
+   {
+    "word": "SMELT",
+    "clue": "Heat ore to extract metal, or a small fish",
+    "link": "L",
+    "plain": "Melt ore for metal"
+   },
+   {
+    "word": "IGNEOUS",
+    "clue": "Rock born of cooled magma",
+    "link": "S",
+    "plain": "Volcanic-origin rock type"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "CERAMICS",
+   "clue": "Pots and tiles hardened in a kiln"
+  },
+  "words": [
+   {
+    "word": "CLAY",
+    "clue": "Moist earth a potter wedges",
+    "plain": "Potter's raw material"
+   },
+   {
+    "word": "CELADON",
+    "clue": "Pale jade-green glaze of Chinese ware",
+    "link": "C",
+    "plain": "Pale green glaze"
+   },
+   {
+    "word": "PORCELAIN",
+    "clue": "Fine china fired at high heat",
+    "link": "E",
+    "plain": "Fine white china"
+   },
+   {
+    "word": "RAKU",
+    "clue": "Japanese firing pulled red-hot from the kiln",
+    "link": "R",
+    "plain": "Japanese firing style"
+   },
+   {
+    "word": "CERAMIST",
+    "clue": "One who throws pots for art",
+    "link": "A",
+    "plain": "Pottery artist"
+   },
+   {
+    "word": "MAJOLICA",
+    "clue": "Tin-glazed Italian earthenware, brightly painted",
+    "link": "M",
+    "plain": "Colorful glazed pottery"
+   },
+   {
+    "word": "COIL",
+    "clue": "Snake of clay stacked to build walls",
+    "link": "I",
+    "plain": "Rope of clay"
+   },
+   {
+    "word": "SCULPT",
+    "clue": "Shape by carving or modeling",
+    "link": "C",
+    "plain": "Shape into art"
+   },
+   {
+    "word": "VASE",
+    "clue": "Vessel for stems",
+    "link": "S",
+    "plain": "Flower holder"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "ASTEROID",
+   "clue": "Small rocky body orbiting the sun"
+  },
+  "words": [
+   {
+    "word": "ACCRETION",
+    "clue": "Slow clumping of dust into bodies",
+    "plain": "Gradual buildup of material"
+   },
+   {
+    "word": "VESTA",
+    "clue": "Bright rock visited by the Dawn probe",
+    "link": "A",
+    "plain": "Bright main-belt asteroid"
+   },
+   {
+    "word": "ASTRONOMER",
+    "clue": "Sky watcher at the observatory",
+    "link": "S",
+    "plain": "Star scientist"
+   },
+   {
+    "word": "BELT",
+    "clue": "Region between Mars and Jupiter",
+    "link": "T",
+    "plain": "Ring of space rocks"
+   },
+   {
+    "word": "DEBRIS",
+    "clue": "Scattered fragments after a collision",
+    "link": "E",
+    "plain": "Scattered wreckage"
+   },
+   {
+    "word": "EROS",
+    "clue": "Greek love god's rocky namesake",
+    "link": "R",
+    "plain": "Near-Earth rock, or Cupid"
+   },
+   {
+    "word": "REGOLITH",
+    "clue": "Loose dusty blanket over solid rock",
+    "link": "O",
+    "plain": "Loose surface dust layer"
+   },
+   {
+    "word": "GOLDILOCKS",
+    "clue": "Zone neither too hot nor too cold",
+    "link": "I",
+    "plain": "Just-right habitable zone"
+   },
+   {
+    "word": "STARDUST",
+    "clue": "Cosmic particles; also a Hoagy Carmichael tune",
+    "link": "D",
+    "plain": "Cosmic particles"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "PORTRAIT",
+   "clue": "Picture of a person's face"
+  },
+  "words": [
+   {
+    "word": "POSTURE",
+    "clue": "How the sitter holds the spine",
+    "plain": "How you sit or stand"
+   },
+   {
+    "word": "TRIPOD",
+    "clue": "Three-legged camera support",
+    "link": "P",
+    "plain": "Camera stand"
+   },
+   {
+    "word": "CHARCOAL",
+    "clue": "Burnt-willow sketching stick",
+    "link": "O",
+    "plain": "Black sketching stick"
+   },
+   {
+    "word": "SARGENT",
+    "clue": "Madame X's painter, John Singer",
+    "link": "R",
+    "plain": "Famed American portraitist"
+   },
+   {
+    "word": "PAINTER",
+    "clue": "One who wields the brush",
+    "link": "T",
+    "plain": "Brush artist"
+   },
+   {
+    "word": "MINIATURE",
+    "clue": "Tiny, hand-sized likeness for a locket",
+    "link": "R",
+    "plain": "Very small painting"
+   },
+   {
+    "word": "HAIR",
+    "clue": "Locks the artist must render",
+    "link": "A",
+    "plain": "Strands on your head"
+   },
+   {
+    "word": "GILT",
+    "clue": "Gold-leaf trim on a frame",
+    "link": "I",
+    "plain": "Gold coating on frames"
+   },
+   {
+    "word": "REMBRANDT",
+    "clue": "Dutch master of 'The Night Watch'",
+    "link": "T",
+    "plain": "Dutch master painter"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "ANCESTOR",
+   "clue": "Family member from long before you"
+  },
+  "words": [
+   {
+    "word": "DYNASTY",
+    "clue": "Ruling family across generations; Ming, for one",
+    "plain": "Long-ruling family line"
+   },
+   {
+    "word": "LINEAGE",
+    "clue": "Direct line of descent from forebears",
+    "link": "A",
+    "plain": "Family line of descent"
+   },
+   {
+    "word": "GENETIC",
+    "clue": "Inherited through DNA",
+    "link": "N",
+    "plain": "Passed down in genes"
+   },
+   {
+    "word": "ARCHIVE",
+    "clue": "Where old records are kept, or to store",
+    "link": "C",
+    "plain": "Store of old records"
+   },
+   {
+    "word": "CREST",
+    "clue": "Heraldic emblem above the shield, or a wave's top",
+    "link": "E",
+    "plain": "Family emblem"
+   },
+   {
+    "word": "ROOTS",
+    "clue": "Where your people come from; also plant anchors",
+    "link": "S",
+    "plain": "Where family comes from"
+   },
+   {
+    "word": "FOREFATHER",
+    "clue": "Founding father, or male forebear",
+    "link": "T",
+    "plain": "Male forebear"
+   },
+   {
+    "word": "ORIGIN",
+    "clue": "Where something began; start of the line",
+    "link": "O",
+    "plain": "Where it began"
+   },
+   {
+    "word": "PEDIGREE",
+    "clue": "Documented ancestry of a show dog",
+    "link": "R",
+    "plain": "Dog's family record"
+   }
+  ]
  }
 ]

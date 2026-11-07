@@ -258,5 +258,265 @@
     "link": "R"
    }
   ]
+ },
+ {
+  "bonus": {
+   "answer": "REPTILES",
+   "clue": "Cold-blooded crawlers like snakes and lizards"
+  },
+  "words": [
+   {
+    "word": "MONITOR",
+    "clue": "Large lizard, or a computer screen"
+   },
+   {
+    "word": "VIPER",
+    "clue": "Venomous snake with hinged fangs",
+    "link": "R"
+   },
+   {
+    "word": "CARAPACE",
+    "clue": "Hard upper shell of a turtle",
+    "link": "E"
+   },
+   {
+    "word": "SERPENT",
+    "clue": "Biblical snake",
+    "link": "P"
+   },
+   {
+    "word": "HIBERNATE",
+    "clue": "Sleep through the winter",
+    "link": "T"
+   },
+   {
+    "word": "TAIL",
+    "clue": "Lizard can drop this to escape",
+    "link": "I"
+   },
+   {
+    "word": "SCALES",
+    "clue": "Armor of overlapping plates",
+    "link": "L"
+   },
+   {
+    "word": "EGGS",
+    "clue": "Leathery clutch buried in sand",
+    "link": "E"
+   },
+   {
+    "word": "CLAWS",
+    "clue": "Sharp curved toe tips",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "SOLDIERS",
+   "clue": "Fighters who wear uniforms and march"
+  },
+  "words": [
+   {
+    "word": "SERGEANT",
+    "clue": "Rank above corporal"
+   },
+   {
+    "word": "CONSCRIPT",
+    "clue": "Drafted, not volunteered",
+    "link": "S"
+   },
+   {
+    "word": "CAMOUFLAGE",
+    "clue": "Green-and-brown disguise pattern",
+    "link": "O"
+   },
+   {
+    "word": "MEDAL",
+    "clue": "Award pinned on a hero",
+    "link": "L"
+   },
+   {
+    "word": "DISCHARGE",
+    "clue": "Release from service, or to fire",
+    "link": "D"
+   },
+   {
+    "word": "SHIELD",
+    "clue": "Defensive plate carried on the arm",
+    "link": "I"
+   },
+   {
+    "word": "TRENCH",
+    "clue": "Muddy ditch of World War I",
+    "link": "E"
+   },
+   {
+    "word": "TROOPS",
+    "clue": "Armed forces on the ground",
+    "link": "R"
+   },
+   {
+    "word": "SCOUT",
+    "clue": "Sent ahead to spy out terrain",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "PASTRIES",
+   "clue": "Flaky baked goods from a bakery"
+  },
+  "words": [
+   {
+    "word": "PHYLLO",
+    "clue": "Paper-thin dough for baklava"
+   },
+   {
+    "word": "PRALINE",
+    "clue": "Nut-and-caramel candy from New Orleans",
+    "link": "P"
+   },
+   {
+    "word": "PASTY",
+    "clue": "Cornish meat-and-potato hand pie",
+    "link": "A"
+   },
+   {
+    "word": "STROMBOLI",
+    "clue": "Rolled Italian bread filled with cheese",
+    "link": "S"
+   },
+   {
+    "word": "PATISSERIE",
+    "clue": "French pastry shop",
+    "link": "T"
+   },
+   {
+    "word": "BRIOCHE",
+    "clue": "Buttery, eggy French bun",
+    "link": "R"
+   },
+   {
+    "word": "ECLAIR",
+    "clue": "Cream-filled oblong with chocolate icing",
+    "link": "I"
+   },
+   {
+    "word": "TURNOVERS",
+    "clue": "Folded pies with fruit inside",
+    "link": "E"
+   },
+   {
+    "word": "DANISH",
+    "clue": "Breakfast pastry with a fruit center",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "ELEMENTS",
+   "clue": "Basic substances on the periodic table"
+  },
+  "words": [
+   {
+    "word": "LEAD",
+    "clue": "Heavy metal once used in pipes"
+   },
+   {
+    "word": "HELIUM",
+    "clue": "Light gas that lifts balloons",
+    "link": "E"
+   },
+   {
+    "word": "NOBLE",
+    "clue": "Describes inert gases like argon",
+    "link": "L"
+   },
+   {
+    "word": "MERCURY",
+    "clue": "Liquid metal in old thermometers",
+    "link": "E"
+   },
+   {
+    "word": "NONMETAL",
+    "clue": "Element lacking luster, like carbon",
+    "link": "M"
+   },
+   {
+    "word": "HALOGEN",
+    "clue": "Group containing chlorine and fluorine",
+    "link": "E"
+   },
+   {
+    "word": "TIN",
+    "clue": "Metal used to plate food cans",
+    "link": "N"
+   },
+   {
+    "word": "ISOTOPE",
+    "clue": "Atom variant with extra neutrons",
+    "link": "T"
+   },
+   {
+    "word": "SULFUR",
+    "clue": "Yellow element with a rotten-egg smell",
+    "link": "S"
+   }
+  ]
+ },
+ {
+  "bonus": {
+   "answer": "POLITICS",
+   "clue": "Government, parties and campaigns"
+  },
+  "words": [
+   {
+    "word": "SPEECH",
+    "clue": "Address given from a podium"
+   },
+   {
+    "word": "POLL",
+    "clue": "Survey of voter opinion",
+    "link": "P"
+   },
+   {
+    "word": "DIPLOMAT",
+    "clue": "Embassy envoy",
+    "link": "O"
+   },
+   {
+    "word": "LOBBYIST",
+    "clue": "Paid advocate who courts lawmakers",
+    "link": "L"
+   },
+   {
+    "word": "CABINET",
+    "clue": "President's circle of advisers",
+    "link": "I"
+   },
+   {
+    "word": "PARLIAMENT",
+    "clue": "British legislature",
+    "link": "T"
+   },
+   {
+    "word": "CONSTITUENT",
+    "clue": "Voter in a lawmaker's district",
+    "link": "I"
+   },
+   {
+    "word": "CONSERVATIVE",
+    "clue": "Favoring tradition over change",
+    "link": "C"
+   },
+   {
+    "word": "CAUCUS",
+    "clue": "Party meeting to pick a candidate",
+    "link": "S"
+   }
+  ]
  }
 ]
