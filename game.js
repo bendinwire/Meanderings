@@ -5,8 +5,10 @@
   const TEST = !!window.MEANDERINGS_TEST, NS = TEST ? "t-" : "";
   // Theme chains (theme-words.js): all nine words relate to one theme word, which the gold letters spell. All nine rows are open
   // (free-solve). They play on puzzle days THEME_FROM_DAY .. +5; every other day (and random mode) keeps the classic chains.
-  const THEME_FROM_DAY = 4;   // puzzle #5, Nov 8 2026
-  const themeOn = v => v.kind === "puzzle" && v.day >= THEME_FROM_DAY && v.day < THEME_FROM_DAY + THEME_POOLS.easy.length;
+  const THEME_FROM_DAY = 3;   // puzzle #4, Nov 7 2026
+  // Someone already mid-way through (or done with) a classic chain keeps it, so rolling this out mid-day never wipes their progress.
+  const classicStarted = (v, d) => { const s = load(storeKey(d, v)); return !!s && !s.rs && (s.cur > 0 || !!s.row); };
+  const themeOn = (v, d) => v.kind === "puzzle" && v.day >= THEME_FROM_DAY && v.day < THEME_FROM_DAY + THEME_POOLS.easy.length && !classicStarted(v, d);
   let THEMED = false;
   const subEl = document.querySelector(".sub"), subClassic = subEl ? subEl.textContent : "";
   const PREFS = NS + "meanderings-prefs", STATS = NS + "meanderings-stats", KEYV = NS + "meanderings-v3";
@@ -111,7 +113,7 @@
 
   function setup() {
     runToken++; busy = false; finale = false; celebrate = false; sel = -1; riverFocus = false; riverTyped.fill("");
-    THEMED = themeOn(view);
+    THEMED = themeOn(view, diff);
     document.body.classList.toggle("themed", THEMED);
     if (subEl) subEl.textContent = THEMED ? "All nine words are open: solve them in any order. Neighbors share a letter, and every word belongs to one hidden theme." : subClassic;
     const pool = (THEMED ? THEME_POOLS : POOLS)[diff];
@@ -235,7 +237,7 @@
     document.querySelectorAll(".seg").forEach(b => {
       const k = b.dataset.d;
       const s = k === diff ? st : load(storeKey(k));
-      const fin = s && (THEMED ? (s.nDone || 0) >= POOLS[k][0].words.length : s.cur >= POOLS[k][0].words.length);
+      const fin = s && (s && s.rs ? (s.nDone || 0) >= 9 : s.cur >= 9);
       b.textContent = DIFFS[k].label + (fin ? " ✓" : "");
       b.classList.toggle("on", k === diff);
     });
