@@ -3,10 +3,12 @@
   // /meanderings/test/ sets window.MEANDERINGS_TEST: it plays TOMORROW's puzzle and keeps its own saves and stats
   // (localStorage is shared across paths on the same origin, so its keys get a "t-" prefix).
   const TEST = !!window.MEANDERINGS_TEST, NS = TEST ? "t-" : "";
-  // Theme chains (prototype, test page only for now): all nine words relate to one theme word, which the gold letters spell.
-  const THEMED = TEST;
-  if (THEMED) document.body.classList.add("themed");
-  if (THEMED) { const sub = document.querySelector(".sub"); if (sub) sub.textContent = "All nine words are open: solve them in any order. Neighbors share a letter, and every word belongs to one hidden theme."; }
+  // Theme chains (theme-words.js): all nine words relate to one theme word, which the gold letters spell. All nine rows are open
+  // (free-solve). They play on puzzle days THEME_FROM_DAY .. +5; every other day (and random mode) keeps the classic chains.
+  const THEME_FROM_DAY = 4;   // puzzle #5, Nov 8 2026
+  const themeOn = v => v.kind === "puzzle" && v.day >= THEME_FROM_DAY && v.day < THEME_FROM_DAY + THEME_POOLS.easy.length;
+  let THEMED = false;
+  const subEl = document.querySelector(".sub"), subClassic = subEl ? subEl.textContent : "";
   const PREFS = NS + "meanderings-prefs", STATS = NS + "meanderings-stats", KEYV = NS + "meanderings-v3";
   const WORD_POINTS = 100, WORD_FLOOR = 10;
   const BONUS_LETTERS = 8, BONUS_MISS = 15;
@@ -109,7 +111,10 @@
 
   function setup() {
     runToken++; busy = false; finale = false; celebrate = false; sel = -1; riverFocus = false; riverTyped.fill("");
-    const pool = POOLS[diff];
+    THEMED = themeOn(view);
+    document.body.classList.toggle("themed", THEMED);
+    if (subEl) subEl.textContent = THEMED ? "All nine words are open: solve them in any order. Neighbors share a letter, and every word belongs to one hidden theme." : subClassic;
+    const pool = (THEMED ? THEME_POOLS : POOLS)[diff];
     const saved = load(storeKey(diff));
     const defaults = fresh();
     st = { ...defaults, ...(saved || {}), bonus: { ...defaults.bonus, ...((saved && saved.bonus) || {}) } };
@@ -117,7 +122,7 @@
       if (!saved || st.idx === undefined) {
         do { st.idx = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && st.idx === lastRandom);
       }
-    } else st.idx = mod(view.day, pool.length);
+    } else st.idx = THEMED ? view.day - THEME_FROM_DAY : mod(view.day, pool.length);
     chain = pool[st.idx % pool.length];
     ({ rows, span } = layout(chain.words));
     MAX_SCORE = rows.reduce((s, _, i) => s + WORD_POINTS * mult(i), 0) + bonusPer() * BONUS_LETTERS;
