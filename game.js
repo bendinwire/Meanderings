@@ -607,7 +607,7 @@
     const extras = extrasLine();
     const lines = gridRows().map(g =>
       g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + rowMark(g) : ""));   // left-aligned: indenting with spaces never lines up across apps
-    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}`;
+    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\nflexgames.com/meanderings`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
