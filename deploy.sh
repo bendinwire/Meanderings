@@ -10,11 +10,11 @@ cd "$(dirname "$0")"
 # /meanderings/test/: generated copy of the page that plays tomorrow's date with separate saves (same code, but its OWN
 # fake puzzles from test-words.js, so testing never spoils a real day).
 mkdir -p test
-sed -e 's#href="assets/#href="../assets/#g' \
+sed -e 's#href="assets/#href="../assets/#g' -e 's#src="assets/#src="../assets/#g' \
     -e 's#<script src="words.js">#<script>window.MEANDERINGS_TEST = true;</script><script src="../words.js">#' \
     -e 's#<script src="theme-words.js">#<script src="../theme-words.js">#' \
     -e 's#<script src="fx.js">#<script src="../fx.js">#' \
-    -e 's#<script src="game.js">#<script src="../game.js">#' \
+    -e 's#<script src="game.js?v=2">#<script src="../game.js?v=2">#' \
     -e 's#<title>Meanderings</title>#<title>Meanderings (test)</title><meta name="robots" content="noindex">#' \
     index.html > test/index.html
 

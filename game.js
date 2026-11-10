@@ -652,6 +652,21 @@
     const promo = el("div", "promo");
     promo.innerHTML = 'Fan of word puzzles? Try today\'s <a href="/railword/">Railword</a> &rarr;';
     s.append(gridEl(), legend, copy, again, promo);
+    if (view.kind === "puzzle" && window.FGCompare) {
+      // "How you compare" card (flexgames.com/scores/compare.js). Only the first run of a day+difficulty is recorded;
+      // later bonus points on that same run update it. Replays compare without recording.
+      const cmp = el("div"), subKey = `${NS}meanderings-sub:${dateFor(view.day)}:${diff}`;
+      let owner = null;
+      try { owner = localStorage.getItem(subKey); if (!owner) localStorage.setItem(subKey, (owner = String(st.runId))); } catch (e) {}
+      s.append(cmp);
+      window.FGCompare.show(cmp, {
+        game: TEST ? "meanderings-test" : "meanderings", day: view.day, diff, label: cfg().label,
+        score: st.score, better: "high", unit: "points", max: MAX_SCORE,
+        per: rows.map((_, i) => Math.min(4, (((st.log || [])[i] || {}).miss || 0) + 1)),
+        answers: rows.map(r => r.word),
+        submit: owner === String(st.runId), youColor: "#d9785a",
+      });
+    }
     return s;
   }
 
