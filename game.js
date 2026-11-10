@@ -652,7 +652,9 @@
     if (!st.bonus.done) {
       const b = el("div", "legend"); b.textContent = newRules() ? `🌊 River word still open: guess it above (${bonusPer()}+ points)` : "🎁 Bonus still open: tap 🎁 above (25+ points)"; s.append(b);
     }
-    s.append(gridEl(), legend, copy, again);
+    const promo = el("div", "promo");
+    promo.innerHTML = 'Fan of word puzzles? Try today\'s <a href="/railword/">Railword</a> &rarr;';
+    s.append(gridEl(), legend, copy, again, promo);
     return s;
   }
 
