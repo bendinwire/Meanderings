@@ -601,13 +601,10 @@
     if (st.bestCombo >= 3) x.push(`🔥 ${st.bestCombo} clean in a row`);
     return x.join(" · ");
   }
-  // Full version with the chain's meander shape, a key and the same header.
+  // Share text: header, score, bonus and combo, then the link. No emoji grid (too long in a message thread).
   function gridText() {
-    const head = `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)`;
     const extras = extrasLine();
-    const lines = gridRows().map(g =>
-      g.cells.map(c => EMOJI[c]).join("") + (g.miss ? " " + rowMark(g) : ""));   // left-aligned: indenting with spaces never lines up across apps
-    return `${head}${extras ? " · " + extras : ""}\n\n${lines.join("\n")}\nflexgames.com/meanderings`;
+    return `${titleText()} · ${cfg().label}\n⭐ ${fmt(st.score)} pts (${pct()}%)${extras ? " · " + extras : ""}\nflexgames.com/meanderings`;
   }
   function gridEl() {
     const wrap = el("div", "sgrid");
