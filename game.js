@@ -386,6 +386,7 @@
     finale = false;
     drawMeander();
     renderBonus();
+    syncBar();
     const focus = activeEntry || board.lastElementChild;
     keepVisible(focus);
     centerActive(activeEntry);
@@ -664,10 +665,24 @@
         score: st.score, better: "high", unit: "points", max: MAX_SCORE,
         per: rows.map((_, i) => Math.min(4, (((st.log || [])[i] || {}).miss || 0) + 1)),
         answers: rows.map(r => r.word),
+        streak: streaks(loadStats().done).cur,
         submit: owner === String(st.runId), youColor: "#d9785a",
       });
     }
     return s;
+  }
+
+  // Header strip (flexgames.com/scores/compare.js): today's high score at this difficulty, who got it, and the shared
+  // sign-in (name + birthday). Only for dated puzzles; refetched when the puzzle or difficulty changes.
+  let barKey = "";
+  function syncBar() {
+    const b = $("fgbar");
+    if (!b || !window.FGCompare) return;
+    b.hidden = view.kind !== "puzzle";
+    const k = b.hidden ? "" : `${view.day}:${diff}`;
+    if (b.hidden || k === barKey) return;
+    barKey = k;
+    window.FGCompare.bar(b, { game: TEST ? "meanderings-test" : "meanderings", day: view.day, diff, better: "high", unit: "points" });
   }
 
   let flashTimer;

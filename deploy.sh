@@ -14,7 +14,7 @@ sed -e 's#href="assets/#href="../assets/#g' -e 's#src="assets/#src="../assets/#g
     -e 's#<script src="words.js">#<script>window.MEANDERINGS_TEST = true;</script><script src="../words.js">#' \
     -e 's#<script src="theme-words.js">#<script src="../theme-words.js">#' \
     -e 's#<script src="fx.js">#<script src="../fx.js">#' \
-    -e 's#<script src="game.js?v=2">#<script src="../game.js?v=2">#' \
+    -e 's#<script src="game.js?v=3">#<script src="../game.js?v=3">#' \
     -e 's#<title>Meanderings</title>#<title>Meanderings (test)</title><meta name="robots" content="noindex">#' \
     index.html > test/index.html
 
